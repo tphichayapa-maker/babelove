@@ -52,6 +52,21 @@
         .polaroid { background: white; padding: 10px 10px 25px 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transform: rotate(-3deg); transition: 0.3s; width: 120px; }
         .polaroid img { width: 100%; height: 120px; object-fit: cover; border-radius: 0; }
         .polaroid:nth-child(even) { transform: rotate(3deg); }
+
+        /* ไอคอนเพลงวงกลมแบบมีลูกเล่น */
+        .music-icon-circle {
+            width: 100px; height: 100px;
+            background: var(--light-pink);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 20px auto; 
+            font-size: 50px;
+            color: var(--pink);
+            border: 3px solid var(--pink);
+            box-shadow: 0 8px 20px rgba(255, 77, 109, 0.2);
+            animation: pulse 2s infinite; 
+        }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
     </style>
 </head>
 <body>
@@ -139,10 +154,14 @@
         <button class="red-pill-btn" onclick="showPage('menuPage')">กลับหน้าหลัก</button>
     </div>
 
-    <div id="musicPage" class="page">
+   <div id="musicPage" class="page">
         <h1>เพลงนี้ให้เธอนะ</h1>
-        <div style="font-size: 60px; margin: 20px 0;">📻</div>
-        <button onclick="window.open('https://youtu.be/9nDjgusMmCY?si=d5ykZ0bOIAI8rUtt')">เปิดเพลงใน YouTube 🎵</button>
+        <div class="music-icon-circle">🎧</div>
+        
+        <button class="red-pill-btn" style="margin-bottom: 20px; background: white; color: var(--pink); border: 2px solid var(--pink);" onclick="window.open('https://youtu.be/9nDjgusMmCY?si=d5ykZ0bOIAI8rUtt')">
+            เปิดเพลงใน YouTube 🎵
+        </button>
+        <br>
         <button class="red-pill-btn" onclick="showPage('menuPage')">กลับหน้าหลัก</button>
     </div>
 
