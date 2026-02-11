@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -8,14 +7,14 @@
     <style>
         :root { --pink: #ff4d6d; --light-pink: #fff0f3; --text: #590d22; }
         body { font-family: 'Arial', sans-serif; background-color: var(--light-pink); margin: 0; display: flex; align-items: center; justify-content: center; min-height: 100vh; overflow-x: hidden; color: var(--text); }
-        .page { display: none; width: 90%; max-width: 400px; background: white; padding: 30px; border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; animation: fadeIn 0.5s; }
+        .page { display: none; width: 90%; max-width: 400px; background: white; padding: 30px; border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; animation: fadeIn 0.5s; position: relative; }
         .active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         
-        h1 { font-size: 1.5rem; margin-bottom: 20px; }
-        button { background: var(--pink); color: white; border: none; padding: 12px 25px; border-radius: 20px; font-size: 1rem; cursor: pointer; margin-top: 10px; transition: 0.3s; }
-        
-        /* สไตล์เมนูแบบ 6 ช่อง */
+        h1 { font-size: 1.5rem; margin-bottom: 20px; color: var(--pink); }
+        p { line-height: 1.5; }
+
+        /* สไตล์เมนู 5 ช่อง */
         .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
         .menu-item { 
             background: white; padding: 20px 10px; border-radius: 20px; 
@@ -26,16 +25,179 @@
         .menu-title { font-size: 0.9rem; font-weight: bold; color: var(--text); margin-top: 8px; }
         .menu-desc { font-size: 0.65rem; color: #a1887f; margin-top: 4px; line-height: 1.2; }
 
-        /* ปุ่มสีแดงมน (Pill Button) */
+        /* ปุ่มสีแดงมน */
         .red-pill-btn { 
             background: #ff4d6d; color: white; border: none; width: 100%; max-width: 200px;
-            padding: 12px; border-radius: 30px; font-size: 0.9rem; margin-top: 30px;
-            cursor: pointer; box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3);
+            padding: 12px; border-radius: 30px; font-size: 0.9rem; margin-top: 20px;
+            cursor: pointer; box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3); transition: 0.2s;
         }
+        .red-pill-btn:active { transform: scale(0.95); opacity: 0.9; }
 
         /* แป้นกดรหัส */
         .pin-display { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
         .pin-dot { width: 45px; height: 50px; border-radius: 12px; border: 1px solid #ddd; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; background: #fff; }
         .pin-dot.filled { background: var(--light-pink); border-color: var(--pink); color: var(--pink); }
         .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 280px; margin: 0 auto; }
-        .keypad button { width: 100%; height: 55px; border-radius: 15px; border: 1px solid #f0f0f0; background: white; font-size:
+        .keypad button { width: 100%; height: 55px; border-radius: 15px; border: 1px solid #f0f0f0; background: white; font-size: 1.2rem; font-weight: bold; color: #444; margin: 0; cursor: pointer; }
+        .keypad button:active { background: #fdf2f4; }
+        .key-func { font-size: 0.9rem !important; background: var(--light-pink) !important; color: var(--pink) !important; }
+        
+        /* หน้าความทรงจำเลื่อนได้ */
+        .scroll-area { max-height: 60vh; overflow-y: auto; padding: 10px; border-radius: 15px; margin-bottom: 10px; scrollbar-width: thin; }
+        .memory-card { margin-bottom: 30px; padding-bottom: 15px; border-bottom: 1px dashed #ffd1dc; }
+        img { width: 100%; border-radius: 15px; margin-top: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
+        /* Polaroid Gallery */
+        .photo-gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+        .polaroid { background: white; padding: 10px 10px 25px 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transform: rotate(-3deg); transition: 0.3s; width: 120px; }
+        .polaroid img { width: 100%; height: 120px; object-fit: cover; border-radius: 0; }
+        .polaroid:nth-child(even) { transform: rotate(3deg); }
+    </style>
+</head>
+<body>
+
+    <div id="loginPage" class="page active">
+        <div style="font-size: 60px; margin-bottom: 10px;">🔒</div>
+        <h1>กรอกรหัสผ่าน</h1>
+        <p style="font-size: 0.8rem; color: #888;">คำใบ้: วันครบรอบของเรา</p>
+        <div class="pin-display">
+            <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
+            <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
+        </div>
+        <div class="keypad">
+            <button onclick="pressKey('1')">1</button><button onclick="pressKey('2')">2</button><button onclick="pressKey('3')">3</button>
+            <button onclick="pressKey('4')">4</button><button onclick="pressKey('5')">5</button><button onclick="pressKey('6')">6</button>
+            <button onclick="pressKey('7')">7</button><button onclick="pressKey('8')">8</button><button onclick="pressKey('9')">9</button>
+            <button class="key-func" onclick="deleteKey()">ลบ</button><button onclick="pressKey('0')">0</button>
+            <button class="key-func" onclick="checkPin()">ตกลง</button>
+        </div>
+    </div>
+
+    <div id="menuPage" class="page">
+        <h2 style="color: var(--pink); font-size: 1.2rem;">เลือกเมนู</h2>
+        <div class="menu-grid">
+            <div class="menu-item" onclick="showPage('memoriesPage')">
+                <div style="font-size: 25px;">🖼️</div>
+                <div class="menu-title">ความทรงจำ</div>
+                <div class="menu-desc">เรื่องราวเล็กๆ<br>ที่เราเคยสัมผัส</div>
+            </div>
+            <div class="menu-item" onclick="showPage('letterPage')">
+                <div style="font-size: 25px;">📩</div>
+                <div class="menu-title">จดหมาย</div>
+                <div class="menu-desc">ความในใจที่<br>อยากบอกเธอ</div>
+            </div>
+            <div class="menu-item" onclick="showPage('quizPage')">
+                <div style="font-size: 25px;">📝</div>
+                <div class="menu-title">แบบทดสอบ</div>
+                <div class="menu-desc">รู้จักเราดี<br>แค่ไหนกันนะ</div>
+            </div>
+            <div class="menu-item" onclick="showPage('polaroidPage')">
+                <div style="font-size: 25px;">📸</div>
+                <div class="menu-title">โพลารอยด์</div>
+                <div class="menu-desc">เก็บความจำ<br>ไว้ตลอดไป</div>
+            </div>
+            <div class="menu-item" onclick="showPage('musicPage')">
+                <div style="font-size: 25px;">🎵</div>
+                <div class="menu-title">เพลงของเรา</div>
+                <div class="menu-desc">เปิดเพลงนี้แล้ว<br>คิดถึงกันนะ</div>
+            </div>
+        </div>
+        <button class="red-pill-btn" onclick="showPage('loginPage')">กลับหน้าแรก</button>
+    </div>
+
+    <div id="memoriesPage" class="page">
+        <h1>ความทรงจำของเรา</h1>
+        <div class="scroll-area">
+            <div class="memory-card">
+                <img src="newyear.jpg" alt="Memory1">
+                <p>วันแรกที่เรื่องราวของเราเริ่มต้น... ❤️</p>
+            </div>
+            <div class="memory-card">
+                <img src="newyear.jpg" alt="Memory2">
+                <p>ทุกโมเมนต์กับเธอมันพิเศษที่สุดเลย ✨</p>
+            </div>
+        </div>
+        <button class="red-pill-btn" onclick="showPage('menuPage')">กลับหน้าหลัก</button>
+    </div>
+
+    <div id="letterPage" class="page">
+        <h1>จดหมายถึงเธอ</h1>
+        <p style="text-align: left; background: #fffafb; padding: 15px; border-radius: 15px; font-style: italic;">
+            To [SUDKHET], <br><br> 
+            My favorite person to do life with. To the man who has my back always. 
+            ขอบคุณที่เข้ามาเป็นเรื่องราวดีๆ ในชีวิตนะ รักเธอที่สุดเลย!
+        </p>
+        <button class="red-pill-btn" onclick="showPage('menuPage')">กลับหน้าหลัก</button>
+    </div>
+
+    <div id="polaroidPage" class="page">
+        <h1>Polaroid Collection</h1>
+        <div class="photo-gallery">
+            <div class="polaroid"><img src="newyear.jpg"></div>
+            <div class="polaroid"><img src="newyear.jpg"></div>
+        </div>
+        <button class="red-pill-btn" onclick="showPage('menuPage')">กลับหน้าหลัก</button>
+    </div>
+
+    <div id="musicPage" class="page">
+        <h1>เพลงนี้ให้เธอนะ</h1>
+        <div style="font-size: 60px; margin: 20px 0;">📻</div>
+        <button onclick="window.open('https://youtu.be/9nDjgusMmCY?si=d5ykZ0bOIAI8rUtt')">เปิดเพลงใน YouTube 🎵</button>
+        <button class="red-pill-btn" onclick="showPage('menuPage')">กลับหน้าหลัก</button>
+    </div>
+
+    <div id="quizPage" class="page">
+        <h1>รู้จักเราแค่ไหน?</h1>
+        <p>เราเจอกันครั้งแรกที่ไหน?</p>
+        <button style="width: 100%; margin-bottom: 10px;" onclick="alert('ถูกต้อง! ❤️')">A. Rinma Music Festival</button>
+        <button style="width: 100%;" onclick="alert('ผิด!')">B. Central Pinklao</button>
+        <button class="red-pill-btn" onclick="showPage('menuPage')">กลับหน้าหลัก</button>
+    </div>
+
+    <script>
+        let currentPin = "";
+        const correctPin = "190768"; 
+
+        function pressKey(num) {
+            if (currentPin.length < 6) {
+                currentPin += num;
+                updateDots();
+            }
+        }
+        function deleteKey() {
+            currentPin = currentPin.slice(0, -1);
+            updateDots();
+        }
+        function updateDots() {
+            const dots = document.querySelectorAll('.pin-dot');
+            dots.forEach((dot, i) => {
+                if (i < currentPin.length) {
+                    dot.classList.add('filled');
+                    dot.innerText = "●"; 
+                } else {
+                    dot.classList.remove('filled');
+                    dot.innerText = "";
+                }
+            });
+        }
+        function checkPin() {
+            if (currentPin === correctPin) {
+                showPage('menuPage');
+            } else {
+                alert('รหัสไม่ถูกต้อง');
+                currentPin = "";
+                updateDots();
+            }
+        }
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            currentPin = ""; 
+            updateDots();
+            if(document.getElementById(pageId).querySelector('.scroll-area')) {
+                document.getElementById(pageId).querySelector('.scroll-area').scrollTop = 0;
+            }
+        }
+    </script>
+</body>
+</html>
