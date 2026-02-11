@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Valentine</title>
+    <style>
+        body { background-color: #fff0f3; font-family: 'Arial', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; text-align: center; }
+        .card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); width: 85%; max-width: 400px; }
+        .heart { font-size: 80px; color: #ff4d6d; animation: beat 0.8s infinite alternate; }
+        @keyframes beat { to { transform: scale(1.2); } }
+        h1 { color: #590d22; margin-bottom: 10px; }
+        p { color: #800f2f; line-height: 1.6; }
+        .btn { background: #ff4d6d; color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; display: inline-block; margin-top: 20px; transition: 0.3s; }
+        .btn:hover { background: #c9184a; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="heart">❤️</div>
+        <h1>Happy Valentine's Day!</h1>
+        <p>ถึง [ชื่อแฟนของคุณ]</p>
+        <p>ขอบคุณที่เข้ามาเป็นเรื่องราวดีๆ ในชีวิตนะ <br> ขอให้เรามีกันแบบนี้ไปทุกๆ ปีเลย</p>
+        <p>love you!</p>
+        <a href="#" class="btn" onclick="alert('รักคุณเหมือนกันนะ!')">กดตรงนี้เพื่อรับจูบ 💋</a>
+    </div>
+</body>
+</html>
