@@ -42,11 +42,19 @@
         .keypad button:active { background: #fdf2f4; }
         .key-func { font-size: 0.9rem !important; background: var(--light-pink) !important; color: var(--pink) !important; }
         
-        /* หน้าความทรงจำเลื่อนได้ */
-        .scroll-area { max-height: 60vh; overflow-y: auto; padding: 10px; border-radius: 15px; margin-bottom: 10px; scrollbar-width: thin; }
-        .memory-card { margin-bottom: 30px; padding-bottom: 15px; border-bottom: 1px dashed #ffd1dc; }
-        img { width: 100%; border-radius: 15px; margin-top: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-
+        /* สไตล์ Slider ปัดซ้าย-ขวา */
+        .slider-container { position: relative; width: 100%; overflow: hidden; border-radius: 15px; }
+        .slider-wrapper { display: flex; transition: transform 0.5s ease-in-out; }
+        .slide { min-width: 100%; box-sizing: border-box; padding: 0 5px; }
+        
+        /* ปุ่มลูกศร */
+        .slider-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255, 77, 109, 0.5); color: white; border: none;
+            width: 35px; height: 35px; border-radius: 50%; cursor: pointer; z-index: 10;
+        }
+        .prev-btn { left: 5px; }
+        .next-btn { right: 5px; }
         /* Polaroid Gallery */
         .photo-gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
         .polaroid { background: white; padding: 10px 10px 25px 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transform: rotate(-3deg); transition: 0.3s; width: 120px; }
