@@ -20,18 +20,37 @@
         .menu-item:hover { transform: scale(1.05); background: #ffccd5; }
 
         .back-btn { background: #888; margin-top: 20px; padding: 8px 15px; font-size: 0.8rem; }
+
+        /* สไตล์สำหรับแป้นกดรหัส */
+        .pin-display { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
+        .pin-dot { width: 45px; height: 50px; border-radius: 12px; border: 1px solid #ddd; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; background: #fff; }
+        .pin-dot.filled { background: var(--light-pink); border-color: var(--pink); color: var(--pink); }
+        .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 280px; margin: 0 auto; }
+        .keypad button { width: 100%; height: 55px; border-radius: 15px; border: 1px solid #f0f0f0; background: white; font-size: 1.2rem; font-weight: bold; color: #444; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin: 0; }
+        .keypad button:active { background: #fdf2f4; transform: scale(0.95); }
+        .key-func { font-size: 0.9rem !important; background: var(--light-pink) !important; color: var(--pink) !important; }
         img { width: 100%; border-radius: 15px; margin-top: 10px; }
     </style>
 </head>
 <body>
 
     <div id="loginPage" class="page active">
-        <div style="font-size: 50px;">🔒</div>
-        <h1>กรอกรหัสผ่านเพื่อเข้าสู่ความลับของเรา</h1>
-        <p style="font-size: 0.8rem; color: #888;">คำใบ้: วันครบรอบของเรา </p>
-        <input type="password" id="passInput" placeholder="รหัสผ่าน...">
-        <br>
-        <button onclick="checkPass()">ยืนยัน</button>
+        <div style="font-size: 60px; margin-bottom: 10px;">🔒</div>
+        <h1 style="color: var(--pink);">กรอกรหัสผ่าน</h1>
+        <p style="font-size: 0.8rem; color: #888;">คำใบ้: วันครบรอบของเรา</p>
+        
+        <div class="pin-display">
+            <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
+            <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
+        </div>
+
+        <div class="keypad">
+            <button onclick="pressKey('1')">1</button><button onclick="pressKey('2')">2</button><button onclick="pressKey('3')">3</button>
+            <button onclick="pressKey('4')">4</button><button onclick="pressKey('5')">5</button><button onclick="pressKey('6')">6</button>
+            <button onclick="pressKey('7')">7</button><button onclick="pressKey('8')">8</button><button onclick="pressKey('9')">9</button>
+            <button class="key-func" onclick="deleteKey()">ลบ</button><button onclick="pressKey('0')">0</button>
+            <button class="key-func" onclick="checkPin()">ตกลง</button>
+        </div>
     </div>
 
     <div id="menuPage" class="page">
@@ -54,15 +73,15 @@
 
     <div id="letterPage" class="page">
         <h1>จดหมายถึงเธอ</h1>
-        <p style="text-align: left;">ถึง [สุดเขตต์], <br><br> ขอบคุณที่อยู่เคียงข้างกันเสมอมานะ เว็บนี้ทำขึ้นมาให้เธอคนเดียวเลย รักที่สุดครับ!</p>
+        <p style="text-align: left;">To [SUDKHET], <br><br> My favorite person to do life with To the man who has my back.!</p>
         <button class="back-btn" onclick="showPage('menuPage')">กลับหน้าหลัก</button>
     </div>
 
     <div id="musicPage" class="page">
-        <h1>เพลงนี้ให้เธอนะ</h1>
+        <h1></h1>
         <div style="font-size: 60px; margin: 20px 0;">📻</div>
         <p>กดเพื่อฟังเพลงที่เราชอบด้วยกัน</p>
-        <button onclick="window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ')">เปิดเพลงใน YouTube 🎵</button>
+        <button onclick="window.open('https://youtu.be/9nDjgusMmCY?si=d5ykZ0bOIAI8rUtt')">เปิดเพลงใน YouTube 🎵</button>
         <br>
         <button class="back-btn" onclick="showPage('menuPage')">กลับหน้าหลัก</button>
     </div>
@@ -70,19 +89,45 @@
     <div id="quizPage" class="page">
         <h1>รู้จักเราแค่ไหน?</h1>
         <p>เราเจอกันครั้งแรกที่ไหน?</p>
-        <button style="width: 100%;" onclick="alert('ถูกต้อง!')">A. สยาม</button>
-        <button style="width: 100%;" onclick="alert('ผิดจ้า!')">B. โรงเรียน</button>
+        <button style="width: 100%;" onclick="alert('ถูกต้อง!')">A. Rinma Music Festival </button>
+        <button style="width: 100%;" onclick="alert('ผิดจ้า!')">B. central pinklao</button>
         <br>
         <button class="back-btn" onclick="showPage('menuPage')">กลับหน้าหลัก</button>
     </div>
 
     <script>
-        function checkPass() {
-            const pass = document.getElementById('passInput').value;
-            if (pass === '190768') { // เปลี่ยนรหัสผ่านตรงนี้!!
+        let currentPin = "";
+        const correctPin = "190768"; // รหัสเดิมที่คุณตั้งไว้ในรูปครับ
+
+        function pressKey(num) {
+            if (currentPin.length < 6) {
+                currentPin += num;
+                updateDots();
+            }
+        }
+        function deleteKey() {
+            currentPin = currentPin.slice(0, -1);
+            updateDots();
+        }
+        function updateDots() {
+            const dots = document.querySelectorAll('.pin-dot');
+            dots.forEach((dot, i) => {
+                if (i < currentPin.length) {
+                    dot.classList.add('filled');
+                    dot.innerText = "●"; 
+                } else {
+                    dot.classList.remove('filled');
+                    dot.innerText = "";
+                }
+            });
+        }
+        function checkPin() {
+            if (currentPin === correctPin) {
                 showPage('menuPage');
             } else {
-                alert('รหัสผ่านไม่ถูกต้องนะจ๊ะ!');
+                alert('รหัสไม่ถูกต้องนะจ๊ะ!');
+                currentPin = "";
+                updateDots();
             }
         }
 
