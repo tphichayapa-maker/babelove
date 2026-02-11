@@ -12,16 +12,16 @@
         .active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         
-        h1 { font-size: 1.4rem; margin-bottom: 20px; color: var(--pink); letter-spacing: 1px; }
+        h1 { font-size: 1.4rem; margin-bottom: 20px; color: var(--pink); }
 
-        /* --- เมนูมินิมอล 4 ช่อง --- */
+        /* เมนู 4 ช่อง */
         .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px; }
         .menu-item { 
             background: white; padding: 25px 10px; border-radius: 20px; 
             box-shadow: 0 5px 15px rgba(0,0,0,0.05); cursor: pointer; transition: 0.3s;
             border: 1px solid #fdf2f4; display: flex; flex-direction: column; align-items: center;
         }
-        .menu-item:hover { transform: translateY(-5px); border-color: var(--pink); box-shadow: 0 10px 20px rgba(255, 77, 109, 0.1); }
+        .menu-item:hover { transform: translateY(-5px); border-color: var(--pink); }
         .menu-title { font-size: 1rem; font-weight: bold; color: var(--text); margin-top: 12px; }
 
         .red-pill-btn { 
@@ -30,205 +30,15 @@
             cursor: pointer; box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3);
         }
 
-        /* ระบบรหัสผ่าน */
+        /* รหัสผ่าน */
         .pin-display { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
         .pin-dot { width: 45px; height: 50px; border-radius: 12px; border: 1px solid #ddd; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; background: #fff; }
         .pin-dot.filled { background: var(--light-pink); border-color: var(--pink); color: var(--pink); }
         .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 280px; margin: 0 auto; }
         .keypad button { width: 100%; height: 55px; border-radius: 15px; border: 1px solid #f0f0f0; background: white; font-size: 1.2rem; font-weight: bold; color: #444; cursor: pointer; }
-        .key-func { font-size: 0.9rem !important; background: var(--light-pink) !important; color: var(--pink) !important; }
 
-        /* --- Slider ความทรงจำ (แก้ทรงสี่เหลี่ยมจัตุรัส) --- */
+        /* Slider ความทรงจำ (ไม่ตัดรูป) */
         .slider-container { position: relative; width: 100%; overflow: hidden; border-radius: 15px; background: #000; }
         .slider-wrapper { display: flex; transition: transform 0.5s ease-in-out; align-items: center; }
         .slide { min-width: 100%; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; background: white; padding-bottom: 15px; }
-        
-        /* ปรับให้รูปและวิดีโอคงสัดส่วนเดิม ไม่บังคับเป็นสี่เหลี่ยม */
-        .slide img, .slide video { 
-            width: 100%; 
-            height: auto; 
-            max-height: 450px; /* จำกัดความสูงไว้ไม่ให้ล้นจอ */
-            object-fit: contain; /* โชว์ครบทั้งรูป ไม่โดนตัด */
-            background: #000;
-        }
-        .slide p { margin: 15px 10px 5px 10px; font-weight: bold; font-size: 0.95rem; color: var(--text); }
-
-        .slider-btn {
-            position: absolute; top: 50%; transform: translateY(-50%);
-            background: rgba(255, 77, 109, 0.7); color: white; border: none;
-            width: 35px; height: 35px; border-radius: 50%; cursor: pointer; z-index: 10;
-        }
-        .prev-btn { left: 10px; }
-        .next-btn { right: 10px; }
-
-        /* --- Polaroid Style (เน้นทรงผืนผ้าแนวยาว) --- */
-        .photo-gallery { display: flex; flex-direction: column; align-items: center; gap: 25px; padding: 10px 0; }
-        .polaroid { 
-            background: white; padding: 12px 12px 35px 12px; 
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
-            width: 85%; max-width: 260px; transition: 0.3s; 
-        }
-        .polaroid img { width: 100%; height: auto; border: 1px solid #eee; }
-        .polaroid p { margin-top: 15px; font-size: 0.9rem; color: #555; font-style: italic; font-weight: bold; }
-        .polaroid:nth-child(odd) { transform: rotate(-2deg); }
-        .polaroid:nth-child(even) { transform: rotate(2deg); }
-
-        /* ไอคอนเพลงวงกลม */
-        .music-icon-circle {
-            width: 100px; height: 100px; background: var(--light-pink); border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; margin: 20px auto; 
-            font-size: 50px; color: var(--pink); border: 3px solid var(--pink);
-            animation: pulse 2s infinite; 
-        }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-    </style>
-</head>
-<body>
-
-    <div id="loginPage" class="page active">
-        <div style="font-size: 60px; margin-bottom: 10px;">🔒</div>
-        <h1>กรอกรหัสผ่าน</h1>
-        <p style="font-size: 0.8rem; color: #888;">คำใบ้: วันครบรอบของเรา</p>
-        <div class="pin-display">
-            <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
-            <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
-        </div>
-        <div class="keypad">
-            <button onclick="pressKey('1')">1</button><button onclick="pressKey('2')">2</button><button onclick="pressKey('3')">3</button>
-            <button onclick="pressKey('4')">4</button><button onclick="pressKey('5')">5</button><button onclick="pressKey('6')">6</button>
-            <button onclick="pressKey('7')">7</button><button onclick="pressKey('8')">8</button><button onclick="pressKey('9')">9</button>
-            <button class="key-func" onclick="deleteKey()">ลบ</button><button onclick="pressKey('0')">0</button>
-            <button class="key-func" onclick="checkPin()">ตกลง</button>
-        </div>
-    </div>
-
-    <div id="menuPage" class="page">
-        <h2 style="color: var(--pink); margin-bottom: 5px;">Our Story ❤️</h2>
-        <p style="color: #999; font-size: 0.8rem; margin-bottom: 20px;">คัดมาให้เธอโดยเฉพาะ</p>
-        <div class="menu-grid">
-            <div class="menu-item" onclick="showPage('memoriesPage')">
-                <div style="font-size: 40px;">🖼️</div>
-                <div class="menu-title">ความทรงจำ</div>
-            </div>
-            <div class="menu-item" onclick="showPage('polaroidPage')">
-                <div style="font-size: 40px;">📸</div>
-                <div class="menu-title">โพลารอยด์</div>
-            </div>
-            <div class="menu-item" onclick="showPage('musicPage')">
-                <div style="font-size: 40px;">🎵</div>
-                <div class="menu-title">เพลงของเรา</div>
-            </div>
-            <div class="menu-item" onclick="showPage('quizPage')">
-                <div style="font-size: 40px;">📝</div>
-                <div class="menu-title">แบบทดสอบ</div>
-            </div>
-        </div>
-        <button class="red-pill-btn" onclick="showPage('loginPage')">กลับหน้าแรก</button>
-    </div>
-
-    <div id="memoriesPage" class="page">
-        <h1>Memories</h1>
-        <div class="slider-container">
-            <button class="slider-btn prev-btn" onclick="moveSlide(-1)">❮</button>
-            <button class="slider-btn next-btn" onclick="moveSlide(1)">❯</button>
-            <div class="slider-wrapper" id="sliderWrapper">
-                <div class="slide">
-                    <video controls><source src="one.mp4" type="video/mp4"></video>
-                    <p>ครั้งแรกที่เราเจอกัน❤️</p>
-                </div>
-                <div class="slide">
-                    <img src="date.jpg">
-                    <p>เดทด้วยกันครั้งแรก</p>
-                </div>
-                <div class="slide">
-                    <img src="movie.jpg">
-                    <p>ดูหนังด้วยกันครั้งแรก</p>
-                </div>
-                <div class="slide">
-                    <video controls><source src="love.mp4" type="video/mp4"></video>
-                    <p>วันแรกที่เราคบกัน❤️</p>
-                </div>
-                <div class="slide">
-                    <img src="flower.jpg">
-                    <p>ดอกไม้ที่แฟนซื้อให้ ช่อที่ n</p>
-                </div>
-            </div>
-        </div>
-        <button class="red-pill-btn" onclick="showPage('menuPage')">กลับหน้าหลัก</button>
-    </div>
-
-    <div id="polaroidPage" class="page">
-        <h1>Polaroid</h1>
-        <div class="photo-gallery">
-            <div class="polaroid">
-                <img src="pola1.jpg">
-                <p>Photo boot ครั้งแรก</p>
-            </div>
-            <div class="polaroid">
-                <img src="pola2.jpg">
-                <p>Photo boot วันคริสต์มาส</p>
-            </div>
-            <div class="polaroid">
-                <img src="pola3.jpg">
-                <p>Photo boot วันปีใหม่</p>
-            </div>
-        </div>
-        <button class="red-pill-btn" onclick="showPage('menuPage')">กลับหน้าหลัก</button>
-    </div>
-
-    <div id="musicPage" class="page">
-        <h1>เพลงนี้ให้เธอ</h1>
-        <div class="music-icon-circle">🎧</div>
-        <button class="red-pill-btn" style="background: white; color: var(--pink); border: 2px solid var(--pink); margin-bottom: 15px;" onclick="window.open('https://youtu.be/9nDjgusMmCY?si=d5ykZ0bOIAI8rUtt')">
-            เปิดเพลงใน YouTube 🎵
-        </button>
-        <button class="red-pill-btn" onclick="showPage('menuPage')">กลับหน้าหลัก</button>
-    </div>
-
-    <div id="quizPage" class="page">
-        <h1>รู้จักเราแค่ไหน?</h1>
-        <p style="margin-bottom: 20px;">เราเจอกันครั้งแรกที่ไหน?</p>
-        <button class="red-pill-btn" style="background: white; color: var(--pink); border: 2px solid var(--pink); margin-bottom: 10px;" onclick="alert('ถูกต้อง! ❤️')">
-            A. Rinma Music Festival
-        </button>
-        <button class="red-pill-btn" style="background: white; color: var(--pink); border: 2px solid var(--pink);" onclick="alert('ผิดจ้าา ทายใหม่นะ!')">
-            B. Central Pinklao
-        </button>
-        <button class="red-pill-btn" onclick="showPage('menuPage')">กลับหน้าหลัก</button>
-    </div>
-
-    <script>
-        let currentPin = "";
-        const correctPin = "190768"; 
-        let slideIndex = 0;
-
-        function pressKey(num) { if (currentPin.length < 6) { currentPin += num; updateDots(); } }
-        function deleteKey() { currentPin = currentPin.slice(0, -1); updateDots(); }
-        function updateDots() {
-            const dots = document.querySelectorAll('.pin-dot');
-            dots.forEach((dot, i) => {
-                if (i < currentPin.length) { dot.classList.add('filled'); dot.innerText = "●"; } 
-                else { dot.classList.remove('filled'); dot.innerText = ""; }
-            });
-        }
-        function checkPin() {
-            if (currentPin === correctPin) { showPage('menuPage'); } 
-            else { alert('รหัสไม่ถูกต้อง'); currentPin = ""; updateDots(); }
-        }
-
-        function moveSlide(n) {
-            const wrapper = document.getElementById('sliderWrapper');
-            const slides = document.querySelectorAll('.slide');
-            slideIndex = (slideIndex + n + slides.length) % slides.length;
-            wrapper.style.transform = `translateX(-${slideIndex * 100}%)`;
-        }
-
-        function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
-            currentPin = ""; updateDots();
-            if(pageId === 'memoriesPage') { slideIndex = 0; moveSlide(0); }
-        }
-    </script>
-</body>
-</html>
+        .slide img, .slide video { width: 100%; height: auto; max-height: 450px; object-fit: contain; background: #00
