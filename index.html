@@ -14,7 +14,7 @@
         
         h1 { font-size: 1.5rem; margin-bottom: 20px; color: var(--pink); }
 
-        /* --- สไตล์เมนูมินิมอล (ไม่มีคำบรรยาย) --- */
+        /* --- เมนูมินิมอล 4 ช่อง (2x2 Grid) --- */
         .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px; }
         .menu-item { 
             background: white; padding: 25px 15px; border-radius: 25px; 
@@ -39,7 +39,7 @@
         .keypad button { width: 100%; height: 55px; border-radius: 15px; border: 1px solid #f0f0f0; background: white; font-size: 1.2rem; font-weight: bold; color: #444; cursor: pointer; }
         .key-func { font-size: 0.9rem !important; background: var(--light-pink) !important; color: var(--pink) !important; }
 
-        /* --- สไตล์ Slider ปัดซ้าย-ขวา --- */
+        /* --- Slider ปัดซ้าย-ขวา --- */
         .slider-container { position: relative; width: 100%; overflow: hidden; border-radius: 20px; margin-bottom: 20px; }
         .slider-wrapper { display: flex; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
         .slide { min-width: 100%; box-sizing: border-box; padding: 10px; display: flex; flex-direction: column; align-items: center; }
@@ -47,4 +47,50 @@
 
         .slider-btn {
             position: absolute; top: 40%; transform: translateY(-50%);
-            background: rgba(255, 77, 109, 0.
+            background: rgba(255, 77, 109, 0.6); color: white; border: none;
+            width: 35px; height: 35px; border-radius: 50%; cursor: pointer; z-index: 10;
+        }
+        .prev-btn { left: 5px; }
+        .next-btn { right: 5px; }
+
+        /* ไอคอนเพลงวงกลม */
+        .music-icon-circle {
+            width: 100px; height: 100px; background: var(--light-pink); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; margin: 20px auto; 
+            font-size: 50px; color: var(--pink); border: 3px solid var(--pink);
+            animation: pulse 2s infinite; 
+        }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+    </style>
+</head>
+<body>
+
+    <div id="loginPage" class="page active">
+        <div style="font-size: 60px; margin-bottom: 10px;">🔒</div>
+        <h1>กรอกรหัสผ่าน</h1>
+        <p style="font-size: 0.8rem; color: #888;">คำใบ้: วันครบรอบของเรา</p>
+        <div class="pin-display">
+            <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
+            <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
+        </div>
+        <div class="keypad">
+            <button onclick="pressKey('1')">1</button><button onclick="pressKey('2')">2</button><button onclick="pressKey('3')">3</button>
+            <button onclick="pressKey('4')">4</button><button onclick="pressKey('5')">5</button><button onclick="pressKey('6')">6</button>
+            <button onclick="pressKey('7')">7</button><button onclick="pressKey('8')">8</button><button onclick="pressKey('9')">9</button>
+            <button class="key-func" onclick="deleteKey()">ลบ</button><button onclick="pressKey('0')">0</button>
+            <button class="key-func" onclick="checkPin()">ตกลง</button>
+        </div>
+    </div>
+
+    <div id="menuPage" class="page">
+        <h2 style="color: var(--pink); font-size: 1.5rem; margin-bottom: 20px;">Welcome, My Love ❤️</h2>
+        <div class="menu-grid">
+            <div class="menu-item" onclick="showPage('memoriesPage')">
+                <div style="font-size: 45px;">🖼️</div>
+                <div class="menu-title">ความทรงจำ</div>
+            </div>
+            <div class="menu-item" onclick="showPage('polaroidPage')">
+                <div style="font-size: 45px;">📸</div>
+                <div class="menu-title">โพลารอยด์</div>
+            </div>
+            <div class="menu-item" onclick="showPage('musicPage')">
