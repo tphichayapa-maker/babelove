@@ -6,78 +6,44 @@
     <title>Our Secret Story ❤️</title>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #ff8fa3;
-            --secondary: #ffc2d1;
-            --bg: #fff0f3;
-            --text: #590d22;
-            --white: #ffffff;
-        }
-
+        :root { --primary: #ff8fa3; --secondary: #ffc2d1; --bg: #fff0f3; --text: #590d22; --white: #ffffff; }
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { font-family: 'Prompt', sans-serif; background: linear-gradient(135deg, var(--bg) 0%, #ffe3e8 100%); margin: 0; padding: 20px; display: flex; align-items: center; justify-content: center; min-height: 100vh; overflow-x: hidden; color: var(--text); }
 
-        body {
-            font-family: 'Prompt', sans-serif;
-            background: linear-gradient(135deg, var(--bg) 0%, #ffe3e8 100%);
-            margin: 0; padding: 20px;
-            display: flex; align-items: center; justify-content: center;
-            min-height: 100vh; overflow-x: hidden; color: var(--text);
-        }
-
-        .page {
-            display: none; width: 100%; max-width: 440px;
-            background: var(--white); padding: 40px 20px;
-            border-radius: 40px; box-shadow: 0 20px 40px rgba(255, 143, 163, 0.2);
-            text-align: center; position: relative; animation: fadeIn 0.6s ease-out;
-        }
+        .page { display: none; width: 100%; max-width: 440px; background: var(--white); padding: 40px 20px; border-radius: 40px; box-shadow: 0 20px 40px rgba(255, 143, 163, 0.2); text-align: center; position: relative; animation: fadeIn 0.6s ease-out; }
         .active { display: block !important; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         
         h1 { font-family: 'Sarabun', sans-serif; font-size: 1.5rem; color: var(--primary); margin-bottom: 25px; }
 
-        /* --- เมนูหลัก --- */
+        /* Menu */
         .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .menu-item {
-            background: var(--white); padding: 25px 10px; border-radius: 25px;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.04); cursor: pointer; transition: 0.3s;
-            border: 2px solid #fdf2f4; display: flex; flex-direction: column; align-items: center;
-        }
+        .menu-item { background: var(--white); padding: 25px 10px; border-radius: 25px; box-shadow: 0 8px 15px rgba(0,0,0,0.04); cursor: pointer; transition: 0.3s; border: 2px solid #fdf2f4; display: flex; flex-direction: column; align-items: center; }
         .menu-item:hover { transform: translateY(-5px); border-color: var(--primary); }
         .menu-icon { font-size: 40px; margin-bottom: 10px; }
 
-        /* --- ระบบ Slider --- */
+        /* Slider */
         .slider-container { position: relative; width: 100%; overflow: hidden; border-radius: 25px; background: #000; margin-bottom: 10px; }
         .slider-wrapper { display: flex; transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); align-items: center; }
         .slide { min-width: 100%; display: flex; flex-direction: column; align-items: center; background: white; padding-bottom: 20px; }
-        .slide img, .slide video { width: 100%; height: auto; max-height: 480px; object-fit: contain; }
+        .slide img, .slide video { width: 100%; height: auto; max-height: 480px; object-fit: contain; background: #000; }
         .slide p { margin: 15px; font-weight: 600; font-size: 1.1rem; border: none; }
 
-        /* --- สไตล์แบบทดสอบใหม่ (เลือกรูปภาพ) --- */
-        .quiz-container { margin-bottom: 40px; text-align: center; }
-        .quiz-question { font-weight: 600; margin-bottom: 20px; font-size: 1.05rem; color: var(--text); }
-        .quiz-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        
-        .quiz-card {
-            cursor: pointer; transition: 0.3s;
-        }
-        .quiz-card img {
-            width: 100%; height: 130px; object-fit: cover;
-            border-radius: 20px; border: 3px solid transparent;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: 0.3s;
-        }
+        /* Quiz Step System */
+        .quiz-step { display: none; }
+        .quiz-step.active-step { display: block; animation: fadeIn 0.5s ease; }
+        .quiz-container { text-align: center; }
+        .quiz-question { font-weight: 600; margin-bottom: 25px; font-size: 1.1rem; color: var(--text); line-height: 1.4; }
+        .quiz-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .quiz-card { cursor: pointer; transition: 0.3s; }
+        .quiz-card img { width: 100%; height: 140px; object-fit: cover; border-radius: 20px; border: 3px solid transparent; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: 0.3s; }
         .quiz-card:hover img { transform: scale(1.05); border-color: var(--primary); }
-        .quiz-card p { margin-top: 8px; font-size: 0.85rem; font-weight: 600; color: var(--text); }
+        .quiz-card p { margin-top: 12px; font-size: 0.9rem; font-weight: 600; color: var(--text); }
 
-        /* --- ปุ่มกดสไตล์ Capsule --- */
-        .red-pill-btn {
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            color: white; border: none; width: 100%; max-width: 250px;
-            padding: 14px; border-radius: 50px; font-size: 1rem; font-weight: 600;
-            cursor: pointer; box-shadow: 0 10px 20px rgba(255, 143, 163, 0.3);
-            margin-top: 15px;
-        }
+        /* Buttons */
+        .red-pill-btn { background: linear-gradient(45deg, var(--primary), var(--secondary)); color: white; border: none; width: 100%; max-width: 250px; padding: 14px; border-radius: 50px; font-size: 1rem; font-weight: 600; cursor: pointer; box-shadow: 0 10px 20px rgba(255, 143, 163, 0.3); margin-top: 20px; }
 
-        /* --- ระบบ PIN --- */
+        /* PIN */
         .pin-display { display: flex; justify-content: center; gap: 15px; margin: 30px 0; }
         .pin-dot { width: 18px; height: 18px; border-radius: 50%; background: #eee; }
         .pin-dot.filled { background: var(--primary); box-shadow: 0 0 10px var(--primary); }
@@ -105,31 +71,19 @@
     <div id="menuPage" class="page">
         <h1>Welcome, My Love ❤️</h1>
         <div class="menu-grid">
-            <div class="menu-item" onclick="showPage('memoriesPage')">
-                <div class="menu-icon">🖼️</div>
-                <div style="font-weight: 600;">ความทรงจำ</div>
-            </div>
-            <div class="menu-item" onclick="showPage('polaroidPage')">
-                <div class="menu-icon">📸</div>
-                <div style="font-weight: 600;">โพลารอยด์</div>
-            </div>
-            <div class="menu-item" onclick="showPage('musicPage')">
-                <div class="menu-icon">🎵</div>
-                <div style="font-weight: 600;">เพลงของเรา</div>
-            </div>
-            <div class="menu-item" onclick="showPage('quizPage')">
-                <div class="menu-icon">📝</div>
-                <div style="font-weight: 600;">แบบทดสอบ</div>
-            </div>
+            <div class="menu-item" onclick="showPage('memoriesPage')"><div class="menu-icon">🖼️</div><div style="font-weight: 600;">ความทรงจำ</div></div>
+            <div class="menu-item" onclick="showPage('polaroidPage')"><div class="menu-icon">📸</div><div style="font-weight: 600;">โพลารอยด์</div></div>
+            <div class="menu-item" onclick="showPage('musicPage')"><div class="menu-icon">🎵</div><div style="font-weight: 600;">เพลงของเรา</div></div>
+            <div class="menu-item" onclick="startQuiz()"><div class="menu-icon">📝</div><div style="font-weight: 600;">แบบทดสอบ</div></div>
         </div>
-        <button class="red-pill-btn" onclick="showPage('loginPage')" style="background:transparent; border:2px solid #eee; color:#999; box-shadow:none;">ล็อค</button>
+        <button class="red-pill-btn" onclick="showPage('loginPage')" style="background:transparent; border:2px solid #eee; color:#999; box-shadow:none; margin-top: 40px;">ล็อค</button>
     </div>
 
     <div id="memoriesPage" class="page">
         <h1>Memories</h1>
         <div class="slider-container">
-            <button onclick="moveSlide(-1)" style="position:absolute; left:10px; top:50%; z-index:10; background:rgba(255,255,255,0.5); border:none; border-radius:50%; width:30px; height:30px; cursor:pointer;">❮</button>
-            <button onclick="moveSlide(1)" style="position:absolute; right:10px; top:50%; z-index:10; background:rgba(255,255,255,0.5); border:none; border-radius:50%; width:30px; height:30px; cursor:pointer;">❯</button>
+            <button onclick="moveSlide(-1)" style="position:absolute; left:10px; top:50%; z-index:10; background:rgba(255,255,255,0.5); border:none; border-radius:50%; width:30px; height:30px;">❮</button>
+            <button onclick="moveSlide(1)" style="position:absolute; right:10px; top:50%; z-index:10; background:rgba(255,255,255,0.5); border:none; border-radius:50%; width:30px; height:30px;">❯</button>
             <div class="slider-wrapper" id="sliderWrapper">
                 <div class="slide"><video controls playsinline><source src="one.mp4" type="video/mp4"></video><p>ครั้งแรกที่เราเจอกัน❤️</p></div>
                 <div class="slide"><img src="date.jpg"><p>เดทด้วยกันครั้งแรก</p></div>
@@ -161,59 +115,102 @@
     <div id="quizPage" class="page">
         <h1>Quiz Time! 📝</h1>
 
-        <div class="quiz-container">
-            <p class="quiz-question">1. เราเจอกันครั้งแรกที่ไหนเอ่ย?</p>
-            <div class="quiz-row">
-                <div class="quiz-card" onclick="alert('ถูกต้องที่สุด! จุดเริ่มต้นของเรา ❤️')">
-                    <img src="con.png" alt="Rinma">
-                    <p>A. Rinma Festival</p>
-                </div>
-                <div class="quiz-card" onclick="alert('ผิดจ้าาา ทายใหม่นะ 😝')">
-                    <img src="central.png" alt="Central">
-                    <p>B. Central Pinklao</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="quiz-container">
-            <p class="quiz-question">2. เมนูแรกที่เราไปเดทด้วยกันคือ?</p>
-            <div class="quiz-row">
-                <div class="quiz-card" onclick="alert('ถูกต้อง! แซ่บๆ เหมือนเราเลย 🥗')">
-                    <img src="som.jpg" alt="ส้มตำ">
-                    <p>A. ส้มตำ</p>
-                </div>
-                <div class="quiz-card" onclick="alert('เกือบถูก! แต่นั่นมันมื้อหลังนะ 🍜')">
-                    <img src="ra.jpg" alt="ราเมน">
-                    <p>B. ราเมน</p>
+        <div id="step-1" class="quiz-step active-step">
+            <div class="quiz-container">
+                <p class="quiz-question">1. เราเจอกันครั้งแรกที่ไหนเอ่ย?</p>
+                <div class="quiz-row">
+                    <div class="quiz-card" onclick="handleQuiz(true, 'ถูกต้อง❤️')">
+                        <img src="con.png"><p>A. Rinma Festival</p>
+                    </div>
+                    <div class="quiz-card" onclick="handleQuiz(false, 'ผิด')">
+                        <img src="central.png"><p>B. Central Pinklao</p>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="quiz-container">
-            <p class="quiz-question">3. หนังเรื่องแรกที่ดูด้วยกันคือเรื่อง?</p>
-            <div class="quiz-row">
-                <div class="quiz-card" onclick="alert('แม่นมาก! โรแมนติกสุดๆ 🎬')">
-                    <img src="rak.jpg" alt="รักผ่านหน้าต่าง">
-                    <p>A. รักผ่านหน้าต่าง</p>
-                </div>
-                <div class="quiz-card" onclick="alert('ยังไม่ใช่จ้า อันนั้นมันบู๊ไป! 😂')">
-                    <img src="bad.jpg" alt="Bad Boy">
-                    <p>B. Bad boy</p>
+        <div id="step-2" class="quiz-step">
+            <div class="quiz-container">
+                <p class="quiz-question">2. เมนูแรกที่เราไปเดทด้วยกันคือ?</p>
+                <div class="quiz-row">
+                    <div class="quiz-card" onclick="handleQuiz(false, 'ผิด! 🥗')">
+                        <img src="som.jpg"><p>A. ส้มตำ</p>
+                    </div>
+                    <div class="quiz-card" onclick="handleQuiz(true, 'ถูกต้อง!')">
+                        <img src="ra.jpg"><p>B. ราเมน</p>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <button class="red-pill-btn" onclick="showPage('menuPage')" style="margin-top:20px;">กลับเมนูหลัก</button>
+        <div id="step-3" class="quiz-step">
+            <div class="quiz-container">
+                <p class="quiz-question">3. หนังเรื่องแรกที่ดูด้วยกันคือเรื่อง?</p>
+                <div class="quiz-row">
+                    <div class="quiz-card" onclick="handleQuiz(true, 'ถูกต้อง! 🎬')">
+                        <img src="rak.jpg"><p>A. รักผ่านหน้าต่าง</p>
+                    </div>
+                    <div class="quiz-card" onclick="handleQuiz(false, 'ผิด! 😂')">
+                        <img src="bad.jpg"><p>B. Bad boy</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="step-final" class="quiz-step">
+            <div style="font-size: 60px; margin-bottom: 20px;">🏆</div>
+            <h2>เก่งมาก!</h2>
+            <p style="color: var(--text);"> <br> </p>
+            <button class="red-pill-btn" onclick="showPage('menuPage')">กลับเมนูหลัก</button>
+        </div>
     </div>
 
     <script>
-        let currentPin = ""; const correctPin = "190768"; let slideIndex = 0;
+        let currentPin = ""; const correctPin = "190768"; 
+        let slideIndex = 0;
+        let currentStep = 1;
+
         function pressKey(n) { if(currentPin.length<6) { currentPin+=n; updateDots(); } }
         function deleteKey() { currentPin=currentPin.slice(0,-1); updateDots(); }
         function updateDots() { const dots=document.querySelectorAll('.pin-dot'); dots.forEach((d,i)=> d.classList.toggle('filled', i<currentPin.length)); }
-        function checkPin() { if(currentPin===correctPin) showPage('menuPage'); else { alert('รหัสผิดนะจ๊ะ'); currentPin=""; updateDots(); } }
-        function moveSlide(n) { const w=document.getElementById('sliderWrapper'); const s=document.querySelectorAll('.slide'); slideIndex=(slideIndex+n+s.length)%s.length; w.style.transform=`translateX(-${slideIndex*100}%)`; }
-        function showPage(id) { document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); document.getElementById(id).classList.add('active'); if(id==='memoriesPage') { slideIndex=0; moveSlide(0); } window.scrollTo(0,0); }
+        
+        function checkPin() { 
+            if(currentPin===correctPin) showPage('menuPage'); 
+            else { alert('รหัสผิดนะจ๊ะ'); currentPin=""; updateDots(); } 
+        }
+
+        function moveSlide(n) { 
+            const w=document.getElementById('sliderWrapper'); 
+            const s=document.querySelectorAll('.slide'); 
+            document.querySelectorAll('video').forEach(v => v.pause());
+            slideIndex=(slideIndex+n+s.length)%s.length; 
+            w.style.transform=`translateX(-${slideIndex*100}%)`; 
+        }
+
+        // ระบบแบบทดสอบทีละข้อ
+        function startQuiz() {
+            currentStep = 1;
+            document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active-step'));
+            document.getElementById('step-1').classList.add('active-step');
+            showPage('quizPage');
+        }
+
+        function handleQuiz(isCorrect, message) {
+            alert(message);
+            if(isCorrect) {
+                document.getElementById(`step-${currentStep}`).classList.remove('active-step');
+                currentStep++;
+                let nextStep = (currentStep > 3) ? 'final' : currentStep;
+                document.getElementById(`step-${nextStep}`).classList.add('active-step');
+            }
+        }
+
+        function showPage(id) { 
+            document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); 
+            document.getElementById(id).classList.add('active'); 
+            if(id==='memoriesPage') { slideIndex=0; moveSlide(0); } 
+            window.scrollTo(0,0); 
+        }
     </script>
 </body>
 </html>
