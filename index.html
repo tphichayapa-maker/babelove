@@ -28,13 +28,7 @@
         .typing-text { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--primary); min-height: 1.5em; }
 
         /* --- PIN System (Code: 190767) --- */
-        .pin-hint { 
-            font-size: 0.9rem; 
-            color: #ff8fa3; 
-            margin: 8px 0 15px 0; /* เพิ่มระยะห่างบนและล่างให้คำใบ้ */
-            font-weight: 600;
-            display: block; /* มั่นใจว่าอยู่บรรทัดใหม่แน่นอน */
-        }
+        .pin-hint { font-size: 0.9rem; color: #ff8fa3; margin: 10px 0 15px 0; font-weight: 600; display: block; }
         .pin-display { display: flex; gap: 12px; margin-bottom: 25px; justify-content: center; }
         .pin-dot { width: 16px; height: 16px; border-radius: 50%; background: #eee; border: 2px solid #ddd; transition: 0.2s; }
         .pin-dot.filled { background: var(--primary); border-color: var(--primary); transform: scale(1.2); }
@@ -51,7 +45,7 @@
         .timer-row-new { display: flex; align-items: center; justify-content: center; gap: 4px; margin-top: 15px; }
         .time-block { display: flex; flex-direction: column; align-items: center; min-width: 42px; }
         .time-number { font-family: 'Montserrat', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--primary); }
-        .time-unit-label { font-size: 0.55rem; color: #888; text-transform: capitalize; margin-top: -2px; }
+        .time-unit-label { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; color: #888; text-transform: capitalize; margin-top: 2px; display: block; }
         .separator { font-size: 1.2rem; font-weight: 700; color: var(--primary); margin-top: -15px; }
 
         /* --- Slider System --- */
@@ -131,13 +125,13 @@
             <span class="separator">:</span>
             <div class="time-block"><span id="mo-val" class="time-number">00</span><span class="time-unit-label">Month</span></div>
             <span class="separator">:</span>
-            <div class="time-block"><span id="d-val" class="time-number">00</span><span class="time-label">Days</span></div>
+            <div class="time-block"><span id="d-val" class="time-number">00</span><span class="time-unit-label">Days</span></div>
             <span class="separator">:</span>
-            <div class="time-block"><span id="h-val" class="time-number">00</span><span class="time-label">Hours</span></div>
+            <div class="time-block"><span id="h-val" class="time-number">00</span><span class="time-unit-label">Hours</span></div>
             <span class="separator">:</span>
-            <div class="time-block"><span id="min-val" class="time-number">00</span><span class="time-label">Mins</span></div>
+            <div class="time-block"><span id="min-val" class="time-number">00</span><span class="time-unit-label">Mins</span></div>
             <span class="separator">:</span>
-            <div class="time-block"><span id="s-val" class="time-number">00</span><span class="time-label">Secs</span></div>
+            <div class="time-block"><span id="s-val" class="time-number">00</span><span class="time-unit-label">Secs</span></div>
         </div>
         <p style="margin-top: 20px; font-style: italic; color: var(--primary); font-weight: 600;">We're been in love for...</p>
         <p style="font-size: 0.85rem; margin-top: -5px;">❤️ love u 3000 na ❤️</p>
