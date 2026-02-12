@@ -230,4 +230,107 @@
             <p style="font-weight:600; font-size:1.3rem; margin-bottom:25px;">3. หนังเรื่องแรกที่ดูด้วยกันคือเรื่อง?</p>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%;">
                 <div onclick="handleQuiz(true, 'แม่นมาก! 🎬')" style="cursor:pointer;"><img src="rak.jpg" style="width:100%; border-radius:15px;"><p style="margin-top:10px; font-weight:600;">A. รักผ่านหน้าต่าง</p></div>
-                <div onclick="handleQuiz(false, 'ไม่ใช่จ้า! 😂')" style="cursor:pointer;"><img src="bad.jpg" style="width:
+                <div onclick="handleQuiz(false, 'ไม่ใช่จ้า! 😂')" style="cursor:pointer;"><img src="bad.jpg" style="width:100%; border-radius:15px;"><p style="margin-top:10px; font-weight:600;">B. Bad boy</p></div>
+            </div>
+        </div>
+        <div id="step-final" class="quiz-step" style="display:none;">
+            <div style="font-size:100px">🏆</div>
+            <h2 style="font-family: 'Montserrat';">CHAMPION</h2>
+            <p>เธอจำเรื่องของเราได้ทุกอย่างเลย <br> รักที่สุดเลยนะ ❤️</p>
+            <button class="red-pill-btn" onclick="showPage('menuPage')">กลับสู่เมนู</button>
+        </div>
+    </div>
+
+    <script>
+        let currentPin = ""; const correctPin = "190768"; 
+        let currentStep = 1;
+        let sliderStates = { memoriesWrapper: 0, polaroidWrapper: 0 };
+
+        function pressKey(n) { if (currentPin.length < 6) { currentPin += n; updateDots(); } }
+        function deleteKey() { currentPin = currentPin.slice(0, -1); updateDots(); }
+        function updateDots() { const dots = document.querySelectorAll('.pin-dot'); dots.forEach((dot, i) => dot.classList.toggle('filled', i < currentPin.length)); }
+        
+        function checkPin() { 
+            if (currentPin === correctPin) { 
+                showPage('menuPage');
+                document.getElementById('bgMusic').play().catch(() => {});
+                document.getElementById('musicControl').classList.add('visible');
+            } else { alert('รหัสผิดนะจ๊ะ'); currentPin = ""; updateDots(); } 
+        }
+
+        function toggleMusic() {
+            const m = document.getElementById('bgMusic');
+            const btn = document.getElementById('musicControl');
+            if (m.paused) { m.play(); btn.innerText = "🎵"; } else { m.pause(); btn.innerText = "🔇"; }
+        }
+
+        function openFullMusic() {
+            document.getElementById('bgMusic').pause();
+            document.getElementById('musicControl').innerText = "🔇";
+            window.open('https://youtu.be/9nDjgusMmCY');
+        }
+
+        function showPage(id) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            if (id === 'memoriesPage') resetSlider('memoriesWrapper');
+            if (id === 'polaroidPage') resetSlider('polaroidWrapper');
+            window.scrollTo(0, 0);
+        }
+
+        function resetSlider(wrapperId) {
+            sliderStates[wrapperId] = 0;
+            updateSliderUI(wrapperId);
+        }
+
+        function moveSlide(wrapperId, n) {
+            const wrapper = document.getElementById(wrapperId);
+            const slides = wrapper.querySelectorAll('.slide');
+            const newIndex = sliderStates[wrapperId] + n;
+
+            if (newIndex >= 0 && newIndex < slides.length) {
+                document.querySelectorAll('video').forEach(v => v.pause());
+                sliderStates[wrapperId] = newIndex;
+                updateSliderUI(wrapperId);
+            }
+        }
+
+        function updateSliderUI(wrapperId) {
+            const wrapper = document.getElementById(wrapperId);
+            const slides = wrapper.querySelectorAll('.slide');
+            const prefix = wrapperId.replace('Wrapper', '');
+            
+            wrapper.style.transform = `translateX(-${sliderStates[wrapperId] * 100}%)`;
+            
+            // ซ่อนปุ่มถ้าถึงขอบ
+            document.getElementById(prefix + 'Prev').disabled = (sliderStates[wrapperId] === 0);
+            document.getElementById(prefix + 'Next').disabled = (sliderStates[wrapperId] === slides.length - 1);
+        }
+
+        function startQuiz() {
+            currentStep = 1;
+            document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none');
+            document.getElementById('step-1').style.display = 'block';
+            showPage('quizPage');
+        }
+
+        function handleQuiz(isCorrect, message) {
+            alert(message);
+            if (isCorrect) {
+                document.getElementById(`step-${currentStep}`).style.display = 'none';
+                currentStep++;
+                let nextId = currentStep > 3 ? 'step-final' : `step-${currentStep}`;
+                document.getElementById(nextId).style.display = 'block';
+            }
+        }
+
+        window.addEventListener('keydown', (e) => {
+            if (document.getElementById('loginPage').classList.contains('active')) {
+                if (e.key >= '0' && e.key <= '9') pressKey(e.key);
+                if (e.key === 'Backspace') deleteKey();
+                if (e.key === 'Enter') checkPin();
+            }
+        });
+    </script>
+</body>
+</html>
