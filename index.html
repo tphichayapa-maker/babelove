@@ -17,7 +17,7 @@
         .active { display: flex !important; flex-direction: column; align-items: center; justify-content: center; }
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
 
-        /* --- Intro & Flowers --- */
+        /* --- Intro & Floating Flowers --- */
         .flower-stage { position: relative; height: 150px; width: 100%; margin-bottom: 20px; overflow: hidden; }
         .flower-emoji { position: absolute; bottom: -50px; opacity: 0; animation: floatFlower 6s linear infinite; }
         @keyframes floatFlower { 0% { transform: translateY(0) rotate(0deg); opacity: 0; } 20% { opacity: 0.8; } 100% { transform: translateY(-250px) rotate(360deg); opacity: 0; } }
@@ -34,6 +34,7 @@
         .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%; max-width: 260px; }
         .keypad button { width: 60px; height: 60px; border-radius: 50%; border: none; background: #fff; font-size: 1.4rem; font-weight: 700; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
         .keypad button:active { background: var(--secondary); color: white; transform: scale(0.9); }
+        .pin-hint { font-size: 0.85rem; color: #ff8fa3; margin-top: -10px; font-weight: 600; }
 
         /* --- Our Love Journey (TikTok Style) --- */
         .journey-title { font-family: 'Montserrat'; font-weight: 700; color: var(--primary); font-size: 1.6rem; margin: 0; }
@@ -41,11 +42,11 @@
         .profile-img-container { width: 140px; height: 140px; border-radius: 50%; border: 4px solid #fff; overflow: hidden; margin: 15px auto; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
         .profile-img-container img { width: 100%; height: 100%; object-fit: cover; }
         
-        .timer-row-new { display: flex; align-items: center; justify-content: center; gap: 5px; margin-top: 15px; }
-        .time-block { display: flex; flex-direction: column; align-items: center; min-width: 45px; }
-        .time-number { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--primary); }
-        .time-unit-label { font-size: 0.6rem; color: #888; text-transform: capitalize; margin-top: -2px; }
-        .separator { font-size: 1.4rem; font-weight: 700; color: var(--primary); margin-top: -15px; }
+        .timer-row-new { display: flex; align-items: center; justify-content: center; gap: 4px; margin-top: 15px; }
+        .time-block { display: flex; flex-direction: column; align-items: center; min-width: 42px; }
+        .time-number { font-family: 'Montserrat', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--primary); }
+        .time-unit-label { font-size: 0.55rem; color: #888; text-transform: capitalize; margin-top: -2px; }
+        .separator { font-size: 1.2rem; font-weight: 700; color: var(--primary); margin-top: -15px; }
 
         /* --- Slider System --- */
         .slider-container { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 25px; background: white; flex-grow: 1; display: flex; flex-direction: column; }
@@ -53,8 +54,12 @@
         .slide { min-width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px 10px 60px 10px; }
         .slide img, .slide video { max-width: 100%; max-height: 60vh; object-fit: contain; border-radius: 12px; }
         .slide-caption { margin-top: 15px; font-weight: 600; font-size: 1rem; }
-        .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; z-index: 100; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 45px; height: 45px; cursor: pointer; z-index: 100; box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
         .nav-btn:disabled { opacity: 0; pointer-events: none; }
+
+        /* --- Polaroid Style --- */
+        .polaroid-frame { background: white; padding: 12px 12px 35px 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-radius: 4px; }
+        .polaroid-caption { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.2rem; color: #333; margin-top: 15px; letter-spacing: 2px; }
 
         /* --- Quiz Fix --- */
         .quiz-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; margin: 15px auto; }
@@ -69,7 +74,6 @@
         #musicControl { position: fixed; top: 20px; right: 20px; z-index: 1000; background: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; opacity: 0; pointer-events: none; }
         #musicControl.visible { opacity: 1; pointer-events: auto; }
         
-        /* Heart Click Effect */
         .heart-pop { position: fixed; font-size: 20px; pointer-events: none; z-index: 10000; animation: heartPopAnim 0.8s ease-out forwards; }
         @keyframes heartPopAnim { 0% { transform: scale(0); opacity: 1; } 100% { transform: translateY(-50px) scale(1.5); opacity: 0; } }
     </style>
@@ -90,7 +94,8 @@
 
     <div id="loginPage" class="page">
         <div style="font-size: 50px; margin-bottom: 5px;">🔒</div>
-        <h1 style="font-family: Montserrat; font-size: 1.2rem;">PRIVATE ACCESS</h1>
+        <h1 style="font-family: Montserrat; font-size: 1.2rem; margin-bottom: 5px;">PRIVATE ACCESS</h1>
+        <p class="pin-hint">คำใบ้ : วันครบรอบ</p>
         <div class="pin-display">
             <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
             <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
@@ -104,7 +109,7 @@
     </div>
 
     <div id="menuPage" class="page">
-        <h1 style="font-family: Montserrat; font-weight: 700; margin-bottom: 25px;">MAIN MENU</h1>
+        <h1 style="font-family: Montserrat; font-weight: 700; margin-bottom: 25px; font-size: 1.3rem;">MAIN MENU</h1>
         <div class="menu-grid">
             <div class="menu-item" onclick="showPage('timePage')"><div style="font-size:35px">⏳</div><div style="font-weight:600; font-size: 0.85rem; margin-top:5px;">เวลาของเรา</div></div>
             <div class="menu-item" onclick="showPage('memoriesPage')"><div style="font-size:35px">🖼️</div><div style="font-weight:600; font-size: 0.85rem; margin-top:5px;">ความทรงจำ</div></div>
@@ -118,46 +123,22 @@
         <h2 class="journey-title">Our Love Journey</h2>
         <p class="journey-sub">เราคบกันมานานแค่ไหนแล้วน้าาาา ?</p>
         <div style="font-size: 25px; margin: 5px 0;">❤️</div>
-        
-        <div class="profile-img-container">
-            <img src="sea.jpg" alt="Our Photo">
-        </div>
-
+        <div class="profile-img-container"><img src="sea.jpg" alt="Sea"></div>
         <div class="timer-row-new">
-            <div class="time-block">
-                <span id="y-val" class="time-number">00</span>
-                <span class="time-unit-label">Year</span>
-            </div>
+            <div class="time-block"><span id="y-val" class="time-number">00</span><span class="time-unit-label">Year</span></div>
             <span class="separator">:</span>
-            <div class="time-block">
-                <span id="mo-val" class="time-number">00</span>
-                <span class="time-unit-label">Month</span>
-            </div>
+            <div class="time-block"><span id="mo-val" class="time-number">00</span><span class="time-unit-label">Month</span></div>
             <span class="separator">:</span>
-            <div class="time-block">
-                <span id="d-val" class="time-number">00</span>
-                <span class="time-unit-label">Days</span>
-            </div>
+            <div class="time-block"><span id="d-val" class="time-number">00</span><span class="time-label">Days</span></div>
             <span class="separator">:</span>
-            <div class="time-block">
-                <span id="h-val" class="time-number">00</span>
-                <span class="time-unit-label">Hours</span>
-            </div>
+            <div class="time-block"><span id="h-val" class="time-number">00</span><span class="time-label">Hours</span></div>
             <span class="separator">:</span>
-            <div class="time-block">
-                <span id="min-val" class="time-number">00</span>
-                <span class="time-unit-label">Minutes</span>
-            </div>
+            <div class="time-block"><span id="min-val" class="time-number">00</span><span class="time-label">Mins</span></div>
             <span class="separator">:</span>
-            <div class="time-block">
-                <span id="s-val" class="time-number">00</span>
-                <span class="time-unit-label">Seconds</span>
-            </div>
+            <div class="time-block"><span id="s-val" class="time-number">00</span><span class="time-label">Secs</span></div>
         </div>
-
         <p style="margin-top: 20px; font-style: italic; color: var(--primary); font-weight: 600;">We're been in love for...</p>
         <p style="font-size: 0.85rem; margin-top: -5px;">❤️ love u 3000 na ❤️</p>
-        
         <button class="red-pill-btn" onclick="showPage('menuPage')">กลับเมนูหลัก</button>
     </div>
 
@@ -166,10 +147,10 @@
             <button id="memoriesPrev" onclick="moveSlide('memoriesWrapper', -1)" class="nav-btn" style="left:10px;">❮</button>
             <button id="memoriesNext" onclick="moveSlide('memoriesWrapper', 1)" class="nav-btn" style="right:10px;">❯</button>
             <div class="slider-wrapper" id="memoriesWrapper">
-                <div class="slide"><video controls playsinline><source src="one.mp4" type="video/mp4"></video><div class="slide-caption">ครั้งแรกที่เราเจอกัน❤️</div></div>
+                <div class="slide"><video loop playsinline><source src="one.mp4" type="video/mp4"></video><div class="slide-caption">ครั้งแรกที่เราเจอกัน❤️</div></div>
                 <div class="slide"><img src="date.jpg"><div class="slide-caption">เดทด้วยกันครั้งแรก</div></div>
                 <div class="slide"><img src="movie.jpg"><div class="slide-caption">ดูหนังด้วยกันครั้งแรก</div></div>
-                <div class="slide"><video controls playsinline><source src="love.mp4" type="video/mp4"></video><div class="slide-caption">วันแรกที่เราคบกัน❤️</div></div>
+                <div class="slide"><video loop playsinline><source src="love.mp4" type="video/mp4"></video><div class="slide-caption">วันแรกที่เราคบกัน❤️</div></div>
                 <div class="slide"><img src="flower.jpg"><div class="slide-caption">ดอกไม้ที่แฟนซื้อให้ ช่อที่ n</div></div>
                 <div class="slide"><div style="font-size: 60px;">✨</div><h2 style="font-family: 'Montserrat';">THE END</h2><p>รักเธอที่สุดเลยนะ</p><button class="red-pill-btn" onclick="showPage('menuPage')">กลับสู่เมนูหลัก</button></div>
             </div>
@@ -248,12 +229,23 @@
         function updateDots() { const dots = document.querySelectorAll('.pin-dot'); dots.forEach((dot, i) => dot.classList.toggle('filled', i < currentPin.length)); }
         function checkPin() { if (currentPin === correctPin) { showPage('menuPage'); document.getElementById('bgMusic').play(); document.getElementById('musicControl').classList.add('visible'); } else { alert('รหัสผ่านไม่ถูกต้อง'); currentPin = ""; updateDots(); } }
 
-        function showPage(id) { document.querySelectorAll('.page').forEach(p => p.classList.remove('active')); document.getElementById(id).classList.add('active'); if (id === 'memoriesPage') resetSlider('memoriesWrapper'); if (id === 'polaroidPage') resetSlider('polaroidWrapper'); }
+        function showPage(id) { 
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active')); 
+            document.getElementById(id).classList.add('active'); 
+            document.querySelectorAll('video').forEach(v => { v.pause(); v.currentTime = 0; });
+            if (id === 'memoriesPage') { resetSlider('memoriesWrapper'); playVideoInActiveSlide('memoriesWrapper'); } 
+            if (id === 'polaroidPage') resetSlider('polaroidWrapper'); 
+        }
+
         function resetSlider(id) { sliderStates[id] = 0; updateSliderUI(id); }
         function moveSlide(id, n) {
             const wrapper = document.getElementById(id); const slides = wrapper.querySelectorAll('.slide');
             const newIndex = sliderStates[id] + n;
-            if (newIndex >= 0 && newIndex < slides.length) { document.querySelectorAll('video').forEach(v => v.pause()); sliderStates[id] = newIndex; updateSliderUI(id); }
+            if (newIndex >= 0 && newIndex < slides.length) { 
+                document.querySelectorAll('video').forEach(v => v.pause()); 
+                sliderStates[id] = newIndex; updateSliderUI(id); 
+                setTimeout(() => { playVideoInActiveSlide(id); }, 400);
+            }
         }
         function updateSliderUI(id) {
             const wrapper = document.getElementById(id); const prefix = id.replace('Wrapper', '');
@@ -262,11 +254,17 @@
             document.getElementById(prefix + 'Next').disabled = (sliderStates[id] === wrapper.querySelectorAll('.slide').length - 1);
         }
 
+        function playVideoInActiveSlide(wrapperId) {
+            const wrapper = document.getElementById(wrapperId);
+            const currentSlide = wrapper.querySelectorAll('.slide')[sliderStates[wrapperId]];
+            const video = currentSlide.querySelector('video');
+            if (video) { video.play().catch(e => console.log("Auto-play blocked", e)); }
+        }
+
         function startQuiz() { currentStep = 1; document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none'); document.getElementById('step-1').style.display = 'block'; showPage('quizPage'); }
         function handleQuiz(isCorrect, msg) { alert(msg); if (isCorrect) { document.getElementById(`step-${currentStep}`).style.display = 'none'; currentStep++; let next = currentStep > 3 ? 'step-final' : `step-${currentStep}`; document.getElementById(next).style.display = 'block'; } }
         function toggleMusic() { const m = document.getElementById('bgMusic'); if (m.paused) m.play(); else m.pause(); }
 
-        // Heart Click Effect
         document.addEventListener('mousedown', function(e) {
             const heart = document.createElement('div');
             heart.innerHTML = '❤️'; heart.className = 'heart-pop';
