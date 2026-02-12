@@ -2,13 +2,12 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Secret Story ❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&family=Sarabun:wght@400;600&family=Sacramento&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&family=Sarabun:wght@400;600&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
     <style>
         :root { --primary: #ff8fa3; --secondary: #ffc2d1; --bg: #fff0f3; --text: #590d22; --white: #ffffff; }
         
-        /* --- ซ่อน Scrollbar และคุมขนาดหน้าจอ --- */
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; }
         ::-webkit-scrollbar { display: none; }
@@ -20,71 +19,65 @@
             color: var(--text);
         }
 
-        /* --- กล่องหน้าหลัก (Fit for Notebook & Mobile) --- */
+        /* --- Page Container --- */
         .page {
-            display: none; width: 95%; max-width: 500px; height: 92vh;
-            background: var(--white); padding: 30px 20px; border-radius: 40px;
-            box-shadow: 0 20px 50px rgba(255, 143, 163, 0.25);
+            display: none; width: 95%; max-width: 850px; height: 92vh;
+            background: var(--white); padding: 30px; border-radius: 40px;
+            box-shadow: 0 25px 60px rgba(255, 143, 163, 0.3);
             text-align: center; position: relative; overflow: hidden;
-            animation: fadeIn 0.4s ease-out;
+            animation: fadeIn 0.5s ease-out;
         }
-
         .active { display: flex !important; flex-direction: column; align-items: center; justify-content: center; }
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
-        
-        /* --- ปุ่มควบคุมเพลง --- */
-        #musicControl {
-            position: fixed; top: 20px; right: 20px; z-index: 1000;
-            background: white; border-radius: 50%; width: 45px; height: 45px;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; font-size: 22px;
-            transition: 0.3s; opacity: 0; pointer-events: none;
-        }
-        #musicControl.visible { opacity: 1; pointer-events: auto; }
-
-        h1 { font-family: 'Sarabun', sans-serif; font-size: 1.5rem; color: var(--primary); margin: 0 0 15px 0; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* --- PIN System --- */
+        #musicControl { position: fixed; top: 20px; right: 20px; z-index: 1000; background: white; border-radius: 50%; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; font-size: 22px; transition: 0.3s; opacity: 0; pointer-events: none; }
+        #musicControl.visible { opacity: 1; pointer-events: auto; }
         .pin-display { display: flex; gap: 15px; margin: 20px 0; justify-content: center; }
-        .pin-dot { width: 18px; height: 18px; border-radius: 50%; background: #eee; border: 2px solid #ddd; transition: 0.2s; }
-        .pin-dot.filled { background: var(--primary); border-color: var(--primary); box-shadow: 0 0 12px var(--primary); transform: scale(1.1); }
+        .pin-dot { width: 18px; height: 18px; border-radius: 50%; background: #eee; border: 2px solid #ddd; }
+        .pin-dot.filled { background: var(--primary); box-shadow: 0 0 12px var(--primary); transform: scale(1.1); }
+        .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .keypad button { width: 65px; height: 65px; border-radius: 50%; border: none; background: var(--white); font-size: 1.5rem; font-weight: 600; cursor: pointer; box-shadow: 0 5px 12px rgba(0,0,0,0.07); display: flex; align-items: center; justify-content: center; transition: 0.1s; }
+        .keypad button:active { transform: scale(0.9); background: var(--secondary); }
 
-        .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; width: 100%; max-width: 280px; }
-        .keypad button {
-            width: 65px; height: 65px; border-radius: 50%; border: none; background: var(--white);
-            font-size: 1.5rem; font-weight: 600; cursor: pointer;
-            box-shadow: 0 5px 12px rgba(0,0,0,0.07); display: flex; align-items: center; justify-content: center;
-            transition: 0.1s; user-select: none; margin: auto;
-        }
-        .keypad button:hover { background: #fffafb; }
-        .keypad button:active { transform: scale(0.9); background: var(--secondary); color: white; }
-
-        /* --- Slider ความทรงจำ (แนวตั้ง ไม่ดำ) --- */
-        .slider-container { position: relative; width: 100%; overflow: hidden; border-radius: 20px; background: white; flex-grow: 1; display: flex; align-items: center; }
-        .slider-wrapper { display: flex; transition: transform 0.6s ease; width: 100%; height: 100%; }
-        .slide { min-width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        /* --- Slider System --- */
+        .slider-container { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 20px; background: #fffafb; display: flex; align-items: center; flex-grow: 1; }
+        .slider-wrapper { display: flex; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); width: 100%; height: 100%; }
+        .slide { min-width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
+        
+        /* ปรับรูปให้เป็นแนวตั้งและโชว์สัดส่วนจริง */
         .slide img, .slide video { 
-            width: 100%; height: 100%; 
-            object-fit: cover; /* รูปแนวตั้งสวยๆ เต็มกรอบ */
-            border-radius: 12px; 
+            max-width: 100%; max-height: 72vh; 
+            object-fit: contain; /* โชว์สัดส่วนจริง ไม่ตัด ไม่ยืด */
+            border-radius: 15px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
-        .slide-caption { background: white; width: 100%; padding: 10px; font-weight: 600; font-size: 1rem; }
+        .slide-caption { margin-top: 15px; font-weight: 600; font-size: 1.2rem; color: var(--text); font-family: 'Sarabun', sans-serif; }
 
-        /* --- Polaroid สไตล์ --- */
-        .polaroid-box { background:white; padding:10px 10px 30px 10px; box-shadow:0 8px 20px rgba(0,0,0,0.15); width:140px; }
-        .polaroid-box p { font-family: 'Sacramento', cursive; font-size: 1.5rem; color: #555; margin-top: 10px; }
+        .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: white; border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; z-index: 10; box-shadow: 0 4px 15px rgba(0,0,0,0.1); font-size: 1.2rem; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
+        .nav-btn:hover { background: var(--primary); color: white; }
+        .nav-btn:disabled { opacity: 0; pointer-events: none; } /* ซ่อนปุ่มเมื่อไปต่อไม่ได้ */
 
-        /* --- แบบทดสอบ (ทีละข้อ) --- */
-        .quiz-step { display: none; width: 100%; }
-        .quiz-step.active-step { display: block; animation: fadeIn 0.4s ease; }
-        .quiz-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 15px; }
-        .quiz-card { cursor: pointer; transition: 0.2s; }
-        .quiz-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 15px; border: 2px solid transparent; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .quiz-card:hover img { border-color: var(--primary); }
-        .quiz-card p { margin-top: 8px; font-size: 0.85rem; font-weight: 600; }
+        /* --- Polaroid Style --- */
+        .polaroid-frame { background: white; padding: 15px 15px 50px 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.12); border-radius: 2px; position: relative; }
+        .polaroid-frame img { max-height: 58vh !important; border-radius: 0; }
+        .polaroid-caption { 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 700; font-size: 1.4rem; color: #444; margin-top: 25px; letter-spacing: 2px; 
+        }
 
-        /* --- ปุ่มกด --- */
-        .red-pill-btn { background: linear-gradient(45deg, var(--primary), var(--secondary)); color: white; border: none; padding: 12px 25px; border-radius: 50px; font-weight: 600; cursor: pointer; margin-top: 15px; transition: 0.2s; font-size: 1rem; }
+        /* --- End Card Style --- */
+        .end-card { font-family: 'Montserrat', sans-serif; }
+        .end-card h2 { font-size: 2.5rem; color: var(--primary); margin-bottom: 10px; }
+        .end-card p { font-size: 1.1rem; color: #888; margin-bottom: 30px; }
+
+        /* --- Buttons --- */
+        .red-pill-btn { background: linear-gradient(45deg, var(--primary), var(--secondary)); color: white; border: none; padding: 15px 45px; border-radius: 50px; font-weight: 600; cursor: pointer; transition: 0.3s; font-size: 1rem; box-shadow: 0 10px 20px rgba(255, 143, 163, 0.3); }
+        .red-pill-btn:hover { transform: scale(1.05); filter: brightness(1.05); }
+
+        .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%; max-width: 650px; }
+        .menu-item { background: white; padding: 40px 20px; border-radius: 35px; border: 2px solid #fdf2f4; cursor: pointer; transition: 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.03); }
+        .menu-item:hover { transform: translateY(-8px); border-color: var(--primary); box-shadow: 0 15px 30px rgba(255, 143, 163, 0.1); }
     </style>
 </head>
 <body>
@@ -93,8 +86,8 @@
     <div id="musicControl" onclick="toggleMusic()">🎵</div>
 
     <div id="loginPage" class="page active">
-        <div style="font-size: 55px; margin-bottom: 5px;">🔒</div>
-        <h2 style="color: var(--primary); margin: 0;">Unlock Our Story</h2>
+        <div style="font-size: 65px; margin-bottom: 10px;">🔒</div>
+        <h1 style="font-family: 'Montserrat'; font-weight: 700; letter-spacing: 1px;">PRIVATE ACCESS</h1>
         <div class="pin-display">
             <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
             <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
@@ -103,101 +96,101 @@
             <button onclick="pressKey('1')">1</button><button onclick="pressKey('2')">2</button><button onclick="pressKey('3')">3</button>
             <button onclick="pressKey('4')">4</button><button onclick="pressKey('5')">5</button><button onclick="pressKey('6')">6</button>
             <button onclick="pressKey('7')">7</button><button onclick="pressKey('8')">8</button><button onclick="pressKey('9')">9</button>
-            <button onclick="deleteKey()" style="font-size: 0.9rem; color: var(--primary);">ลบ</button>
-            <button onclick="pressKey('0')">0</button>
-            <button onclick="checkPin()" style="font-size: 0.9rem; font-weight: bold; color: #ff4d6d;">ตกลง</button>
+            <button onclick="deleteKey()" style="color:var(--primary); font-size:1rem;">ลบ</button><button onclick="pressKey('0')">0</button><button onclick="checkPin()" style="color:#ff4d6d; font-weight:bold; font-size:1rem;">ตกลง</button>
         </div>
     </div>
 
     <div id="menuPage" class="page">
-        <h1>Welcome, My Love ❤️</h1>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%;">
-            <div onclick="showPage('memoriesPage')" style="background: white; padding: 25px 10px; border-radius: 25px; border: 2px solid #fdf2f4; cursor: pointer;">
-                <div style="font-size:35px">🖼️</div><div style="font-weight:600">ความทรงจำ</div>
-            </div>
-            <div onclick="showPage('polaroidPage')" style="background: white; padding: 25px 10px; border-radius: 25px; border: 2px solid #fdf2f4; cursor: pointer;">
-                <div style="font-size:35px">📸</div><div style="font-weight:600">โพลารอยด์</div>
-            </div>
-            <div onclick="showPage('musicPage')" style="background: white; padding: 25px 10px; border-radius: 25px; border: 2px solid #fdf2f4; cursor: pointer;">
-                <div style="font-size:35px">🎵</div><div style="font-weight:600">เพลงของเรา</div>
-            </div>
-            <div onclick="startQuiz()" style="background: white; padding: 25px 10px; border-radius: 25px; border: 2px solid #fdf2f4; cursor: pointer;">
-                <div style="font-size:35px">📝</div><div style="font-weight:600">แบบทดสอบ</div>
-            </div>
+        <h1 style="font-family: 'Montserrat'; font-weight: 700; margin-bottom: 30px;">MAIN MENU</h1>
+        <div class="menu-grid">
+            <div class="menu-item" onclick="showPage('memoriesPage')"><div style="font-size:55px">🖼️</div><div style="font-weight:600; margin-top:15px; font-size: 1.1rem;">ความทรงจำ</div></div>
+            <div class="menu-item" onclick="showPage('polaroidPage')"><div style="font-size:55px">📸</div><div style="font-weight:600; margin-top:15px; font-size: 1.1rem;">โพลารอยด์</div></div>
+            <div class="menu-item" onclick="showPage('musicPage')"><div style="font-size:55px">🎵</div><div style="font-weight:600; margin-top:15px; font-size: 1.1rem;">เพลงของเรา</div></div>
+            <div class="menu-item" onclick="startQuiz()"><div style="font-size:55px">📝</div><div style="font-weight:600; margin-top:15px; font-size: 1.1rem;">แบบทดสอบ</div></div>
         </div>
-        <button class="red-pill-btn" onclick="showPage('loginPage')" style="background:transparent; color:#999; border:1px solid #eee; margin-top:40px;">ล็อค</button>
+        <button class="red-pill-btn" onclick="showPage('loginPage')" style="background:transparent; color:#bbb; border:1px solid #eee; margin-top:40px; box-shadow: none;">LOGOUT</button>
     </div>
 
     <div id="memoriesPage" class="page">
-        <h1>Memories</h1>
         <div class="slider-container">
-            <div class="slider-wrapper" id="sliderWrapper">
+            <button id="memoriesPrev" onclick="moveSlide('memoriesWrapper', -1)" class="nav-btn" style="left:15px;">❮</button>
+            <button id="memoriesNext" onclick="moveSlide('memoriesWrapper', 1)" class="nav-btn" style="right:15px;">❯</button>
+            <div class="slider-wrapper" id="memoriesWrapper">
                 <div class="slide"><video controls playsinline><source src="one.mp4" type="video/mp4"></video><div class="slide-caption">ครั้งแรกที่เราเจอกัน❤️</div></div>
                 <div class="slide"><img src="date.jpg"><div class="slide-caption">เดทด้วยกันครั้งแรก</div></div>
                 <div class="slide"><img src="movie.jpg"><div class="slide-caption">ดูหนังด้วยกันครั้งแรก</div></div>
                 <div class="slide"><video controls playsinline><source src="love.mp4" type="video/mp4"></video><div class="slide-caption">วันแรกที่เราคบกัน❤️</div></div>
                 <div class="slide"><img src="flower.jpg"><div class="slide-caption">ดอกไม้ที่แฟนซื้อให้ ช่อที่ n</div></div>
+                <div class="slide end-card">
+                    <div style="font-size: 80px;">✨</div>
+                    <h2>THE END</h2>
+                    <p>But our story just getting started...</p>
+                    <button class="red-pill-btn" onclick="showPage('menuPage')">BACK TO MENU</button>
+                </div>
             </div>
-            <button onclick="moveSlide(-1)" style="position:absolute; left:5px; top:50%; background:white; border:none; border-radius:50%; width:35px; height:35px; cursor:pointer; opacity:0.8;">❮</button>
-            <button onclick="moveSlide(1)" style="position:absolute; right:5px; top:50%; background:white; border:none; border-radius:50%; width:35px; height:35px; cursor:pointer; opacity:0.8;">❯</button>
         </div>
-        <button class="red-pill-btn" onclick="showPage('menuPage')">กลับ</button>
     </div>
 
     <div id="polaroidPage" class="page">
-        <h1>Polaroid</h1>
-        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:15px;">
-            <div class="polaroid-box" style="transform:rotate(-2deg);"><img src="pola1.jpg" style="width:100%"><p>First Date</p></div>
-            <div class="polaroid-box" style="transform:rotate(3deg);"><img src="pola2.jpg" style="width:100%"><p>Xmas 2025</p></div>
-            <div class="polaroid-box" style="transform:rotate(-1deg);"><img src="pola3.jpg" style="width:100%"><p>New Year</p></div>
+        <div class="slider-container">
+            <button id="polaroidPrev" onclick="moveSlide('polaroidWrapper', -1)" class="nav-btn" style="left:15px;">❮</button>
+            <button id="polaroidNext" onclick="moveSlide('polaroidWrapper', 1)" class="nav-btn" style="right:15px;">❯</button>
+            <div class="slider-wrapper" id="polaroidWrapper">
+                <div class="slide"><div class="polaroid-frame"><img src="pola1.jpg"><div class="polaroid-caption">FIRST DATE</div></div></div>
+                <div class="slide"><div class="polaroid-frame"><img src="pola2.jpg"><div class="polaroid-caption">XMAS 2025</div></div></div>
+                <div class="slide"><div class="polaroid-frame"><img src="pola3.jpg"><div class="polaroid-caption">NEW YEAR</div></div></div>
+                <div class="slide end-card">
+                    <div style="font-size: 80px;">📸</div>
+                    <h2>COLLECTION COMPLETE</h2>
+                    <p>More memories coming soon!</p>
+                    <button class="red-pill-btn" onclick="showPage('menuPage')">BACK TO MENU</button>
+                </div>
+            </div>
         </div>
-        <button class="red-pill-btn" onclick="showPage('menuPage')" style="margin-top:25px;">กลับ</button>
     </div>
 
     <div id="musicPage" class="page">
-        <h1>Our Song</h1>
-        <div style="font-size:80px; margin:30px 0;">🎧</div>
-        <p style="font-weight:600;">เพลงนี้ความหมายดีเหมือนคู่เราเลย</p>
-        <button class="red-pill-btn" onclick="openFullMusic()">▶️ เปิดเพลงบน YouTube</button>
-        <button class="red-pill-btn" onclick="showPage('menuPage')" style="background:transparent; color:#999; border:1px solid #eee;">กลับ</button>
+        <h1 style="font-family: 'Montserrat'; font-weight: 700;">OUR SONG</h1>
+        <div style="font-size:120px; margin:40px 0; animation: pulse 2s infinite;">🎧</div>
+        <button class="red-pill-btn" onclick="openFullMusic()">▶️ OPEN ON YOUTUBE</button>
+        <button class="red-pill-btn" onclick="showPage('menuPage')" style="background:transparent; color:#999; border:1px solid #eee; margin-top: 20px; box-shadow: none;">BACK</button>
     </div>
 
     <div id="quizPage" class="page">
-        <h1>Quiz Time! 📝</h1>
-        <div id="step-1" class="quiz-step active-step">
-            <p style="font-weight:600; margin-bottom:15px;">1. เราเจอกันครั้งแรกที่ไหนเอ่ย?</p>
-            <div class="quiz-row">
-                <div class="quiz-card" onclick="handleQuiz(true, 'ถูกต้องที่สุด! ❤️')"><img src="con.png"><p>A. Rinma Festival</p></div>
-                <div class="quiz-card" onclick="handleQuiz(false, 'ผิดจ้าาา 😝')"><img src="central.png"><p>B. Central Pinklao</p></div>
+        <h1 style="font-family: 'Montserrat'; font-weight: 700;">QUIZ TIME</h1>
+        <div id="step-1" class="quiz-step active-step" style="display:none; width:100%;">
+            <p style="font-weight:600; font-size:1.3rem; margin-bottom:25px;">1. เราเจอกันครั้งแรกที่ไหนเอ่ย?</p>
+            <div class="quiz-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="quiz-card" onclick="handleQuiz(true, 'ถูกต้องที่สุด! ❤️')"><img src="con.png" style="width:100%; border-radius:20px;"><p style="margin-top:12px; font-weight:600;">A. Rinma Festival</p></div>
+                <div class="quiz-card" onclick="handleQuiz(false, 'ผิดจ้าาา 😝')"><img src="central.png" style="width:100%; border-radius:20px;"><p style="margin-top:12px; font-weight:600;">B. Central Pinklao</p></div>
             </div>
         </div>
-        <div id="step-2" class="quiz-step">
-            <p style="font-weight:600; margin-bottom:15px;">2. เมนูแรกที่เราไปเดทด้วยกันคือ?</p>
-            <div class="quiz-row">
-                <div class="quiz-card" onclick="handleQuiz(false, 'ผิดจ้า 🥗')"><img src="som.jpg"><p>A. ส้มตำ</p></div>
-                <div class="quiz-card" onclick="handleQuiz(true, 'ถูกต้อง! ❤️')"><img src="ra.jpg"><p>B. ราเมง</p></div>
+        <div id="step-2" class="quiz-step" style="display:none; width:100%;">
+            <p style="font-weight:600; font-size:1.3rem; margin-bottom:25px;">2. เมนูแรกที่เราไปเดทด้วยกันคือ?</p>
+            <div class="quiz-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="quiz-card" onclick="handleQuiz(false, 'ผิดจ้า 🥗')"><img src="som.jpg" style="width:100%; border-radius:20px;"><p style="margin-top:12px; font-weight:600;">A. ส้มตำ</p></div>
+                <div class="quiz-card" onclick="handleQuiz(true, 'ถูกต้อง! ❤️')"><img src="ra.jpg" style="width:100%; border-radius:20px;"><p style="margin-top:12px; font-weight:600;">B. ราเมน</p></div>
             </div>
         </div>
-        <div id="step-3" class="quiz-step">
-            <p style="font-weight:600; margin-bottom:15px;">3. หนังเรื่องแรกที่ดูด้วยกันคือเรื่อง?</p>
-            <div class="quiz-row">
-                <div class="quiz-card" onclick="handleQuiz(true, 'แม่นมาก! 🎬')"><img src="rak.jpg"><p>A. รักผ่านหน้าต่าง</p></div>
-                <div class="quiz-card" onclick="handleQuiz(false, 'ไม่ใช่จ้า! 😂')"><img src="bad.jpg"><p>B. Bad boy</p></div>
+        <div id="step-3" class="quiz-step" style="display:none; width:100%;">
+            <p style="font-weight:600; font-size:1.3rem; margin-bottom:25px;">3. หนังเรื่องแรกที่ดูด้วยกันคือเรื่อง?</p>
+            <div class="quiz-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="quiz-card" onclick="handleQuiz(true, 'แม่นมาก! 🎬')"><img src="rak.jpg" style="width:100%; border-radius:20px;"><p style="margin-top:12px; font-weight:600;">A. รักผ่านหน้าต่าง</p></div>
+                <div class="quiz-card" onclick="handleQuiz(false, 'ไม่ใช่จ้า! 😂')"><img src="bad.jpg" style="width:100%; border-radius:20px;"><p style="margin-top:12px; font-weight:600;">B. Bad boy</p></div>
             </div>
         </div>
-        <div id="step-final" class="quiz-step">
-            <div style="font-size:60px">🏆</div>
-            <h2>เก่งมากจ้าาา!</h2>
-            <p>เธอจำเรื่องของเราได้ทุกอย่างเลย <br> รักที่สุดเลยนะ ❤️</p>
-            <button class="red-pill-btn" onclick="showPage('menuPage')">กลับเมนูหลัก</button>
+        <div id="step-final" class="quiz-step" style="display:none;">
+            <div style="font-size:100px">🏆</div>
+            <h2 style="font-family: 'Montserrat';">CHAMPION!</h2>
+            <p>You remember every single detail about us. <br> Love you the most ❤️</p>
+            <button class="red-pill-btn" onclick="showPage('menuPage')">BACK TO MENU</button>
         </div>
     </div>
 
     <script>
         let currentPin = ""; const correctPin = "190768"; 
-        let slideIndex = 0; let currentStep = 1;
-        const bgMusic = document.getElementById('bgMusic');
-        const musicBtn = document.getElementById('musicControl');
+        let currentStep = 1;
+        let sliderStates = { memoriesWrapper: 0, polaroidWrapper: 0 };
 
         function pressKey(n) { if (currentPin.length < 6) { currentPin += n; updateDots(); } }
         function deleteKey() { currentPin = currentPin.slice(0, -1); updateDots(); }
@@ -206,55 +199,77 @@
         function checkPin() { 
             if (currentPin === correctPin) { 
                 showPage('menuPage');
-                bgMusic.play().catch(e => console.log("Music ready"));
-                musicBtn.classList.add('visible');
+                document.getElementById('bgMusic').play().catch(() => console.log("Music Ready"));
+                document.getElementById('musicControl').classList.add('visible');
             } else { alert('รหัสผิดนะจ๊ะ'); currentPin = ""; updateDots(); } 
         }
 
         function toggleMusic() {
-            if (bgMusic.paused) { bgMusic.play(); musicBtn.innerText = "🎵"; } 
-            else { bgMusic.pause(); musicBtn.innerText = "🔇"; }
+            const m = document.getElementById('bgMusic');
+            const btn = document.getElementById('musicControl');
+            if (m.paused) { m.play(); btn.innerText = "🎵"; } else { m.pause(); btn.innerText = "🔇"; }
         }
 
         function openFullMusic() {
-            bgMusic.pause();
-            musicBtn.innerText = "🔇";
+            document.getElementById('bgMusic').pause();
+            document.getElementById('musicControl').innerText = "🔇";
             window.open('https://youtu.be/9nDjgusMmCY');
         }
 
         function showPage(id) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(id).classList.add('active');
-            if (id === 'memoriesPage') { slideIndex = 0; moveSlide(0); }
+            if (id === 'memoriesPage') resetSlider('memoriesWrapper');
+            if (id === 'polaroidPage') resetSlider('polaroidWrapper');
             window.scrollTo(0, 0);
         }
 
-        function moveSlide(n) {
-            const wrapper = document.getElementById('sliderWrapper');
-            const slides = document.querySelectorAll('.slide');
-            document.querySelectorAll('video').forEach(v => v.pause());
-            slideIndex = (slideIndex + n + slides.length) % slides.length;
-            wrapper.style.transform = `translateX(-${slideIndex * 100}%)`;
+        function resetSlider(wrapperId) {
+            sliderStates[wrapperId] = 0;
+            updateSliderUI(wrapperId);
+        }
+
+        function moveSlide(wrapperId, n) {
+            const wrapper = document.getElementById(wrapperId);
+            const slides = wrapper.querySelectorAll('.slide');
+            const newIndex = sliderStates[wrapperId] + n;
+
+            if (newIndex >= 0 && newIndex < slides.length) {
+                document.querySelectorAll('video').forEach(v => v.pause());
+                sliderStates[wrapperId] = newIndex;
+                updateSliderUI(wrapperId);
+            }
+        }
+
+        function updateSliderUI(wrapperId) {
+            const wrapper = document.getElementById(wrapperId);
+            const slides = wrapper.querySelectorAll('.slide');
+            const prefix = wrapperId.replace('Wrapper', '');
+            
+            wrapper.style.transform = `translateX(-${sliderStates[wrapperId] * 100}%)`;
+            
+            // ซ่อนปุ่มถ้าถึงขอบ
+            document.getElementById(prefix + 'Prev').disabled = (sliderStates[wrapperId] === 0);
+            document.getElementById(prefix + 'Next').disabled = (sliderStates[wrapperId] === slides.length - 1);
         }
 
         function startQuiz() {
             currentStep = 1;
-            document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active-step'));
-            document.getElementById('step-1').classList.add('active-step');
+            document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none');
+            document.getElementById('step-1').style.display = 'block';
             showPage('quizPage');
         }
 
         function handleQuiz(isCorrect, message) {
             alert(message);
             if (isCorrect) {
-                document.getElementById(`step-${currentStep}`).classList.remove('active-step');
+                document.getElementById(`step-${currentStep}`).style.display = 'none';
                 currentStep++;
                 let nextId = currentStep > 3 ? 'step-final' : `step-${currentStep}`;
-                document.getElementById(nextId).classList.add('active-step');
+                document.getElementById(nextId).style.display = 'block';
             }
         }
-        
-        // สำหรับคีย์บอร์ดโน้ตบุ๊ค
+
         window.addEventListener('keydown', (e) => {
             if (document.getElementById('loginPage').classList.contains('active')) {
                 if (e.key >= '0' && e.key <= '9') pressKey(e.key);
