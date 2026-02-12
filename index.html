@@ -28,13 +28,19 @@
         .typing-text { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--primary); min-height: 1.5em; }
 
         /* --- PIN System (Code: 190767) --- */
-        .pin-display { display: flex; gap: 12px; margin: 20px 0; justify-content: center; }
+        .pin-hint { 
+            font-size: 0.9rem; 
+            color: #ff8fa3; 
+            margin: 8px 0 15px 0; /* เพิ่มระยะห่างบนและล่างให้คำใบ้ */
+            font-weight: 600;
+            display: block; /* มั่นใจว่าอยู่บรรทัดใหม่แน่นอน */
+        }
+        .pin-display { display: flex; gap: 12px; margin-bottom: 25px; justify-content: center; }
         .pin-dot { width: 16px; height: 16px; border-radius: 50%; background: #eee; border: 2px solid #ddd; transition: 0.2s; }
         .pin-dot.filled { background: var(--primary); border-color: var(--primary); transform: scale(1.2); }
         .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%; max-width: 260px; }
         .keypad button { width: 60px; height: 60px; border-radius: 50%; border: none; background: #fff; font-size: 1.4rem; font-weight: 700; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
         .keypad button:active { background: var(--secondary); color: white; transform: scale(0.9); }
-        .pin-hint { font-size: 0.85rem; color: #ff8fa3; margin-top: -10px; font-weight: 600; }
 
         /* --- Our Love Journey (TikTok Style) --- */
         .journey-title { font-family: 'Montserrat'; font-weight: 700; color: var(--primary); font-size: 1.6rem; margin: 0; }
@@ -56,10 +62,6 @@
         .slide-caption { margin-top: 15px; font-weight: 600; font-size: 1rem; }
         .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 45px; height: 45px; cursor: pointer; z-index: 100; box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
         .nav-btn:disabled { opacity: 0; pointer-events: none; }
-
-        /* --- Polaroid Style --- */
-        .polaroid-frame { background: white; padding: 12px 12px 35px 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-radius: 4px; }
-        .polaroid-caption { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.2rem; color: #333; margin-top: 15px; letter-spacing: 2px; }
 
         /* --- Quiz Fix --- */
         .quiz-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; margin: 15px auto; }
@@ -94,8 +96,8 @@
 
     <div id="loginPage" class="page">
         <div style="font-size: 50px; margin-bottom: 5px;">🔒</div>
-        <h1 style="font-family: Montserrat; font-size: 1.2rem; margin-bottom: 5px;">PRIVATE ACCESS</h1>
-        <p class="pin-hint">คำใบ้ : วันครบรอบ</p>
+        <h1 style="font-family: Montserrat; font-size: 1.25rem; margin: 0;">PRIVATE ACCESS</h1>
+        <span class="pin-hint">คำใบ้ : วันครบรอบ</span>
         <div class="pin-display">
             <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
             <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
@@ -197,8 +199,8 @@
     </div>
 
     <script>
-        const startDate = new Date("2024-07-19T00:00:00"); 
-        const correctPin = "190767"; 
+        const startDate = new Date("2024-07-19T00:00:00");
+        const correctPin = "190767";
         let currentPin = ""; let currentStep = 1;
         let sliderStates = { memoriesWrapper: 0, polaroidWrapper: 0 };
 
