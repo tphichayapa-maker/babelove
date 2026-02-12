@@ -28,7 +28,7 @@
         .typing-text { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--primary); min-height: 1.5em; }
 
         /* --- PIN System (Code: 190767) --- */
-        .pin-hint { font-size: 0.95rem; color: #ff8fa3; margin: 12px 0 18px 0; font-weight: 600; display: block; }
+        .pin-hint { font-size: 0.95rem; color: #ff8fa3; margin: 15px 0 20px 0; font-weight: 600; display: block; }
         .pin-display { display: flex; gap: 12px; margin-bottom: 25px; justify-content: center; }
         .pin-dot { width: 16px; height: 16px; border-radius: 50%; background: #eee; border: 2px solid #ddd; transition: 0.2s; }
         .pin-dot.filled { background: var(--primary); border-color: var(--primary); transform: scale(1.2); }
@@ -36,26 +36,16 @@
         .keypad button { width: 60px; height: 60px; border-radius: 50%; border: none; background: #fff; font-size: 1.4rem; font-weight: 700; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
         .keypad button:active { background: var(--secondary); color: white; transform: scale(0.9); }
 
-        /* --- Our Love Journey (TikTok Style - FIXED LABELS) --- */
+        /* --- Our Love Journey (TikTok Style) --- */
         .journey-title { font-family: 'Montserrat'; font-weight: 700; color: var(--primary); font-size: 1.6rem; margin: 0; }
-        .journey-sub { font-size: 0.85rem; color: #888; margin-bottom: 5px; }
+        .journey-sub { font-size: 0.85rem; color: #888; margin-bottom: 10px; }
         .profile-img-container { width: 140px; height: 140px; border-radius: 50%; border: 4px solid #fff; overflow: hidden; margin: 15px auto; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
         .profile-img-container img { width: 100%; height: 100%; object-fit: cover; }
         
         .timer-row-new { display: flex; align-items: center; justify-content: center; gap: 4px; margin-top: 15px; }
-        .time-block { display: flex; flex-direction: column; align-items: center; min-width: 42px; }
-        .time-number { font-family: 'Montserrat', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--primary); }
-        
-        /* แก้ไขตัวหนังสือ Year, Month ให้เท่ากับเพื่อนเป๊ะๆ */
-        .time-unit-label { 
-            font-family: 'Montserrat', sans-serif; 
-            font-size: 0.65rem; 
-            font-weight: 600;
-            color: #888; 
-            text-transform: capitalize; 
-            margin-top: 2px; 
-            display: block;
-        }
+        .time-block { display: flex; flex-direction: column; align-items: center; min-width: 45px; }
+        .time-number { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--primary); }
+        .time-unit-label { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 700; color: #888; text-transform: capitalize; margin-top: 2px; display: block; }
         .separator { font-size: 1.2rem; font-weight: 700; color: var(--primary); margin-top: -15px; }
 
         /* --- Slider System --- */
@@ -104,7 +94,7 @@
 
     <div id="loginPage" class="page">
         <div style="font-size: 50px; margin-bottom: 5px;">🔒</div>
-        <h1 style="font-family: Montserrat; font-size: 1.25rem; margin: 0;">PRIVATE ACCESS</h1>
+        <h1 style="font-family: Montserrat; font-size: 1.3rem; margin: 0;">PRIVATE ACCESS</h1>
         <span class="pin-hint">คำใบ้ : วันครบรอบ</span>
         <div class="pin-display">
             <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
@@ -139,13 +129,13 @@
             <span class="separator">:</span>
             <div class="time-block"><span id="mo-val" class="time-number">00</span><span class="time-unit-label">Month</span></div>
             <span class="separator">:</span>
-            <div class="time-block"><span id="d-val" class="time-number">00</span><span class="time-unit-label">Days</span></div>
+            <div class="time-block"><span id="d-val" class="time-number">00</span><span class="time-label">Days</span></div>
             <span class="separator">:</span>
-            <div class="time-block"><span id="h-val" class="time-number">00</span><span class="time-unit-label">Hours</span></div>
+            <div class="time-block"><span id="h-val" class="time-number">00</span><span class="time-label">Hours</span></div>
             <span class="separator">:</span>
             <div class="time-block"><span id="min-val" class="time-number">00</span><span class="time-unit-label">Mins</span></div>
             <span class="separator">:</span>
-            <div class="time-block"><span id="s-val" class="time-number">00</span><span class="time-unit-label">Secs</span></div>
+            <div class="time-block"><span id="s-val" class="time-number">00</span><span class="time-label">Secs</span></div>
         </div>
         <p style="margin-top: 20px; font-style: italic; color: var(--primary); font-weight: 600;">We're been in love for...</p>
         <p style="font-size: 0.85rem; margin-top: -5px;">❤️ love u 3000 na ❤️</p>
@@ -239,24 +229,38 @@
         function updateDots() { const dots = document.querySelectorAll('.pin-dot'); dots.forEach((dot, i) => dot.classList.toggle('filled', i < currentPin.length)); }
         function checkPin() { if (currentPin === correctPin) { showPage('menuPage'); document.getElementById('bgMusic').play(); document.getElementById('musicControl').classList.add('visible'); } else { alert('รหัสผ่านไม่ถูกต้อง'); currentPin = ""; updateDots(); } }
 
+        // --- แก้ไขระบบเปลี่ยนหน้า (จัดการเสียงเพลงเบื้องหลัง) ---
         function showPage(id) { 
+            const bgMusic = document.getElementById('bgMusic');
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active')); 
             document.getElementById(id).classList.add('active'); 
+            
+            // หยุดวิดีโอทั้งหมด
             document.querySelectorAll('video').forEach(v => { v.pause(); v.currentTime = 0; });
-            if (id === 'memoriesPage') { resetSlider('memoriesWrapper'); playVideoInActiveSlide('memoriesWrapper'); } 
+            
+            // คืนระดับเสียงเพลงแบล็คกาวน์ทุกครั้งที่เปลี่ยนหน้า (กันค้าง)
+            bgMusic.volume = 1.0;
+
+            if (id === 'memoriesPage') { 
+                resetSlider('memoriesWrapper'); 
+                playVideoInActiveSlide('memoriesWrapper'); 
+            } 
             if (id === 'polaroidPage') resetSlider('polaroidWrapper'); 
         }
 
         function resetSlider(id) { sliderStates[id] = 0; updateSliderUI(id); }
+        
         function moveSlide(id, n) {
             const wrapper = document.getElementById(id); const slides = wrapper.querySelectorAll('.slide');
             const newIndex = sliderStates[id] + n;
             if (newIndex >= 0 && newIndex < slides.length) { 
                 document.querySelectorAll('video').forEach(v => v.pause()); 
-                sliderStates[id] = newIndex; updateSliderUI(id); 
+                sliderStates[id] = newIndex; 
+                updateSliderUI(id); 
                 setTimeout(() => { playVideoInActiveSlide(id); }, 400);
             }
         }
+
         function updateSliderUI(id) {
             const wrapper = document.getElementById(id); const prefix = id.replace('Wrapper', '');
             wrapper.style.transform = `translateX(-${sliderStates[id] * 100}%)`;
@@ -264,16 +268,30 @@
             document.getElementById(prefix + 'Next').disabled = (sliderStates[id] === wrapper.querySelectorAll('.slide').length - 1);
         }
 
+        // --- แก้ไขฟังก์ชันเล่นวิดีโอ (จัดการระดับเสียงเพลงแบล็คกาวน์) ---
         function playVideoInActiveSlide(wrapperId) {
             const wrapper = document.getElementById(wrapperId);
             const currentSlide = wrapper.querySelectorAll('.slide')[sliderStates[wrapperId]];
             const video = currentSlide.querySelector('video');
-            if (video) { video.play().catch(e => console.log("Auto-play blocked", e)); }
+            const bgMusic = document.getElementById('bgMusic');
+
+            if (video) { 
+                // ถ้ามีวิดีโอ: ลดเสียงเพลงแบล็คกาวน์เหลือ 20% แล้วเล่นวิดีโอ
+                bgMusic.volume = 0.2;
+                video.play().catch(e => console.log("Auto-play blocked", e)); 
+            } else {
+                // ถ้าเป็นรูปภาพ: ให้เพลงแบล็คกาวน์ดัง 100% เหมือนเดิม
+                bgMusic.volume = 1.0;
+            }
         }
 
         function startQuiz() { currentStep = 1; document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none'); document.getElementById('step-1').style.display = 'block'; showPage('quizPage'); }
         function handleQuiz(isCorrect, msg) { alert(msg); if (isCorrect) { document.getElementById(`step-${currentStep}`).style.display = 'none'; currentStep++; let next = currentStep > 3 ? 'step-final' : `step-${currentStep}`; document.getElementById(next).style.display = 'block'; } }
-        function toggleMusic() { const m = document.getElementById('bgMusic'); if (m.paused) m.play(); else m.pause(); }
+        
+        function toggleMusic() { 
+            const m = document.getElementById('bgMusic'); 
+            if (m.paused) m.play(); else m.pause(); 
+        }
 
         document.addEventListener('mousedown', function(e) {
             const heart = document.createElement('div');
