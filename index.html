@@ -12,27 +12,21 @@
         ::-webkit-scrollbar { display: none; }
         body { font-family: 'Prompt', sans-serif; background: linear-gradient(135deg, var(--bg) 0%, #ffe3e8 100%); display: flex; align-items: center; justify-content: center; color: var(--text); }
 
-        /* --- Page Container --- */
         .page { display: none; width: 95%; max-width: 500px; height: 92vh; background: var(--white); padding: 25px; border-radius: 40px; box-shadow: 0 25px 60px rgba(255, 143, 163, 0.35); text-align: center; position: relative; overflow: hidden; animation: fadeIn 0.4s ease-out; }
         .active { display: flex !important; flex-direction: column; align-items: center; justify-content: center; }
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
 
-        /* --- Intro & Floating Flowers --- */
-        .flower-stage { position: relative; height: 200px; width: 100%; margin-bottom: 20px; overflow: hidden; }
+        /* --- Intro Flowers --- */
+        .flower-stage { position: relative; height: 180px; width: 100%; margin-bottom: 20px; overflow: hidden; }
         .flower-emoji { position: absolute; bottom: -50px; opacity: 0; animation: floatFlower 6s linear infinite; }
-        @keyframes floatFlower {
-            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-            20% { opacity: 0.8; }
-            100% { transform: translateY(-250px) rotate(360deg); opacity: 0; }
-        }
+        @keyframes floatFlower { 0% { transform: translateY(0) rotate(0deg); opacity: 0; } 20% { opacity: 0.8; } 100% { transform: translateY(-250px) rotate(360deg); opacity: 0; } }
         .f1 { left: 10%; animation-delay: 0s; font-size: 40px; }
         .f2 { left: 35%; animation-delay: 2s; font-size: 50px; }
         .f3 { left: 60%; animation-delay: 4s; font-size: 45px; }
         .f4 { left: 85%; animation-delay: 1s; font-size: 35px; }
-
         .typing-text { font-family: 'Montserrat', sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--primary); min-height: 1.5em; margin-bottom: 30px; }
 
-        /* --- PIN System --- */
+        /* --- PIN System (Code: 190767) --- */
         .pin-display { display: flex; gap: 12px; margin: 20px 0; justify-content: center; }
         .pin-dot { width: 16px; height: 16px; border-radius: 50%; background: #eee; border: 2px solid #ddd; transition: 0.2s; }
         .pin-dot.filled { background: var(--primary); border-color: var(--primary); transform: scale(1.2); }
@@ -40,33 +34,46 @@
         .keypad button { width: 60px; height: 60px; border-radius: 50%; border: none; background: #fff; font-size: 1.4rem; font-weight: 700; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
         .keypad button:active { background: var(--secondary); color: white; transform: scale(0.9); }
 
-        /* --- Our Time (บรรทัดเดียว) --- */
-        .time-img { width: 100%; height: 260px; object-fit: cover; border-radius: 25px; margin-bottom: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .timer-grid { 
-            display: grid; 
-            grid-template-columns: repeat(6, 1fr); /* ปรับเป็น 6 ช่องในบรรทัดเดียว */
-            gap: 5px; 
-            width: 100%; 
-            padding: 0 5px;
-        }
-        .time-box { background: var(--bg); padding: 8px 2px; border-radius: 12px; border: 1px solid var(--secondary); }
-        .time-num { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 700; color: var(--primary); display: block; }
-        .time-label { font-size: 0.6rem; font-weight: 600; color: var(--text); }
+        /* --- Our Time --- */
+        .time-img { width: 100%; height: 260px; object-fit: cover; border-radius: 25px; margin-bottom: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .timer-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; width: 100%; padding: 0 2px; }
+        .time-box { background: var(--bg); padding: 8px 1px; border-radius: 12px; border: 1px solid var(--secondary); }
+        .time-num { font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--primary); display: block; }
+        .time-label { font-size: 0.55rem; font-weight: 600; color: var(--text); }
 
-        /* --- Slider & Others --- */
+        /* --- Slider System --- */
         .slider-container { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 25px; background: white; flex-grow: 1; display: flex; flex-direction: column; }
         .slider-wrapper { display: flex; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); width: 100%; height: 100%; }
-        .slide { min-width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px 10px 50px 10px; }
+        .slide { min-width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px 10px 60px 10px; }
         .slide img, .slide video { max-width: 100%; max-height: 60vh; object-fit: contain; border-radius: 12px; }
         .slide-caption { margin-top: 15px; font-weight: 600; color: var(--text); }
         .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; z-index: 100; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        
-        .red-pill-btn { background: linear-gradient(45deg, var(--primary), var(--secondary)); color: white; border: none; padding: 12px 30px; border-radius: 50px; font-weight: 600; cursor: pointer; margin-top: 20px; box-shadow: 0 8px 15px rgba(255, 143, 163, 0.3); }
+        .nav-btn:disabled { opacity: 0; pointer-events: none; }
+
+        /* --- Quiz Fix (รูปเท่ากันเป๊ะ) --- */
+        .quiz-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; margin: 15px auto; }
+        .quiz-card { cursor: pointer; transition: 0.3s; width: 100%; }
+        .quiz-card img { 
+            width: 100%; 
+            aspect-ratio: 3 / 2; /* ล็อกขนาดแนวนอน */
+            object-fit: cover; 
+            border-radius: 18px; 
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08); 
+            border: 2px solid transparent;
+        }
+        .poster-img { 
+            aspect-ratio: 2 / 3 !important; /* ล็อกขนาดแนวตั้งโปสเตอร์หนัง */
+        }
+        .quiz-card:hover img { border-color: var(--primary); transform: scale(1.03); }
+        .quiz-card p { margin-top: 8px; font-weight: 600; font-size: 0.9rem; }
+
+        .red-pill-btn { background: linear-gradient(45deg, var(--primary), var(--secondary)); color: white; border: none; padding: 12px 35px; border-radius: 50px; font-weight: 600; cursor: pointer; margin-top: 15px; box-shadow: 0 8px 18px rgba(255, 143, 163, 0.3); }
         .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; }
-        .menu-item { background: white; padding: 20px; border-radius: 30px; border: 2px solid #fdf2f4; cursor: pointer; transition: 0.3s; }
+        .menu-item { background: white; padding: 25px 10px; border-radius: 30px; border: 2px solid #fdf2f4; cursor: pointer; transition: 0.3s; }
         .menu-item:hover { transform: translateY(-5px); border-color: var(--primary); }
-        #musicControl { position: fixed; top: 20px; right: 20px; z-index: 1000; background: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; opacity: 0; pointer-events: none; }
-        #musicControl.visible { opacity: 1; pointer-events: auto; }
+        
+        #musicControl { position: fixed; top: 20px; right: 20px; z-index: 1000; background: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; opacity: 0; pointer-events: auto; }
+        #musicControl.visible { opacity: 1; }
     </style>
 </head>
 <body>
@@ -94,26 +101,23 @@
             <button onclick="pressKey('1')">1</button><button onclick="pressKey('2')">2</button><button onclick="pressKey('3')">3</button>
             <button onclick="pressKey('4')">4</button><button onclick="pressKey('5')">5</button><button onclick="pressKey('6')">6</button>
             <button onclick="pressKey('7')">7</button><button onclick="pressKey('8')">8</button><button onclick="pressKey('9')">9</button>
-            <button onclick="deleteKey()" style="color:var(--primary); font-size:0.8rem;">ลบ</button>
-            <button onclick="pressKey('0')">0</button>
-            <button onclick="checkPin()" style="color:#ff4d6d; font-weight:bold; font-size:0.8rem;">ตกลง</button>
+            <button onclick="deleteKey()" style="color:var(--primary); font-size:0.8rem;">ลบ</button><button onclick="pressKey('0')">0</button><button onclick="checkPin()" style="color:#ff4d6d; font-weight:bold; font-size:0.8rem;">ตกลง</button>
         </div>
     </div>
 
     <div id="menuPage" class="page">
-        <h1 style="font-family: Montserrat; margin-bottom: 20px;">MAIN MENU</h1>
+        <h1 style="font-family: Montserrat; font-weight: 700; margin-bottom: 25px; font-size: 1.3rem;">MAIN MENU</h1>
         <div class="menu-grid">
-            <div class="menu-item" onclick="showPage('timePage')"><div style="font-size:30px">⏳</div><div style="font-weight:600; font-size: 0.8rem;">เวลาของเรา</div></div>
-            <div class="menu-item" onclick="showPage('memoriesPage')"><div style="font-size:30px">🖼️</div><div style="font-weight:600; font-size: 0.8rem;">ความทรงจำ</div></div>
-            <div class="menu-item" onclick="showPage('polaroidPage')"><div style="font-size:30px">📸</div><div style="font-weight:600; font-size: 0.8rem;">โพลารอยด์</div></div>
-            <div class="menu-item" onclick="showPage('musicPage')"><div style="font-size:30px">🎵</div><div style="font-weight:600; font-size: 0.8rem;">เพลงของเรา</div></div>
-            <div class="menu-item" onclick="startQuiz()" style="grid-column: span 2; padding: 15px;"><div style="font-size:30px">📝</div><div style="font-weight:600; font-size: 0.8rem;">แบบทดสอบ</div></div>
+            <div class="menu-item" onclick="showPage('timePage')"><div style="font-size:35px">⏳</div><div style="font-weight:600; font-size: 0.85rem; margin-top:5px;">เวลาของเรา</div></div>
+            <div class="menu-item" onclick="showPage('memoriesPage')"><div style="font-size:35px">🖼️</div><div style="font-weight:600; font-size: 0.85rem; margin-top:5px;">ความทรงจำ</div></div>
+            <div class="menu-item" onclick="showPage('polaroidPage')"><div style="font-size:35px">📸</div><div style="font-weight:600; font-size: 0.85rem; margin-top:5px;">โพลารอยด์</div></div>
+            <div class="menu-item" onclick="startQuiz()"><div style="font-size:35px">📝</div><div style="font-weight:600; font-size: 0.85rem; margin-top:5px;">แบบทดสอบ</div></div>
         </div>
-        <button class="red-pill-btn" onclick="showPage('introPage')" style="background:transparent; color:#bbb; border:1px solid #eee; margin-top:30px; box-shadow: none;">LOGOUT</button>
+        <button class="red-pill-btn" onclick="showPage('introPage')" style="background:transparent; color:#bbb; border:1px solid #eee; margin-top:40px; box-shadow: none;">LOGOUT</button>
     </div>
 
     <div id="timePage" class="page">
-        <h1 style="font-family: Montserrat; font-size: 1.3rem;">OUR TIME</h1>
+        <h1 style="font-family: 'Montserrat'; font-size: 1.3rem;">OUR TIME</h1>
         <img src="sea.jpg" class="time-img" alt="Sea">
         <p style="margin-bottom: 10px; font-weight: 600; font-size: 0.9rem;">เราเดินทางร่วมกันมาแล้ว...</p>
         <div class="timer-grid">
@@ -129,117 +133,148 @@
 
     <div id="memoriesPage" class="page">
         <div class="slider-container">
-            <button onclick="moveSlide('memoriesWrapper', -1)" class="nav-btn" style="left:5px;">❮</button>
-            <button onclick="moveSlide('memoriesWrapper', 1)" class="nav-btn" style="right:5px;">❯</button>
+            <button id="memoriesPrev" onclick="moveSlide('memoriesWrapper', -1)" class="nav-btn" style="left:10px;">❮</button>
+            <button id="memoriesNext" onclick="moveSlide('memoriesWrapper', 1)" class="nav-btn" style="right:10px;">❯</button>
             <div class="slider-wrapper" id="memoriesWrapper">
                 <div class="slide"><video controls playsinline><source src="one.mp4" type="video/mp4"></video><div class="slide-caption">ครั้งแรกที่เราเจอกัน❤️</div></div>
                 <div class="slide"><img src="date.jpg"><div class="slide-caption">เดทด้วยกันครั้งแรก</div></div>
-                <div class="slide"><div style="font-size: 60px;">✨</div><h2>THE END</h2><button class="red-pill-btn" onclick="showPage('menuPage')">กลับเมนู</button></div>
+                <div class="slide"><img src="movie.jpg"><div class="slide-caption">ดูหนังด้วยกันครั้งแรก</div></div>
+                <div class="slide"><video controls playsinline><source src="love.mp4" type="video/mp4"></video><div class="slide-caption">วันแรกที่เราคบกัน❤️</div></div>
+                <div class="slide"><img src="flower.jpg"><div class="slide-caption">ดอกไม้ที่แฟนซื้อให้ ช่อที่ n</div></div>
+                <div class="slide">
+                    <div style="font-size: 60px;">✨</div>
+                    <h2 style="font-family: 'Montserrat';">THE END</h2>
+                    <p>รักเธอที่สุดเลยนะ</p>
+                    <button class="red-pill-btn" onclick="showPage('menuPage')">กลับสู่เมนูหลัก</button>
+                </div>
             </div>
         </div>
     </div>
 
     <div id="polaroidPage" class="page">
         <div class="slider-container">
-            <button onclick="moveSlide('polaroidWrapper', -1)" class="nav-btn" style="left:5px;">❮</button>
-            <button onclick="moveSlide('polaroidWrapper', 1)" class="nav-btn" style="right:5px;">❯</button>
+            <button id="polaroidPrev" onclick="moveSlide('polaroidWrapper', -1)" class="nav-btn" style="left:10px;">❮</button>
+            <button id="polaroidNext" onclick="moveSlide('polaroidWrapper', 1)" class="nav-btn" style="right:10px;">❯</button>
             <div class="slider-wrapper" id="polaroidWrapper">
-                <div class="slide"><img src="pola1.jpg"><div class="slide-caption">FIRST DATE</div></div>
-                <div class="slide"><div style="font-size: 60px;">📸</div><button class="red-pill-btn" onclick="showPage('menuPage')">กลับเมนู</button></div>
+                <div class="slide"><div class="polaroid-frame"><img src="pola1.jpg"><div class="polaroid-caption">FIRST DATE</div></div></div>
+                <div class="slide"><div class="polaroid-frame"><img src="pola2.jpg"><div class="polaroid-caption">XMAS 2025</div></div></div>
+                <div class="slide"><div class="polaroid-frame"><img src="pola3.jpg"><div class="polaroid-caption">NEW YEAR</div></div></div>
+                <div class="slide">
+                    <div style="font-size: 60px;">📸</div>
+                    <h2 style="font-family: 'Montserrat';">COLLECTION</h2>
+                    <p>รอเพิ่มรูปใหม่ๆ ด้วยกันนะ</p>
+                    <button class="red-pill-btn" onclick="showPage('menuPage')">กลับสู่เมนูหลัก</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <div id="musicPage" class="page">
-        <h1>OUR SONG</h1>
-        <div style="font-size:80px; margin:30px 0;">🎧</div>
-        <button class="red-pill-btn" onclick="window.open('https://youtu.be/9nDjgusMmCY')">OPEN YOUTUBE</button>
-        <button class="red-pill-btn" onclick="showPage('menuPage')" style="background:transparent; color:#999; border:1px solid #eee;">BACK</button>
-    </div>
-
     <div id="quizPage" class="page">
-        <h1 style="font-family: Montserrat;">QUIZ</h1>
-        <div id="step-1" class="active" style="width:100%;">
-            <p>1. เราเจอกันครั้งแรกที่ไหนเอ่ย?</p>
-            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:15px;">
-                <div onclick="alert('ถูกต้อง! ❤️'); showPage('menuPage');" style="cursor:pointer;"><img src="con.png" style="width:100%; border-radius:15px;"><p>A. Rinma</p></div>
-                <div onclick="alert('ผิดจ้า 😝')" style="cursor:pointer;"><img src="central.png" style="width:100%; border-radius:15px;"><p>B. Central</p></div>
+        <h1 style="font-family: Montserrat; font-weight: 700;">QUIZ</h1>
+        
+        <div id="step-1" class="quiz-step" style="display:block; width:100%;">
+            <p style="font-weight:600; font-size:1.1rem;">1. เราเจอกันครั้งแรกที่ไหนเอ่ย?</p>
+            <div class="quiz-row">
+                <div class="quiz-card" onclick="handleQuiz(true, 'ถูกต้องที่สุด! ❤️')"><img src="con.png"><p>A. Rinma Festival</p></div>
+                <div class="quiz-card" onclick="handleQuiz(false, 'ผิดจ้าาา 😝')"><img src="central.png"><p>B. Central Pinklao</p></div>
             </div>
+        </div>
+
+        <div id="step-2" class="quiz-step" style="display:none; width:100%;">
+            <p style="font-weight:600; font-size:1.1rem;">2. เมนูแรกที่เราไปเดทด้วยกันคือ?</p>
+            <div class="quiz-row">
+                <div class="quiz-card" onclick="handleQuiz(false, 'ผิดจ้า 🥗')"><img src="som.jpg"><p>A. ส้มตำ</p></div>
+                <div class="quiz-card" onclick="handleQuiz(true, 'ถูกต้อง! ❤️')"><img src="ra.jpg"><p>B. ราเมน</p></div>
+            </div>
+        </div>
+
+        <div id="step-3" class="quiz-step" style="display:none; width:100%;">
+            <p style="font-weight:600; font-size:1.1rem;">3. หนังเรื่องแรกที่ดูด้วยกันคือเรื่อง?</p>
+            <div class="quiz-row" style="max-width: 400px; margin: 0 auto;">
+                <div class="quiz-card" onclick="handleQuiz(true, 'แม่นมาก! 🎬')"><img src="rak.jpg" class="poster-img"><p>A. รักผ่านหน้าต่าง</p></div>
+                <div class="quiz-card" onclick="handleQuiz(false, 'ไม่ใช่จ้า! 😂')"><img src="bad.jpg" class="poster-img"><p>B. Bad boy</p></div>
+            </div>
+        </div>
+
+        <div id="step-final" class="quiz-step" style="display:none;">
+            <div style="font-size:80px">🏆</div>
+            <h2 style="font-family: Montserrat;">CHAMPION</h2>
+            <p>เธอจำเรื่องของเราได้ทุกอย่างเลย ❤️</p>
+            <button class="red-pill-btn" onclick="showPage('menuPage')">กลับสู่เมนูหลัก</button>
         </div>
     </div>
 
     <script>
-        // --- ตั้งค่าเริ่มต้น ---
-        const startDate = new Date("2024-07-19T00:00:00"); // 19/07/67
-        const correctPin = "190767"; // รหัสผ่านใหม่
-        
-        let currentPin = "";
+        const startDate = new Date("2024-07-19T00:00:00"); 
+        const correctPin = "190767"; 
+        let currentPin = ""; let currentStep = 1;
         let sliderStates = { memoriesWrapper: 0, polaroidWrapper: 0 };
 
-        // Typing Effect
         const introText = "Happy Valentine's Day";
         let introIdx = 0;
-        function typeIntro() {
-            if (introIdx < introText.length) {
-                document.getElementById("typeWriter").innerHTML += introText.charAt(introIdx);
-                introIdx++;
-                setTimeout(typeIntro, 120);
-            }
-        }
+        function typeIntro() { if (introIdx < introText.length) { document.getElementById("typeWriter").innerHTML += introText.charAt(introIdx); introIdx++; setTimeout(typeIntro, 120); } }
         window.onload = typeIntro;
 
-        // Timer Logic (บรรทัดเดียว)
         function updateTimer() {
-            const now = new Date();
-            let diff = now - startDate;
-            
-            const msInYear = 1000 * 60 * 60 * 24 * 365.25;
-            const msInMonth = 1000 * 60 * 60 * 24 * 30.44;
-            const msInDay = 1000 * 60 * 60 * 24;
-
-            const y = Math.floor(diff / msInYear); diff %= msInYear;
-            const mo = Math.floor(diff / msInMonth); diff %= msInMonth;
-            const d = Math.floor(diff / msInDay); diff %= msInDay;
+            const now = new Date(); let diff = now - startDate;
+            const y = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25)); diff %= (1000 * 60 * 60 * 24 * 365.25);
+            const mo = Math.floor(diff / (1000 * 60 * 60 * 24 * 30.44)); diff %= (1000 * 60 * 60 * 24 * 30.44);
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24)); diff %= (1000 * 60 * 60 * 24);
             const h = Math.floor(diff / (1000 * 60 * 60)); diff %= (1000 * 60 * 60);
             const m = Math.floor(diff / (1000 * 60)); diff %= (1000 * 60);
             const s = Math.floor(diff / 1000);
-
-            document.getElementById('y-val').innerText = y;
-            document.getElementById('mo-val').innerText = mo;
-            document.getElementById('d-val').innerText = d;
-            document.getElementById('h-val').innerText = h;
-            document.getElementById('m-val').innerText = m;
-            document.getElementById('s-val').innerText = s;
+            document.getElementById('y-val').innerText = y; document.getElementById('mo-val').innerText = mo;
+            document.getElementById('d-val').innerText = d; document.getElementById('h-val').innerText = h;
+            document.getElementById('m-val').innerText = m; document.getElementById('s-val').innerText = s;
         }
         setInterval(updateTimer, 1000);
 
-        // PIN Logic
         function pressKey(n) { if (currentPin.length < 6) { currentPin += n; updateDots(); } }
         function deleteKey() { currentPin = currentPin.slice(0, -1); updateDots(); }
         function updateDots() { const dots = document.querySelectorAll('.pin-dot'); dots.forEach((dot, i) => dot.classList.toggle('filled', i < currentPin.length)); }
-        function checkPin() { 
-            if (currentPin === correctPin) { 
-                showPage('menuPage'); 
-                document.getElementById('bgMusic').play(); 
-                document.getElementById('musicControl').classList.add('visible'); 
-            } else { alert('รหัสผ่านไม่ถูกต้อง'); currentPin = ""; updateDots(); } 
-        }
+        function checkPin() { if (currentPin === correctPin) { showPage('menuPage'); document.getElementById('bgMusic').play(); document.getElementById('musicControl').classList.add('visible'); } else { alert('รหัสผ่านไม่ถูกต้อง'); currentPin = ""; updateDots(); } }
 
-        // Page Logic
         function showPage(id) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(id).classList.add('active');
+            if (id === 'memoriesPage') resetSlider('memoriesWrapper');
+            if (id === 'polaroidPage') resetSlider('polaroidWrapper');
         }
 
+        function resetSlider(id) { sliderStates[id] = 0; updateSliderUI(id); }
         function moveSlide(id, n) {
-            const wrapper = document.getElementById(id);
-            const slides = wrapper.querySelectorAll('.slide');
-            sliderStates[id] = (sliderStates[id] + n + slides.length) % slides.length;
-            wrapper.style.transform = `translateX(-${sliderStates[id] * 100}%)`;
+            const wrapper = document.getElementById(id); const slides = wrapper.querySelectorAll('.slide');
+            const newIndex = sliderStates[id] + n;
+            if (newIndex >= 0 && newIndex < slides.length) {
+                document.querySelectorAll('video').forEach(v => v.pause());
+                sliderStates[id] = newIndex; updateSliderUI(id);
+            }
         }
-        
+        function updateSliderUI(id) {
+            const wrapper = document.getElementById(id); const prefix = id.replace('Wrapper', '');
+            wrapper.style.transform = `translateX(-${sliderStates[id] * 100}%)`;
+            document.getElementById(prefix + 'Prev').disabled = (sliderStates[id] === 0);
+            document.getElementById(prefix + 'Next').disabled = (sliderStates[id] === wrapper.querySelectorAll('.slide').length - 1);
+        }
+
+        function startQuiz() {
+            currentStep = 1;
+            document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none');
+            document.getElementById('step-1').style.display = 'block';
+            showPage('quizPage');
+        }
+
+        function handleQuiz(isCorrect, msg) {
+            alert(msg);
+            if (isCorrect) {
+                document.getElementById(`step-${currentStep}`).style.display = 'none';
+                currentStep++;
+                let next = currentStep > 3 ? 'step-final' : `step-${currentStep}`;
+                document.getElementById(next).style.display = 'block';
+            }
+        }
+
         function toggleMusic() { const m = document.getElementById('bgMusic'); if (m.paused) m.play(); else m.pause(); }
-        function startQuiz() { showPage('quizPage'); }
     </script>
 </body>
 </html>
