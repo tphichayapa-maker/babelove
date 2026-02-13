@@ -48,14 +48,9 @@
         .keypad { display: grid !important; grid-template-columns: repeat(3, 1fr); gap: 12px; width: 100%; max-width: 250px; }
         .keypad button { width: 65px; height: 65px; border-radius: 50%; border: none; background: #fff; font-size: 1.5rem; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center; }
 
-        /* --- ⏳ หน้าเวลา (Sudkhet & Bamboo Edition) --- */
+        /* --- ⏳ หน้าเวลา --- */
         .couple-names { font-family: 'Dancing Script', cursive; font-size: 2.2rem; color: var(--primary); margin-bottom: 5px; }
-        .photo-frame {
-            width: 155px; height: 155px; border-radius: 50%; border: 6px solid #fff;
-            overflow: hidden; margin: 10px auto; position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            animation: pulseGlow 3s infinite ease-in-out;
-        }
+        .photo-frame { width: 155px; height: 155px; border-radius: 50%; border: 6px solid #fff; overflow: hidden; margin: 10px auto; position: relative; animation: pulseGlow 3s infinite ease-in-out; }
         @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 10px rgba(255, 77, 109, 0.2); } 50% { box-shadow: 0 0 35px rgba(255, 77, 109, 0.6); } }
         .timer-row-new { display: flex; align-items: baseline; justify-content: center; gap: 6px; margin: 25px 0; }
         .time-block { display: flex; flex-direction: column; align-items: center; min-width: 48px; }
@@ -63,16 +58,11 @@
         .time-unit-label { font-family: 'Montserrat', sans-serif !important; font-size: 0.65rem !important; font-weight: 700 !important; color: #999; text-transform: capitalize; }
         .separator { font-size: 1.3rem; font-weight: 700; color: var(--primary); margin-top: -15px; opacity: 0.5; }
 
-        /* --- 📱 หน้าเมนู (อัปเดตภาษาอังกฤษขนาดใหญ่ + ไทยขนาดเล็ก) --- */
+        /* --- 📱 หน้าเมนู (Bilingual) --- */
         .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; }
-        .menu-item { 
-            background: white; padding: 20px 10px; border-radius: 40px; 
-            border: 2px solid #fff0f3; cursor: pointer; transition: 0.3s;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-        }
-        .menu-item:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 10px 20px rgba(255, 77, 109, 0.1); }
+        .menu-item { background: white; padding: 20px 10px; border-radius: 40px; border: 2px solid #fff0f3; cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; align-items: center; justify-content: center; }
         .menu-icon { font-size: 40px; margin-bottom: 8px; }
-        .menu-en { font-family: 'Montserrat'; font-weight: 800; font-size: 1rem; color: var(--text); line-height: 1.2; }
+        .menu-en { font-family: 'Montserrat'; font-weight: 800; font-size: 1rem; color: var(--text); }
         .menu-th { font-family: 'Prompt'; font-weight: 400; font-size: 0.7rem; color: #999; margin-top: 3px; }
 
         /* --- 🖼️ ระบบสไลเดอร์ --- */
@@ -85,34 +75,28 @@
         .nav-btn-new:disabled { opacity: 0.3; }
         .slide-counter { font-family: 'Montserrat'; font-weight: 700; color: var(--primary); min-width: 60px; }
 
-        /* --- 💌 ระบบจดหมายรัก --- */
-        #quizResultView, #letterView { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
-        #envelopeWrapper { animation: envelopeShake 2s infinite ease-in-out; padding: 25px 20px; background: #fff0f3; border-radius: 35px; border: 2px dashed var(--primary); width: 95%; max-width: 300px; cursor: pointer; margin: 0 auto; }
-        @keyframes envelopeShake { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(3deg); } 75% { transform: rotate(-3deg); } }
-        #letterBody { background: #fffdf5; padding: 35px 25px; border-radius: 25px; border: 1px solid #f0e68c; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; width: 100%; max-width: 350px; animation: fadeInUp 0.8s ease-out; max-height: 55vh; overflow-y: auto; margin: 0 auto; }
+        /* --- 💌 ระบบจดหมายรัก + คำถามสุดท้าย --- */
+        #letterBody { background: #fffdf5; padding: 30px 25px; border-radius: 25px; border: 1px solid #f0e68c; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; width: 100%; max-width: 350px; animation: fadeInUp 0.8s ease-out; margin: 0 auto; position: relative; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        .letter-text { font-family: 'Prompt', sans-serif; font-size: 1.1rem; color: var(--text); line-height: 1.9; }
-        .highlight-bold { font-weight: 800; color: var(--primary); font-size: 1.25rem; display: block; margin-top: 25px; border-top: 2px solid #fff0f3; padding-top: 20px; line-height: 1.5; }
+        .letter-text { font-family: 'Prompt', sans-serif; font-size: 1.05rem; color: var(--text); line-height: 1.8; }
+        .highlight-bold { font-weight: 800; color: var(--primary); font-size: 1.15rem; display: block; margin-top: 20px; }
+
+        .final-question { font-family: 'Dancing Script'; font-size: 2.2rem; color: var(--primary); margin: 25px 0 15px; font-weight: 700; }
+        .btn-group { display: flex; gap: 15px; justify-content: center; margin-top: 20px; position: relative; min-height: 50px; width: 100%; }
+        .yes-btn { background: var(--primary); color: white; border: none; padding: 12px 35px; border-radius: 30px; font-weight: 800; font-family: 'Montserrat'; cursor: pointer; transition: 0.3s; z-index: 5; }
+        .no-btn { background: #eee; color: #999; border: none; padding: 12px 25px; border-radius: 30px; font-weight: 700; font-family: 'Montserrat'; cursor: pointer; position: absolute; transition: 0.1s ease; white-space: nowrap; }
+
         .heart-particle { position: fixed; top: -10%; font-size: 20px; z-index: 1; pointer-events: none; animation: fall linear infinite; }
         @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
 
-        /* --- 📝 แบบทดสอบ --- */
-        .quiz-step { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
-        .quiz-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; max-width: 380px; margin: 20px auto 0 auto; }
-        .quiz-card { background: #fff; padding: 25px 15px; border-radius: 35px; border: 3px solid #fff0f3; cursor: pointer; display: flex; flex-direction: column; align-items: center; transition: 0.3s; box-shadow: 0 8px 20px rgba(255,77,109,0.05); }
-        .quiz-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 20px; margin-bottom: 15px; }
-        .quiz-icon-jumbo { font-size: 75px; margin-bottom: 15px; }
-        .quiz-label { font-weight: 700; font-size: 1.05rem; color: var(--text); }
-        .quiz-q-text { font-weight: 600; font-size: 1.2rem; color: var(--text); margin: 0 auto; text-align: center; }
-
-        /* --- ป๊อปอัพ Custom --- */
+        /* --- ✅ ป๊อปอัพ ✅ --- */
         #customAlert { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 10000; align-items: center; justify-content: center; }
         .alert-box { background: white; padding: 40px; border-radius: 40px; text-align: center; min-width: 280px; box-shadow: 0 15px 40px rgba(0,0,0,0.2); animation: popUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         #alertText { font-size: 1.8rem; font-weight: 800; margin-bottom: 25px; display: block; }
         .alert-btn { background: var(--primary); color: white; border: none; padding: 12px 45px; border-radius: 30px; font-weight: 700; cursor: pointer; font-family: 'Montserrat'; }
         @keyframes popUp { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
-        #musicControl { position: fixed; top: 25px; right: 25px; z-index: 1000; background: white; border-radius: 50%; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.1); cursor: pointer; opacity: 1; pointer-events: auto; }
+        #musicControl { position: fixed; top: 25px; right: 25px; z-index: 1000; background: white; border-radius: 50%; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.1); cursor: pointer; }
     </style>
 </head>
 <body>
@@ -184,7 +168,7 @@
             <div class="time-block"><span id="min-val" class="time-number">00</span><span class="time-unit-label">Mins</span></div><span class="separator">:</span>
             <div class="time-block"><span id="s-val" class="time-number">00</span><span class="time-unit-label">Secs</span></div>
         </div>
-        <p style="font-size: 0.85rem; font-style: italic; opacity: 0.6; margin-top: 10px;">เราเดินมาไกลแค่ไหนแล้วนะ... ❤️</p>
+        <p style="font-size: 0.85rem; font-style: italic; opacity: 0.6;">เราเดินมาไกลแค่ไหนแล้วนะ... ❤️</p>
         <button class="start-btn" onclick="showPage('menuPage')" style="margin-top: 30px !important; padding: 10px 40px !important; font-size: 0.95rem !important;">กลับเมนูหลัก</button>
     </div>
 
@@ -244,6 +228,14 @@
                             ขอบคุณเธอที่เข้ามาในชีวิตนะคะ<br>
                             <span class="highlight-bold">ของขวัญวาเลนไทน์ที่ดีที่สุด<br>คือ การมีเธออยู่ข้างๆ</span>
                         </p>
+                        
+                        <h2 class="final-question">Will you be my Valentine?</h2>
+                        <p style="font-size: 0.8rem; color: #999; margin-bottom: 15px;">(อีกปีนะ ❤️)</p>
+
+                        <div class="btn-group">
+                            <button class="yes-btn" onclick="handleFinalYes()">Yes, always! ❤️</button>
+                            <button class="no-btn" id="noBtn" onmouseover="moveNoButton()" ontouchstart="moveNoButton()">No</button>
+                        </div>
                     </div>
                 </div>
                 <button class="start-btn" onclick="showPage('menuPage')" style="margin-top:35px; padding: 10px 40px;">กลับเมนูหลัก</button>
@@ -315,6 +307,24 @@
                 document.getElementById(next).style.display = 'flex';
                 if (currentStep > 7) { document.getElementById('quizTitle').style.display = 'none'; startHearts(); }
             }
+        }
+
+        function moveNoButton() {
+            const btn = document.getElementById('noBtn');
+            const body = document.getElementById('letterBody');
+            const maxX = body.clientWidth - btn.clientWidth - 20;
+            const maxY = body.clientHeight - btn.clientHeight - 20;
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+            btn.style.left = randomX + 'px';
+            btn.style.top = randomY + 'px';
+        }
+
+        function handleFinalYes() {
+            const modal = document.getElementById('customAlert');
+            document.getElementById('alertText').innerHTML = "เย้! รักกันนาน ๆ นะคะ<br>Sudkhet & Bamboo ❤️";
+            document.getElementById('alertText').style.color = "#ff4d6d";
+            modal.style.display = 'flex';
         }
 
         function startHearts() {
