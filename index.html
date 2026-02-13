@@ -4,101 +4,134 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Secret Story ❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
     <style>
         :root { --primary: #ff4d6d; --secondary: #ffccd5; --bg: #fff0f3; --text: #590d22; --white: #ffffff; }
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
+        html, body { width: 100%; height: 100%; overflow: hidden; }
         ::-webkit-scrollbar { display: none; }
-        body { font-family: 'Prompt', sans-serif; background: #fce4ec; display: flex; align-items: center; justify-content: center; color: var(--text); }
+        
+        body { 
+            font-family: 'Prompt', sans-serif; 
+            background: #fff5f6; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: var(--text); 
+        }
 
         /* --- Page Container --- */
-        .page { display: none; width: 95%; max-width: 500px; height: 92vh; background: var(--white); padding: 25px; border-radius: 40px; box-shadow: 0 20px 50px rgba(255, 77, 109, 0.2); text-align: center; position: relative; overflow: hidden; animation: fadeIn 0.4s ease-out; }
-        .active { display: flex !important; flex-direction: column; align-items: center; justify-content: center; }
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+        .page { 
+            display: none; 
+            width: 90%; 
+            max-width: 450px; 
+            height: 85vh; 
+            background: var(--white); 
+            padding: 40px 30px; 
+            border-radius: 50px; 
+            box-shadow: 0 25px 60px rgba(255, 77, 109, 0.12); 
+            text-align: center; 
+            position: relative; 
+            overflow: hidden; 
+            animation: fadeIn 0.6s ease-out;
+            flex-direction: column;
+            justify-content: center; /* จัดกึ่งกลางแนวตั้งเป๊ะ */
+            align-items: center;    /* จัดกึ่งกลางแนวนอนเป๊ะ */
+        }
+        .active { display: flex !important; }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
 
-        /* --- ✨ หน้า Intro (Typewriter & intro.png) ✨ --- */
+        /* --- ✨ หน้า Intro (แก้ไขความสมมาตร) ✨ --- */
         #introPage.page { 
             background: linear-gradient(180deg, #fff0f5 0%, #ffffff 100%); 
-            border: none; box-shadow: none; 
+            gap: 20px; /* ใช้ gap คุมระยะห่างให้เท่ากันทุกส่วน */
         }
         
         .intro-image-container {
-            width: 280px; /* ขนาดรูปหน้าปก */
-            margin: 0 auto 10px auto;
-            animation: gentleFloat 3.5s ease-in-out infinite;
-            filter: drop-shadow(0 15px 35px rgba(255, 77, 109, 0.3));
+            width: 70%; /* ปรับตามสัดส่วนจอ */
+            max-width: 240px;
+            animation: gentleFloat 4s ease-in-out infinite;
+            filter: drop-shadow(0 15px 35px rgba(255, 77, 109, 0.25));
         }
         .intro-image-container img { width: 100%; height: auto; display: block; }
         @keyframes gentleFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
-        /* สไตล์ข้อความพิมพ์ดีด */
+        .typing-container {
+            min-height: 2.5em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .typing-headline {
             font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 1.7rem;
-            color: var(--primary);
-            min-height: 80px; /* กันหน้าจอขยับตอนพิมพ์ */
-            margin: 10px 0;
-            line-height: 1.2;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: #ff4d6d;
             text-transform: uppercase;
-        }
-        
-        /* เคอร์เซอร์กระพริบ */
-        .cursor {
+            letter-spacing: 1px;
             display: inline-block;
-            width: 3px;
-            background-color: var(--primary);
-            margin-left: 5px;
-            animation: blink 1s infinite;
         }
+        .cursor { display: inline-block; width: 3px; height: 1.2em; background: #ff4d6d; margin-left: 5px; animation: blink 1s infinite; vertical-align: middle; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-        .special-gift { font-size: 1rem; opacity: 0.6; font-weight: 500; font-style: italic; margin-bottom: 10px; }
+        .special-gift { font-size: 0.95rem; color: #888; font-weight: 500; font-style: italic; opacity: 0.7; margin-bottom: 10px; }
 
         .start-btn {
-            background: var(--primary); color: white; border: none;
-            padding: 12px 50px; border-radius: 30px;
+            background: #ff4d6d; color: white; border: none;
+            padding: 14px 60px; border-radius: 40px;
             font-weight: 800; font-size: 1.1rem; cursor: pointer;
-            box-shadow: 0 8px 25px rgba(255, 77, 109, 0.3);
-            transition: 0.3s; font-family: 'Montserrat';
-            opacity: 0; /* ซ่อนไว้ก่อนพิมพ์เสร็จ */
-            animation: fadeInBtn 1s forwards;
-            animation-delay: 3.5s; /* ปรากฎตัวหลังจากพิมพ์จบ */
+            box-shadow: 0 12px 25px rgba(255, 77, 109, 0.35);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-family: 'Montserrat';
         }
-        @keyframes fadeInBtn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .start-btn:hover { transform: scale(1.05); background: #ff3357; }
+        .start-btn:hover { transform: scale(1.08) translateY(-3px); background: #ff2a51; }
 
-        /* --- PIN System --- */
-        .pin-hint { font-size: 0.95rem; color: #ff8fa3; margin: 15px 0 20px 0; font-weight: 600; display: block; }
-        .pin-display { display: flex; gap: 12px; margin-bottom: 25px; justify-content: center; }
+        /* --- 🔐 ระบบ PIN --- */
+        .pin-hint { font-size: 0.95rem; color: #ff8fa3; margin-bottom: 20px; font-weight: 600; display: block; }
+        .pin-display { display: flex; gap: 12px; margin-bottom: 30px; justify-content: center; }
         .pin-dot { width: 16px; height: 16px; border-radius: 50%; background: #eee; border: 2px solid #ddd; transition: 0.2s; }
         .pin-dot.filled { background: var(--primary); border-color: var(--primary); transform: scale(1.2); }
-        .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%; max-width: 260px; }
-        .keypad button { width: 60px; height: 60px; border-radius: 50%; border: none; background: #fff; font-size: 1.4rem; font-weight: 700; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; width: 100%; max-width: 280px; }
+        .keypad button { width: 65px; height: 65px; border-radius: 50%; border: none; background: #fff; font-size: 1.5rem; font-weight: 700; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.2s; }
+        .keypad button:active { background: #fff0f3; transform: scale(0.9); }
 
-        /* --- Time Page (Labels FIXED) --- */
-        .timer-row-new { display: flex; align-items: center; justify-content: center; gap: 4px; margin-top: 15px; }
-        .time-block { display: flex; flex-direction: column; align-items: center; min-width: 45px; }
+        /* --- ⏳ เวลาของเรา (Labels เป๊ะตาม image_0d1176.png) --- */
+        .timer-row-new { display: flex; align-items: baseline; justify-content: center; gap: 4px; margin-top: 20px; }
+        .time-block { display: flex; flex-direction: column; align-items: center; min-width: 48px; }
         .time-number { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--primary); }
-        .time-unit-label { font-family: 'Montserrat', sans-serif !important; font-size: 0.65rem !important; font-weight: 700 !important; color: #888; text-transform: capitalize; margin-top: 2px; display: block; }
-        .separator { font-size: 1.2rem; font-weight: 700; color: var(--primary); margin-top: -15px; }
+        .time-unit-label { 
+            font-family: 'Montserrat', sans-serif !important; 
+            font-size: 0.65rem !important; 
+            font-weight: 700 !important; 
+            color: #888; 
+            text-transform: capitalize; 
+            margin-top: 2px; 
+            display: block; 
+        }
+        .separator { font-size: 1.2rem; font-weight: 700; color: var(--primary); align-self: flex-start; margin-top: -15px; }
 
-        /* --- Memories (Images FIXED 3:4) --- */
-        .slide img, .slide video { width: 100%; max-width: 350px; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-        .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 45px; height: 45px; cursor: pointer; z-index: 100; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
+        /* --- 🖼️ ความทรงจำ --- */
+        .slider-container { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 30px; background: white; flex-grow: 1; display: flex; flex-direction: column; }
+        .slider-wrapper { display: flex; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); width: 100%; height: 100%; }
+        .slide { min-width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 15px; }
+        .slide img, .slide video { width: 100%; max-width: 320px; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 25px; box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
+        .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.95); border: none; border-radius: 50%; width: 45px; height: 45px; cursor: pointer; z-index: 100; font-size: 1.2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; }
 
-        /* --- Other Styles --- */
-        .red-pill-btn { background: linear-gradient(45deg, var(--primary), #ff8fa3); color: white; border: none; padding: 12px 35px; border-radius: 50px; font-weight: 600; cursor: pointer; margin-top: 15px; }
-        .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; }
-        .menu-item { background: white; padding: 25px 10px; border-radius: 30px; border: 2px solid #fff0f3; cursor: pointer; transition: 0.3s; }
-        #musicControl { position: fixed; top: 20px; right: 20px; z-index: 1000; background: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; opacity: 0; pointer-events: none; }
-        #musicControl.visible { opacity: 1; pointer-events: auto; }
-        .heart-pop { position: fixed; font-size: 20px; pointer-events: none; z-index: 10000; animation: heartPopAnim 0.8s ease-out forwards; }
-        @keyframes heartPopAnim { 0% { transform: scale(0); opacity: 1; } 100% { transform: translateY(-50px) scale(1.5); opacity: 0; } }
-        .quiz-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; margin: 15px auto; }
-        .quiz-card img { width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: 18px; box-shadow: 0 6px 15px rgba(0,0,0,0.08); border: 2px solid transparent; }
+        /* --- 📝 แบบทดสอบ --- */
+        .quiz-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; margin: 20px auto; }
+        .quiz-card img { width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); border: 2px solid transparent; cursor: pointer; }
         .poster-img { aspect-ratio: 2 / 3 !important; }
+
+        /* --- อื่นๆ --- */
+        .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; width: 100%; }
+        .menu-item { background: white; padding: 25px 15px; border-radius: 35px; border: 2px solid #fff0f3; cursor: pointer; transition: 0.3s; }
+        .menu-item:hover { transform: translateY(-5px); border-color: var(--primary); }
+        
+        #musicControl { position: fixed; top: 25px; right: 25px; z-index: 1000; background: white; border-radius: 50%; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.1); cursor: pointer; opacity: 0; pointer-events: none; transition: 0.3s; }
+        #musicControl.visible { opacity: 1; pointer-events: auto; }
+        .heart-pop { position: fixed; font-size: 22px; pointer-events: none; z-index: 10000; animation: heartPopAnim 0.8s ease-out forwards; }
+        @keyframes heartPopAnim { 0% { transform: scale(0); opacity: 1; } 100% { transform: translateY(-60px) scale(1.6); opacity: 0; } }
     </style>
 </head>
 <body>
@@ -108,18 +141,18 @@
 
     <div id="introPage" class="page active">
         <div class="intro-image-container">
-            <img src="intro.png" alt="Valentine Cover">
+            <img src="intro.png" alt="Happy Valentine Cover">
         </div>
-        <div class="intro-content">
-            <h1 class="typing-headline"><span id="typedText"></span><span class="cursor">|</span></h1>
-            <p class="special-gift">Special gift for you</p>
-            <button class="start-btn" onclick="showPage('loginPage')">START!</button>
+        <div class="typing-container">
+            <h1 class="typing-headline"><span id="typedText"></span><span class="cursor"></span></h1>
         </div>
+        <p class="special-gift">Special gift for you</p>
+        <button class="start-btn" onclick="showPage('loginPage')">START!</button>
     </div>
 
     <div id="loginPage" class="page">
-        <div style="font-size: 50px; margin-bottom: 5px;">🔒</div>
-        <h1 style="font-family: Montserrat; font-size: 1.3rem; margin: 0;">PRIVATE ACCESS</h1>
+        <div style="font-size: 55px; margin-bottom: 10px;">🔒</div>
+        <h1 style="font-family: Montserrat; font-size: 1.4rem; margin-bottom: 5px;">PRIVATE ACCESS</h1>
         <span class="pin-hint">คำใบ้ : วันครบรอบ</span>
         <div class="pin-display">
             <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
@@ -129,25 +162,25 @@
             <button onclick="pressKey('1')">1</button><button onclick="pressKey('2')">2</button><button onclick="pressKey('3')">3</button>
             <button onclick="pressKey('4')">4</button><button onclick="pressKey('5')">5</button><button onclick="pressKey('6')">6</button>
             <button onclick="pressKey('7')">7</button><button onclick="pressKey('8')">8</button><button onclick="pressKey('9')">9</button>
-            <button onclick="deleteKey()" style="color:var(--primary); font-size:0.8rem;">ลบ</button><button onclick="pressKey('0')">0</button><button onclick="checkPin()" style="color:#ff4d6d; font-weight:bold; font-size:0.8rem;">ตกลง</button>
+            <button onclick="deleteKey()" style="color:var(--primary); font-size:0.9rem;">ลบ</button><button onclick="pressKey('0')">0</button><button onclick="checkPin()" style="color:#ff4d6d; font-weight:bold; font-size:0.9rem;">ตกลง</button>
         </div>
     </div>
 
     <div id="menuPage" class="page">
-        <h1 style="font-family: Montserrat; font-weight: 700; margin-bottom: 25px; font-size: 1.3rem;">MAIN MENU</h1>
+        <h1 style="font-family: Montserrat; font-weight: 700; margin-bottom: 30px; font-size: 1.4rem;">MAIN MENU</h1>
         <div class="menu-grid">
-            <div class="menu-item" onclick="showPage('timePage')"><div style="font-size:35px">⏳</div><div style="font-weight:600; font-size: 0.85rem; margin-top:5px;">เวลาของเรา</div></div>
-            <div class="menu-item" onclick="showPage('memoriesPage')"><div style="font-size:35px">🖼️</div><div style="font-weight:600; font-size: 0.85rem; margin-top:5px;">ความทรงจำ</div></div>
-            <div class="menu-item" onclick="showPage('polaroidPage')"><div style="font-size:35px">📸</div><div style="font-weight:600; font-size: 0.85rem; margin-top:5px;">โพลารอยด์</div></div>
-            <div class="menu-item" onclick="startQuiz()"><div style="font-size:35px">📝</div><div style="font-weight:600; font-size: 0.85rem; margin-top:5px;">แบบทดสอบ</div></div>
+            <div class="menu-item" onclick="showPage('timePage')"><div style="font-size:40px">⏳</div><div style="font-weight:600; font-size: 0.9rem; margin-top:8px;">เวลาของเรา</div></div>
+            <div class="menu-item" onclick="showPage('memoriesPage')"><div style="font-size:40px">🖼️</div><div style="font-weight:600; font-size: 0.9rem; margin-top:8px;">ความทรงจำ</div></div>
+            <div class="menu-item" onclick="showPage('polaroidPage')"><div style="font-size:40px">📸</div><div style="font-weight:600; font-size: 0.9rem; margin-top:8px;">โพลารอยด์</div></div>
+            <div class="menu-item" onclick="startQuiz()"><div style="font-size:40px">📝</div><div style="font-weight:600; font-size: 0.9rem; margin-top:8px;">แบบทดสอบ</div></div>
         </div>
-        <button class="red-pill-btn" onclick="showPage('introPage')" style="background:transparent; color:#bbb; border:1px solid #eee; margin-top:40px; box-shadow: none;">LOGOUT</button>
+        <button class="start-btn" onclick="showPage('introPage')" style="background:transparent; color:#bbb; border:1px solid #eee; margin-top:40px; box-shadow: none; font-size: 0.8rem; padding: 10px 30px;">LOGOUT</button>
     </div>
 
     <div id="timePage" class="page">
-        <h2 class="journey-title" style="font-family: Montserrat; font-size: 1.6rem; color: var(--primary);">Our Love Journey</h2>
-        <div style="font-size: 25px; margin: 10px 0;">❤️</div>
-        <div style="width: 140px; height: 140px; border-radius: 50%; border: 4px solid #fff; overflow: hidden; margin: 15px auto; box-shadow: 0 8px 20px rgba(0,0,0,0.1);"><img src="sea.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
+        <h2 style="font-family: Montserrat; font-size: 1.6rem; color: var(--primary);">Our Love Journey</h2>
+        <div style="font-size: 28px; margin: 15px 0;">❤️</div>
+        <div style="width: 150px; height: 150px; border-radius: 50%; border: 5px solid #fff; overflow: hidden; margin-bottom: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);"><img src="sea.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
         <div class="timer-row-new">
             <div class="time-block"><span id="y-val" class="time-number">00</span><span class="time-unit-label">Year</span></div>
             <span class="separator">:</span>
@@ -161,8 +194,8 @@
             <span class="separator">:</span>
             <div class="time-block"><span id="s-val" class="time-number">00</span><span class="time-unit-label">Secs</span></div>
         </div>
-        <p style="margin-top: 20px; font-style: italic; color: var(--primary); font-weight: 600;">We're been in love for...</p>
-        <button class="red-pill-btn" onclick="showPage('menuPage')">กลับเมนูหลัก</button>
+        <p style="margin-top: 25px; font-style: italic; color: var(--primary); font-weight: 600;">We're been in love for...</p>
+        <button class="start-btn" onclick="showPage('menuPage')" style="margin-top: 30px; font-size: 0.9rem; padding: 10px 40px;">กลับเมนูหลัก</button>
     </div>
 
     <div id="memoriesPage" class="page">
@@ -190,7 +223,7 @@
                 <div class="slide"><img src="real.jpg"></div>
                 <div class="slide"><img src="red.jpg"></div>
                 <div class="slide"><img src="sea1.jpg"></div>
-                <div class="slide"><div style="font-size: 60px;">✨</div><h2 style="font-family: 'Montserrat';">THE END</h2><button class="red-pill-btn" onclick="showPage('menuPage')">กลับสู่เมนูหลัก</button></div>
+                <div class="slide"><div style="font-size: 65px;">✨</div><h2 style="font-family: 'Montserrat'; margin-top: 15px;">THE END</h2><button class="start-btn" onclick="showPage('menuPage')" style="margin-top: 25px; padding: 10px 40px; font-size: 0.9rem;">กลับสู่เมนูหลัก</button></div>
             </div>
         </div>
     </div>
@@ -200,29 +233,29 @@
             <button id="polaroidPrev" onclick="moveSlide('polaroidWrapper', -1)" class="nav-btn" style="left:10px;">❮</button>
             <button id="polaroidNext" onclick="moveSlide('polaroidWrapper', 1)" class="nav-btn" style="right:10px;">❯</button>
             <div class="slider-wrapper" id="polaroidWrapper">
-                <div class="slide"><div style="background:white; padding:10px; box-shadow:0 10px 30px rgba(0,0,0,0.1);"><img src="pola1.jpg" style="aspect-ratio: 1/1; object-fit: cover;"></div></div>
-                <div class="slide"><div style="background:white; padding:10px; box-shadow:0 10px 30px rgba(0,0,0,0.1);"><img src="pola2.jpg" style="aspect-ratio: 1/1; object-fit: cover;"></div></div>
-                <div class="slide"><div style="background:white; padding:10px; box-shadow:0 10px 30px rgba(0,0,0,0.1);"><img src="pola3.jpg" style="aspect-ratio: 1/1; object-fit: cover;"></div></div>
-                <div class="slide"><div style="font-size: 60px;">📸</div><h2 style="font-family: 'Montserrat';">COLLECTION</h2><button class="red-pill-btn" onclick="showPage('menuPage')">กลับสู่เมนูหลัก</button></div>
+                <div class="slide"><div style="background:white; padding:12px; box-shadow:0 10px 35px rgba(0,0,0,0.12); border-radius: 4px;"><img src="pola1.jpg" style="aspect-ratio: 1/1; object-fit: cover;"></div></div>
+                <div class="slide"><div style="background:white; padding:12px; box-shadow:0 10px 35px rgba(0,0,0,0.12); border-radius: 4px;"><img src="pola2.jpg" style="aspect-ratio: 1/1; object-fit: cover;"></div></div>
+                <div class="slide"><div style="background:white; padding:12px; box-shadow:0 10px 35px rgba(0,0,0,0.12); border-radius: 4px;"><img src="pola3.jpg" style="aspect-ratio: 1/1; object-fit: cover;"></div></div>
+                <div class="slide"><div style="font-size: 65px;">📸</div><h2 style="font-family: 'Montserrat'; margin-top: 15px;">COLLECTION</h2><button class="start-btn" onclick="showPage('menuPage')" style="margin-top: 25px; padding: 10px 40px; font-size: 0.9rem;">กลับสู่เมนูหลัก</button></div>
             </div>
         </div>
     </div>
 
     <div id="quizPage" class="page">
-        <h1 style="font-family: Montserrat; font-weight: 700;">QUIZ</h1>
+        <h1 style="font-family: Montserrat; font-weight: 700; font-size: 1.4rem;">QUIZ</h1>
         <div id="step-1" class="quiz-step" style="display:block; width:100%;">
-            <p style="font-weight:600; font-size:1.1rem;">1. เราเจอกันครั้งแรกที่ไหนเอ่ย?</p>
-            <div class="quiz-row"><div class="quiz-card" onclick="handleQuiz(true, 'ถูกต้องที่สุด! ❤️')"><img src="con.png"><p>A. Rinma Festival</p></div><div class="quiz-card" onclick="handleQuiz(false, 'ผิดจ้าาา 😝')"><img src="central.png"><p>B. Central Pinklao</p></div></div>
+            <p style="font-weight:600; font-size:1.1rem; margin-top: 10px;">1. เราเจอกันครั้งแรกที่ไหนเอ่ย?</p>
+            <div class="quiz-row"><div class="quiz-card" onclick="handleQuiz(true, 'ถูกต้องที่สุด! ❤️')"><img src="con.png"><p style="margin-top:8px; font-size: 0.85rem; font-weight: 600;">A. Rinma Festival</p></div><div class="quiz-card" onclick="handleQuiz(false, 'ผิดจ้าาา 😝')"><img src="central.png"><p style="margin-top:8px; font-size: 0.85rem; font-weight: 600;">B. Central Pinklao</p></div></div>
         </div>
         <div id="step-2" class="quiz-step" style="display:none; width:100%;">
-            <p style="font-weight:600; font-size:1.1rem;">2. เมนูแรกที่เราไปเดทด้วยกันคือ?</p>
-            <div class="quiz-row"><div class="quiz-card" onclick="handleQuiz(false, 'ผิดจ้า 🥗')"><img src="som.jpg"><p>A. ส้มตำ</p></div><div class="quiz-card" onclick="handleQuiz(true, 'ถูกต้อง! ❤️')"><img src="ra.jpg"><p>B. ราเมน</p></div></div>
+            <p style="font-weight:600; font-size:1.1rem; margin-top: 10px;">2. เมนูแรกที่เราไปเดทด้วยกันคือ?</p>
+            <div class="quiz-row"><div class="quiz-card" onclick="handleQuiz(false, 'ผิดจ้า 🥗')"><img src="som.jpg"><p style="margin-top:8px; font-size: 0.85rem; font-weight: 600;">A. ส้มตำ</p></div><div class="quiz-card" onclick="handleQuiz(true, 'ถูกต้อง! ❤️')"><img src="ra.jpg"><p style="margin-top:8px; font-size: 0.85rem; font-weight: 600;">B. ราเมน</p></div></div>
         </div>
         <div id="step-3" class="quiz-step" style="display:none; width:100%;">
-            <p style="font-weight:600; font-size:1.1rem;">3. หนังเรื่องแรกที่ดูด้วยกันคือเรื่อง?</p>
-            <div class="quiz-row" style="max-width: 400px; margin: 0 auto;"><div class="quiz-card" onclick="handleQuiz(true, 'แม่นมาก! 🎬')"><img src="wow.jpg" class="poster-img"><p>A. รักผ่านหน้าต่าง</p></div><div class="quiz-card" onclick="handleQuiz(false, 'ไม่ใช่จ้า! 😂')"><img src="bad.jpg" class="poster-img"><p>B. Bad boy</p></div></div>
+            <p style="font-weight:600; font-size:1.1rem; margin-top: 10px;">3. หนังเรื่องแรกที่ดูด้วยกันคือเรื่อง?</p>
+            <div class="quiz-row" style="max-width: 350px; margin: 20px auto;"><div class="quiz-card" onclick="handleQuiz(true, 'แม่นมาก! 🎬')"><img src="wow.jpg" class="poster-img"><p style="margin-top:8px; font-size: 0.85rem; font-weight: 600;">A. รักผ่านหน้าต่าง</p></div><div class="quiz-card" onclick="handleQuiz(false, 'ไม่ใช่จ้า! 😂')"><img src="bad.jpg" class="poster-img"><p style="margin-top:8px; font-size: 0.85rem; font-weight: 600;">B. Bad boy</p></div></div>
         </div>
-        <div id="step-final" class="quiz-step" style="display:none;"><div style="font-size:80px">🏆</div><h2 style="font-family: Montserrat;">CHAMPION</h2><p>เธอจำเรื่องของเราได้ทุกอย่างเลย ❤️</p><button class="red-pill-btn" onclick="showPage('menuPage')">กลับสู่เมนูหลัก</button></div>
+        <div id="step-final" class="quiz-step" style="display:none;"><div style="font-size:80px">🏆</div><h2 style="font-family: Montserrat; margin-top: 15px;">CHAMPION</h2><p style="margin-top: 10px;">เธอจำเรื่องของเราได้ทุกอย่างเลย ❤️</p><button class="start-btn" onclick="showPage('menuPage')" style="margin-top: 30px; font-size: 0.9rem;">กลับสู่เมนูหลัก</button></div>
     </div>
 
     <script>
@@ -231,14 +264,13 @@
         let currentPin = ""; let currentStep = 1;
         let sliderStates = { memoriesWrapper: 0, polaroidWrapper: 0 };
 
-        // --- ระบบพิมพ์ดีดหน้าแรก ---
         const headline = "Happy Valentine's Day";
         let hIdx = 0;
         function typeHeadline() {
             if (hIdx < headline.length) {
                 document.getElementById("typedText").innerHTML += headline.charAt(hIdx);
                 hIdx++;
-                setTimeout(typeHeadline, 120); // ความเร็วในการพิมพ์
+                setTimeout(typeHeadline, 120);
             }
         }
         window.onload = typeHeadline;
@@ -263,13 +295,22 @@
         function pressKey(n) { if (currentPin.length < 6) { currentPin += n; updateDots(); } }
         function deleteKey() { currentPin = currentPin.slice(0, -1); updateDots(); }
         function updateDots() { const dots = document.querySelectorAll('.pin-dot'); dots.forEach((dot, i) => dot.classList.toggle('filled', i < currentPin.length)); }
-        function checkPin() { if (currentPin === correctPin) { showPage('menuPage'); const bgMusic = document.getElementById('bgMusic'); bgMusic.play().catch(() => {}); document.getElementById('musicControl').classList.add('visible'); } else { alert('รหัสผ่านไม่ถูกต้อง'); currentPin = ""; updateDots(); } }
+        function checkPin() { 
+            if (currentPin === correctPin) { 
+                showPage('menuPage'); 
+                const bgMusic = document.getElementById('bgMusic');
+                bgMusic.play().catch(() => {});
+                document.getElementById('musicControl').classList.add('visible'); 
+            } else { alert('รหัสผ่านไม่ถูกต้อง'); currentPin = ""; updateDots(); } 
+        }
+
+        function setMusicVolume(vol) { document.getElementById('bgMusic').volume = vol; }
 
         function showPage(id) { 
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active')); 
             document.getElementById(id).classList.add('active'); 
             document.querySelectorAll('video').forEach(v => { v.pause(); v.currentTime = 0; });
-            document.getElementById('bgMusic').volume = 1.0;
+            setMusicVolume(1.0);
             if (id === 'memoriesPage') { resetSlider('memoriesWrapper'); handleSlideMedia('memoriesWrapper'); } 
             if (id === 'polaroidPage') resetSlider('polaroidWrapper'); 
         }
@@ -295,8 +336,7 @@
             const wrapper = document.getElementById(wrapperId);
             const currentSlide = wrapper.querySelectorAll('.slide')[sliderStates[wrapperId]];
             const video = currentSlide.querySelector('video');
-            const bgMusic = document.getElementById('bgMusic');
-            if (video) { bgMusic.volume = 0.15; video.play().catch(() => {}); } else { bgMusic.volume = 1.0; }
+            if (video) { setMusicVolume(0.15); video.play().catch(() => {}); } else { setMusicVolume(1.0); }
         }
 
         function startQuiz() { currentStep = 1; document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none'); document.getElementById('step-1').style.display = 'block'; showPage('quizPage'); }
@@ -306,7 +346,7 @@
         document.addEventListener('mousedown', function(e) {
             const heart = document.createElement('div');
             heart.innerHTML = '❤️'; heart.className = 'heart-pop';
-            heart.style.left = e.clientX - 10 + 'px'; heart.style.top = e.clientY - 10 + 'px';
+            heart.style.left = e.clientX - 12 + 'px'; heart.style.top = e.clientY - 12 + 'px';
             document.body.appendChild(heart);
             setTimeout(() => heart.remove(), 800);
         });
