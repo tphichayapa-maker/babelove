@@ -195,9 +195,10 @@
             <div id="step-7" class="quiz-step" style="display:none;"><p class="quiz-q-text">7. ของขวัญวาเลนไทน์ชิ้นแรกที่ให้คือ?</p><div class="quiz-row"><div class="quiz-card" onclick="handleQuiz(false)"><div class="quiz-icon-jumbo">🎁</div><p class="quiz-label">กล่องสุ่ม</p></div><div class="quiz-card" onclick="handleQuiz(true)"><div class="quiz-icon-jumbo">👕</div><p class="quiz-label">เสื้อ</p></div></div></div>
             
             <div id="step-final" class="quiz-step" style="display:none; width: 100%;">
+                
                 <div id="quizResultView">
                     <div style="font-size:70px">🏆</div>
-                    <h2 style="font-family: 'Dancing Script'; font-size: 2.5rem; color: var(--primary);">CONGRATULATIONS!</h2>
+                    <h2 style="font-family: 'Montserrat'; font-weight: 800; color: var(--primary);">CONGRATULATIONS!</h2>
                     <p style="margin-bottom: 20px;">เธอเก่งที่สุด จำเรื่องของเราได้ทุกอย่างเลย ❤️</p>
                     <div id="envelopeWrapper" onclick="openLetter()"><div style="font-size: 60px;">💌</div><p style="font-size: 0.85rem; color: #ff8fa3; font-weight: 600;">คลิกเพื่อเปิดจดหมายรัก</p></div>
                 </div>
@@ -211,19 +212,19 @@
                             <span class="highlight-bold">ของขวัญวาเลนไทน์ที่ดีที่สุด<br>คือ การมีเธออยู่ข้างๆ</span>
                         </p>
                     </div>
-                    <button class="start-btn" onclick="goToFinalQuestion()" style="padding: 10px 50px;">NEXT ➔</button>
+                    <button class="start-btn" onclick="goToFinalQuestion()" style="padding: 10px 40px; margin-top: 20px;">NEXT ➔</button>
                 </div>
 
                 <div id="finalQuestionView" style="display:none; width: 100%; margin-top: 20px;">
                     <h2 class="final-question">Will you be my Valentine?</h2>
-                    <p style="font-size: 0.9rem; color: #999;">(อีกปีนะ ❤️)</p>
+                    <p style="font-size: 0.9rem; color: #999; margin-bottom: 10px;">(อีกปีนะ ❤️)</p>
                     <div class="btn-group" id="btnContainer">
                         <button class="yes-btn" onclick="handleFinalYes()">Yes, always! ❤️</button>
                         <button class="no-btn" id="noBtn" onmouseover="moveNoButton()" ontouchstart="moveNoButton()">No</button>
                     </div>
                 </div>
 
-                <button id="backToMenuBtn" class="start-btn" onclick="showPage('menuPage')" style="padding: 10px 40px; margin-top: 20px; opacity: 0.5; font-size: 0.8rem;">HOME</button>
+                <button id="backToMenuBtn" class="start-btn" onclick="showPage('menuPage')" style="padding: 10px 40px; margin-top: 20px; opacity: 0.5; font-size: 0.8rem; display:none;">HOME</button>
             </div>
         </div>
     </div>
@@ -271,6 +272,8 @@
                     document.getElementById('letterView').style.display = 'none';
                     document.getElementById('finalQuestionView').style.display = 'none';
                     document.getElementById('quizTitle').style.display = 'none';
+                    // ซ่อนปุ่ม HOME ตอนเริ่มหน้าจบ
+                    document.getElementById('backToMenuBtn').style.display = 'none';
                     startHearts();
                 } else { document.getElementById('quizTitle').style.display = 'block'; }
             }
@@ -291,8 +294,28 @@
                 currentStep++;
                 let next = currentStep > 7 ? 'step-final' : `step-${currentStep}`;
                 document.getElementById(next).style.display = 'flex';
-                if (currentStep > 7) { document.getElementById('quizTitle').style.display = 'none'; startHearts(); }
+                if (currentStep > 7) { 
+                    document.getElementById('quizTitle').style.display = 'none';
+                    // ซ่อนปุ่ม HOME ตอนเริ่มหน้าจบ
+                    document.getElementById('backToMenuBtn').style.display = 'none';
+                    startHearts(); 
+                }
             }
+        }
+
+        function openLetter() {
+            document.getElementById('quizResultView').style.display = 'none';
+            document.getElementById('letterView').style.display = 'flex';
+            document.getElementById('finalQuestionView').style.display = 'none';
+            // ซ่อนปุ่ม HOME ตอนอ่านจดหมาย
+            document.getElementById('backToMenuBtn').style.display = 'none';
+        }
+
+        function goToFinalQuestion() {
+            document.getElementById('letterView').style.display = 'none';
+            document.getElementById('finalQuestionView').style.display = 'flex';
+            // แสดงปุ่ม HOME ตอนถึงหน้าคำถามสุดท้าย
+            document.getElementById('backToMenuBtn').style.display = 'block';
         }
 
         function moveNoButton() {
@@ -340,8 +363,6 @@
         }
 
         function startQuiz() { currentStep = 1; document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none'); document.getElementById('step-1').style.display = 'flex'; showPage('quizPage'); }
-        function openLetter() { document.getElementById('quizResultView').style.display = 'none'; document.getElementById('letterView').style.display = 'flex'; document.getElementById('finalQuestionView').style.display = 'none'; }
-        function goToFinalQuestion() { document.getElementById('letterView').style.display = 'none'; document.getElementById('finalQuestionView').style.display = 'flex'; }
         function toggleMusic() { const m = document.getElementById('bgMusic'); if (m.paused) m.play(); else m.pause(); }
     </script>
 </body>
