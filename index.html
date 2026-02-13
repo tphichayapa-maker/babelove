@@ -10,75 +10,94 @@
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; }
         ::-webkit-scrollbar { display: none; }
-        body { font-family: 'Prompt', sans-serif; background: radial-gradient(circle at center, #fff5f6 0%, #ffe3e8 100%); display: flex; align-items: center; justify-content: center; color: var(--text); }
+        body { font-family: 'Prompt', sans-serif; background: #fce4ec; display: flex; align-items: center; justify-content: center; color: var(--text); }
 
         /* --- Page Container --- */
         .page { display: none; width: 95%; max-width: 500px; height: 92vh; background: var(--white); padding: 25px; border-radius: 40px; box-shadow: 0 20px 50px rgba(255, 77, 109, 0.2); text-align: center; position: relative; overflow: hidden; animation: fadeIn 0.4s ease-out; }
         .active { display: flex !important; flex-direction: column; align-items: center; justify-content: center; }
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
 
-        /* --- ✨ อัปเกรดหน้า Intro ใหม่ ✨ --- */
-        .intro-container { position: relative; z-index: 10; width: 100%; }
-        .glass-card { 
-            background: rgba(255, 255, 255, 0.4); 
-            backdrop-filter: blur(10px); 
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 30px; 
-            padding: 40px 20px; 
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 8px 32px rgba(255, 77, 109, 0.1);
-            margin-bottom: 30px;
-        }
-        .main-heart-icon { font-size: 80px; margin-bottom: 10px; display: inline-block; animation: mainHeartBeat 1.5s infinite ease-in-out; }
-        @keyframes mainHeartBeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); filter: drop-shadow(0 0 15px var(--primary)); } }
+        /* --- ✨ อัปเกรดหน้า Intro ตามสไตล์ S__48103467.jpg ✨ --- */
+        #introPage.page { background: linear-gradient(180deg, #fce4ec 0%, #ffffff 100%); border: none; box-shadow: none; overflow: visible; }
         
-        /* Particle Hearts Background */
-        .particles-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; }
-        .p-heart { position: absolute; color: var(--primary); opacity: 0.6; animation: particleMove 8s linear infinite; }
-        @keyframes particleMove {
-            0% { transform: translateY(100vh) rotate(0deg) scale(0.5); opacity: 0; }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.8; }
-            100% { transform: translateY(-10vh) rotate(360deg) scale(1.2); opacity: 0; }
+        .anniversary-heart {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            background: #ff85a2;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 70px rgba(255, 133, 162, 0.5);
+            animation: heartPulse 2s infinite ease-in-out;
+            color: white;
+            padding: 20px;
+            margin: 0 auto 30px auto;
+            z-index: 2;
         }
 
-        .red-pill-btn.pulse {
-            animation: btnPulse 2s infinite;
-            background: linear-gradient(45deg, var(--primary), #ff8fa3);
+        /* สร้างทรงหัวใจที่นุ่มนวลแบบในรูป */
+        .anniversary-heart::before, .anniversary-heart::after {
+            content: "";
+            position: absolute;
+            width: 210px;
+            height: 290px;
+            background: #ff85a2;
+            border-radius: 150px 150px 0 0;
+            z-index: -1;
+        }
+        .anniversary-heart::before { left: 145px; transform: rotate(-45deg); transform-origin: 0 100%; }
+        .anniversary-heart::after { left: -55px; transform: rotate(45deg); transform-origin: 100% 100%; }
+
+        @keyframes heartPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
+
+        .anniversary-text { font-family: 'Montserrat'; font-weight: 700; font-size: 1.4rem; line-height: 1.2; margin: 0; text-shadow: 0 2px 8px rgba(0,0,0,0.1); text-transform: uppercase; }
+        .special-gift { font-size: 0.85rem; margin-top: 5px; font-weight: 400; opacity: 0.95; font-style: italic; }
+
+        .start-btn {
+            background: rgba(255, 255, 255, 0.95);
+            color: #ff4d6d;
             border: none;
-            padding: 15px 40px;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
+            padding: 10px 35px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-top: 25px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            font-family: 'Montserrat';
         }
-        @keyframes btnPulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 77, 109, 0.7); }
-            70% { box-shadow: 0 0 0 20px rgba(255, 77, 109, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 77, 109, 0); }
-        }
+        .start-btn:hover { background: white; transform: scale(1.1); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
 
-        /* --- ส่วนประกอบอื่นๆ (ยังคงความเป๊ะเหมือนเดิม) --- */
+        /* --- PIN System (Code: 190767) --- */
         .pin-hint { font-size: 0.95rem; color: #ff8fa3; margin: 15px 0 20px 0; font-weight: 600; display: block; }
         .pin-display { display: flex; gap: 12px; margin-bottom: 25px; justify-content: center; }
         .pin-dot { width: 16px; height: 16px; border-radius: 50%; background: #eee; border: 2px solid #ddd; transition: 0.2s; }
         .pin-dot.filled { background: var(--primary); border-color: var(--primary); transform: scale(1.2); }
         .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%; max-width: 260px; }
         .keypad button { width: 60px; height: 60px; border-radius: 50%; border: none; background: #fff; font-size: 1.4rem; font-weight: 700; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        
+
+        /* --- Our Love Journey (FIXED LABELS) --- */
         .journey-title { font-family: 'Montserrat'; font-weight: 700; color: var(--primary); font-size: 1.6rem; margin: 0; }
         .profile-img-container { width: 140px; height: 140px; border-radius: 50%; border: 4px solid #fff; overflow: hidden; margin: 15px auto; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
         .profile-img-container img { width: 100%; height: 100%; object-fit: cover; }
         .timer-row-new { display: flex; align-items: center; justify-content: center; gap: 4px; margin-top: 15px; }
         .time-block { display: flex; flex-direction: column; align-items: center; min-width: 45px; }
-        .time-number { font-family: 'Montserrat', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--primary); }
+        .time-number { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--primary); }
         .time-unit-label { font-family: 'Montserrat', sans-serif !important; font-size: 0.65rem !important; font-weight: 700 !important; color: #888; text-transform: capitalize; margin-top: 2px; display: block; }
         .separator { font-size: 1.2rem; font-weight: 700; color: var(--primary); margin-top: -15px; }
 
+        /* --- Slider System (FIXED IMAGE SIZES) --- */
         .slider-container { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 25px; background: white; flex-grow: 1; display: flex; flex-direction: column; }
         .slider-wrapper { display: flex; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); width: 100%; height: 100%; }
         .slide { min-width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px 10px 50px 10px; }
         .slide img, .slide video { width: 100%; max-width: 350px; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
 
-        .red-pill-btn { color: white; border: none; padding: 12px 35px; border-radius: 50px; font-weight: 600; cursor: pointer; margin-top: 15px; box-shadow: 0 8px 18px rgba(255, 77, 109, 0.3); }
+        .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 45px; height: 45px; cursor: pointer; z-index: 100; box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
+        .red-pill-btn { background: linear-gradient(45deg, var(--primary), #ff8fa3); color: white; border: none; padding: 12px 35px; border-radius: 50px; font-weight: 600; cursor: pointer; margin-top: 15px; }
         .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; }
         .menu-item { background: white; padding: 25px 10px; border-radius: 30px; border: 2px solid #fff0f3; cursor: pointer; transition: 0.3s; }
         
@@ -88,7 +107,7 @@
         @keyframes heartPopAnim { 0% { transform: scale(0); opacity: 1; } 100% { transform: translateY(-50px) scale(1.5); opacity: 0; } }
         
         .quiz-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; margin: 15px auto; }
-        .quiz-card img { width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: 18px; box-shadow: 0 6px 15px rgba(0,0,0,0.08); border: 2px solid transparent; }
+        .quiz-card img { width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: 18px; border: 2px solid transparent; }
         .poster-img { aspect-ratio: 2 / 3 !important; }
     </style>
 </head>
@@ -98,15 +117,12 @@
     <div id="musicControl" onclick="toggleMusic()">🎵</div>
 
     <div id="introPage" class="page active">
-        <div class="particles-bg" id="particles"></div>
-        <div class="intro-container">
-            <div class="main-heart-icon">❤️</div>
-            <div class="glass-card">
-                <div class="typing-text" id="typeWriter"></div>
-                <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 10px;">Ready to see our memories?</p>
-            </div>
-            <button class="red-pill-btn pulse" onclick="showPage('loginPage')">START JOURNEY ✨</button>
+        <div class="anniversary-heart">
+            <h1 class="anniversary-text">Happy<br>Valentine's Day</h1>
+            <p class="special-gift">Special gift for you</p>
+            <button class="start-btn" onclick="showPage('loginPage')">Start!</button>
         </div>
+        <div id="typeWriter" style="font-family: Montserrat; font-weight: 700; color: var(--primary); min-height: 1.5em; font-size: 1.1rem;"></div>
     </div>
 
     <div id="loginPage" class="page">
@@ -146,7 +162,7 @@
             <span class="separator">:</span>
             <div class="time-block"><span id="mo-val" class="time-number">00</span><span class="time-unit-label">Month</span></div>
             <span class="separator">:</span>
-            <div class="time-block"><span id="d-val" class="time-number">00</span><span class="time-unit-label">Days</span></div>
+            <div class="time-block"><span id="d-val" class="time-number">00</span><span class="time-label">Days</span></div>
             <span class="separator">:</span>
             <div class="time-block"><span id="h-val" class="time-number">00</span><span class="time-unit-label">Hours</span></div>
             <span class="separator">:</span>
@@ -234,23 +250,7 @@
         let currentPin = ""; let currentStep = 1;
         let sliderStates = { memoriesWrapper: 0, polaroidWrapper: 0 };
 
-        // สร้างหัวใจลอยเบื้องหลังหน้า Intro
-        function createParticles() {
-            const container = document.getElementById('particles');
-            const icons = ['❤️', '💖', '✨', '🌸'];
-            for (let i = 0; i < 20; i++) {
-                const p = document.createElement('div');
-                p.className = 'p-heart';
-                p.innerHTML = icons[Math.floor(Math.random() * icons.length)];
-                p.style.left = Math.random() * 100 + 'vw';
-                p.style.animationDelay = Math.random() * 8 + 's';
-                p.style.fontSize = (Math.random() * 20 + 10) + 'px';
-                container.appendChild(p);
-            }
-        }
-        createParticles();
-
-        const introText = "Happy Valentine's Day";
+        const introText = "Our Story Begins Here...";
         let introIdx = 0;
         function typeIntro() { if (introIdx < introText.length) { document.getElementById("typeWriter").innerHTML += introText.charAt(introIdx); introIdx++; setTimeout(typeIntro, 120); } }
         window.onload = typeIntro;
@@ -275,14 +275,7 @@
         function pressKey(n) { if (currentPin.length < 6) { currentPin += n; updateDots(); } }
         function deleteKey() { currentPin = currentPin.slice(0, -1); updateDots(); }
         function updateDots() { const dots = document.querySelectorAll('.pin-dot'); dots.forEach((dot, i) => dot.classList.toggle('filled', i < currentPin.length)); }
-        function checkPin() { 
-            if (currentPin === correctPin) { 
-                showPage('menuPage'); 
-                const bgMusic = document.getElementById('bgMusic');
-                bgMusic.play().catch(() => {});
-                document.getElementById('musicControl').classList.add('visible'); 
-            } else { alert('รหัสผ่านไม่ถูกต้อง'); currentPin = ""; updateDots(); } 
-        }
+        function checkPin() { if (currentPin === correctPin) { showPage('menuPage'); const bgMusic = document.getElementById('bgMusic'); bgMusic.play().catch(() => {}); document.getElementById('musicControl').classList.add('visible'); } else { alert('รหัสผ่านไม่ถูกต้อง'); currentPin = ""; updateDots(); } }
 
         function setMusicVolume(vol) { document.getElementById('bgMusic').volume = vol; }
 
