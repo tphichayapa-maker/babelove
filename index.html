@@ -17,60 +17,73 @@
         .active { display: flex !important; flex-direction: column; align-items: center; justify-content: center; }
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
 
-        /* --- ✨ อัปเกรดหน้า Intro ตามสไตล์ S__48103467.jpg ✨ --- */
+        /* --- ✨ แก้ไขหน้า Intro ให้เป็นรูปหัวใจสวยเป๊ะตามเรฟ S__48103467.jpg ✨ --- */
         #introPage.page { background: linear-gradient(180deg, #fce4ec 0%, #ffffff 100%); border: none; box-shadow: none; overflow: visible; }
         
-        .anniversary-heart {
+        .heart-wrapper {
             position: relative;
-            width: 300px;
-            height: 300px;
+            width: 320px;
+            height: 320px;
+            margin: 40px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: heartPulse 2s infinite ease-in-out;
+        }
+
+        /* โครงสร้างรูปหัวใจที่ถูกต้อง */
+        .heart-shape {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: #ff85a2;
+            transform: rotate(-45deg);
+            box-shadow: 0 0 60px rgba(255, 133, 162, 0.6);
+            z-index: 1;
+        }
+        .heart-shape::before, .heart-shape::after {
+            content: "";
+            position: absolute;
+            width: 200px;
+            height: 200px;
             background: #ff85a2;
             border-radius: 50%;
+        }
+        .heart-shape::before { top: -100px; left: 0; }
+        .heart-shape::after { left: 100px; top: 0; }
+
+        /* กล่องข้อความด้านบนหัวใจ */
+        .heart-content {
+            position: relative;
+            z-index: 10;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 70px rgba(255, 133, 162, 0.5);
-            animation: heartPulse 2s infinite ease-in-out;
             color: white;
-            padding: 20px;
-            margin: 0 auto 30px auto;
-            z-index: 2;
+            width: 100%;
+            text-align: center;
         }
 
-        /* สร้างทรงหัวใจที่นุ่มนวลแบบในรูป */
-        .anniversary-heart::before, .anniversary-heart::after {
-            content: "";
-            position: absolute;
-            width: 210px;
-            height: 290px;
-            background: #ff85a2;
-            border-radius: 150px 150px 0 0;
-            z-index: -1;
-        }
-        .anniversary-heart::before { left: 145px; transform: rotate(-45deg); transform-origin: 0 100%; }
-        .anniversary-heart::after { left: -55px; transform: rotate(45deg); transform-origin: 100% 100%; }
+        @keyframes heartPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
 
-        @keyframes heartPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
-
-        .anniversary-text { font-family: 'Montserrat'; font-weight: 700; font-size: 1.4rem; line-height: 1.2; margin: 0; text-shadow: 0 2px 8px rgba(0,0,0,0.1); text-transform: uppercase; }
-        .special-gift { font-size: 0.85rem; margin-top: 5px; font-weight: 400; opacity: 0.95; font-style: italic; }
+        .anniversary-text { font-family: 'Montserrat'; font-weight: 700; font-size: 1.5rem; line-height: 1.2; margin: 0; text-shadow: 0 2px 10px rgba(0,0,0,0.1); text-transform: uppercase; }
+        .special-gift { font-size: 0.9rem; margin-top: 8px; font-weight: 400; opacity: 0.95; }
 
         .start-btn {
-            background: rgba(255, 255, 255, 0.95);
+            background: white;
             color: #ff4d6d;
             border: none;
             padding: 10px 35px;
             border-radius: 25px;
             font-weight: 700;
-            font-size: 0.95rem;
-            margin-top: 25px;
+            font-size: 1rem;
+            margin-top: 30px;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: 0.3s;
             font-family: 'Montserrat';
         }
-        .start-btn:hover { background: white; transform: scale(1.1); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+        .start-btn:hover { transform: scale(1.1); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
 
         /* --- PIN System (Code: 190767) --- */
         .pin-hint { font-size: 0.95rem; color: #ff8fa3; margin: 15px 0 20px 0; font-weight: 600; display: block; }
@@ -87,10 +100,20 @@
         .timer-row-new { display: flex; align-items: center; justify-content: center; gap: 4px; margin-top: 15px; }
         .time-block { display: flex; flex-direction: column; align-items: center; min-width: 45px; }
         .time-number { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--primary); }
-        .time-unit-label { font-family: 'Montserrat', sans-serif !important; font-size: 0.65rem !important; font-weight: 700 !important; color: #888; text-transform: capitalize; margin-top: 2px; display: block; }
+        
+        /* แก้ไขตัวหนังสือ Year, Month ให้เท่ากับเพื่อนเป๊ะๆ */
+        .time-unit-label { 
+            font-family: 'Montserrat', sans-serif !important; 
+            font-size: 0.65rem !important; 
+            font-weight: 700 !important; 
+            color: #888; 
+            text-transform: capitalize; 
+            margin-top: 2px; 
+            display: block; 
+        }
         .separator { font-size: 1.2rem; font-weight: 700; color: var(--primary); margin-top: -15px; }
 
-        /* --- Slider System (FIXED IMAGE SIZES) --- */
+        /* --- Memories System (FIXED SIZES) --- */
         .slider-container { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 25px; background: white; flex-grow: 1; display: flex; flex-direction: column; }
         .slider-wrapper { display: flex; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); width: 100%; height: 100%; }
         .slide { min-width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px 10px 50px 10px; }
@@ -105,7 +128,7 @@
         #musicControl.visible { opacity: 1; pointer-events: auto; }
         .heart-pop { position: fixed; font-size: 20px; pointer-events: none; z-index: 10000; animation: heartPopAnim 0.8s ease-out forwards; }
         @keyframes heartPopAnim { 0% { transform: scale(0); opacity: 1; } 100% { transform: translateY(-50px) scale(1.5); opacity: 0; } }
-        
+
         .quiz-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; margin: 15px auto; }
         .quiz-card img { width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: 18px; border: 2px solid transparent; }
         .poster-img { aspect-ratio: 2 / 3 !important; }
@@ -117,12 +140,15 @@
     <div id="musicControl" onclick="toggleMusic()">🎵</div>
 
     <div id="introPage" class="page active">
-        <div class="anniversary-heart">
-            <h1 class="anniversary-text">Happy<br>Valentine's Day</h1>
-            <p class="special-gift">Special gift for you</p>
-            <button class="start-btn" onclick="showPage('loginPage')">Start!</button>
+        <div class="heart-wrapper">
+            <div class="heart-shape"></div>
+            <div class="heart-content">
+                <h1 class="anniversary-text">Happy<br>Valentine's Day</h1>
+                <p class="special-gift">Special gift for you</p>
+                <button class="start-btn" onclick="showPage('loginPage')">Start!</button>
+            </div>
         </div>
-        <div id="typeWriter" style="font-family: Montserrat; font-weight: 700; color: var(--primary); min-height: 1.5em; font-size: 1.1rem;"></div>
+        <div id="typeWriter" style="font-family: Montserrat; font-weight: 700; color: var(--primary); min-height: 1.5em; font-size: 1.1rem; margin-top: 20px;"></div>
     </div>
 
     <div id="loginPage" class="page">
