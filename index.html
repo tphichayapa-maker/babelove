@@ -17,7 +17,7 @@
         .active { display: flex !important; flex-direction: column; align-items: center; justify-content: center; }
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
 
-        /* --- Intro & Flowers --- */
+        /* --- Intro Flowers --- */
         .flower-stage { position: relative; height: 150px; width: 100%; margin-bottom: 20px; overflow: hidden; }
         .flower-emoji { position: absolute; bottom: -50px; opacity: 0; animation: floatFlower 6s linear infinite; }
         @keyframes floatFlower { 0% { transform: translateY(0) rotate(0deg); opacity: 0; } 20% { opacity: 0.8; } 100% { transform: translateY(-250px) rotate(360deg); opacity: 0; } }
@@ -28,7 +28,7 @@
         .typing-text { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--primary); min-height: 1.5em; }
 
         /* --- PIN System (Code: 190767) --- */
-        .pin-hint { font-size: 0.95rem; color: #ff8fa3; margin: 12px 0 20px 0; font-weight: 600; display: block; }
+        .pin-hint { font-size: 0.95rem; color: #ff8fa3; margin: 12px 0 18px 0; font-weight: 600; display: block; }
         .pin-display { display: flex; gap: 12px; margin-bottom: 25px; justify-content: center; }
         .pin-dot { width: 16px; height: 16px; border-radius: 50%; background: #eee; border: 2px solid #ddd; transition: 0.2s; }
         .pin-dot.filled { background: var(--primary); border-color: var(--primary); transform: scale(1.2); }
@@ -40,31 +40,31 @@
         .journey-title { font-family: 'Montserrat'; font-weight: 700; color: var(--primary); font-size: 1.6rem; margin: 0; }
         .profile-img-container { width: 140px; height: 140px; border-radius: 50%; border: 4px solid #fff; overflow: hidden; margin: 15px auto; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
         .profile-img-container img { width: 100%; height: 100%; object-fit: cover; }
-        
         .timer-row-new { display: flex; align-items: center; justify-content: center; gap: 4px; margin-top: 15px; }
-        .time-block { display: flex; flex-direction: column; align-items: center; min-width: 45px; }
+        .time-block { display: flex; flex-direction: column; align-items: center; min-width: 42px; }
         .time-number { font-family: 'Montserrat', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--primary); }
-        
-        /* แก้ไขตัวหนังสือ Year, Month ให้เท่ากับเพื่อนเป๊ะๆ */
-        .time-unit-label { 
-            font-family: 'Montserrat', sans-serif !important; 
-            font-size: 0.65rem !important; 
-            font-weight: 700 !important; 
-            color: #888; 
-            text-transform: capitalize; 
-            margin-top: 2px; 
-            display: block; 
-        }
+        .time-unit-label { font-family: 'Montserrat', sans-serif !important; font-size: 0.65rem !important; font-weight: 700 !important; color: #888; text-transform: capitalize; margin-top: 2px; display: block; }
         .separator { font-size: 1.2rem; font-weight: 700; color: var(--primary); margin-top: -15px; }
 
-        /* --- Slider System --- */
+        /* --- Slider System (FIXED IMAGE SIZES) --- */
         .slider-container { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 25px; background: white; flex-grow: 1; display: flex; flex-direction: column; }
         .slider-wrapper { display: flex; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); width: 100%; height: 100%; }
         .slide { min-width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px 10px 50px 10px; }
-        .slide img, .slide video { max-width: 100%; max-height: 75vh; object-fit: contain; border-radius: 12px; }
+        
+        /* ปรับให้ขนาดรูปภาพเท่ากันเป๊ะทุกรูป */
+        .slide img, .slide video { 
+            width: 100%; 
+            max-width: 350px; /* คุมความกว้างไม่ให้ใหญ่ล้นจอ notebook */
+            aspect-ratio: 3 / 4; /* ล็อกสัดส่วนแนวตั้ง */
+            object-fit: cover; /* ตัดส่วนเกินออกให้เต็มกรอบพอดี */
+            border-radius: 20px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
         .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 45px; height: 45px; cursor: pointer; z-index: 100; box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
         .nav-btn:disabled { opacity: 0; pointer-events: none; }
 
+        /* --- Others --- */
         .red-pill-btn { background: linear-gradient(45deg, var(--primary), #ff8fa3); color: white; border: none; padding: 12px 35px; border-radius: 50px; font-weight: 600; cursor: pointer; margin-top: 15px; box-shadow: 0 8px 18px rgba(255, 77, 109, 0.3); }
         .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; }
         .menu-item { background: white; padding: 25px 10px; border-radius: 30px; border: 2px solid #fff0f3; cursor: pointer; transition: 0.3s; }
@@ -72,7 +72,6 @@
         
         #musicControl { position: fixed; top: 20px; right: 20px; z-index: 1000; background: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; opacity: 0; pointer-events: none; }
         #musicControl.visible { opacity: 1; pointer-events: auto; }
-        
         .heart-pop { position: fixed; font-size: 20px; pointer-events: none; z-index: 10000; animation: heartPopAnim 0.8s ease-out forwards; }
         @keyframes heartPopAnim { 0% { transform: scale(0); opacity: 1; } 100% { transform: translateY(-50px) scale(1.5); opacity: 0; } }
         
@@ -180,9 +179,9 @@
             <button id="polaroidPrev" onclick="moveSlide('polaroidWrapper', -1)" class="nav-btn" style="left:10px;">❮</button>
             <button id="polaroidNext" onclick="moveSlide('polaroidWrapper', 1)" class="nav-btn" style="right:10px;">❯</button>
             <div class="slider-wrapper" id="polaroidWrapper">
-                <div class="slide"><div class="polaroid-frame"><img src="pola1.jpg"></div></div>
-                <div class="slide"><div class="polaroid-frame"><img src="pola2.jpg"></div></div>
-                <div class="slide"><div class="polaroid-frame"><img src="pola3.jpg"></div></div>
+                <div class="slide"><div class="polaroid-frame" style="aspect-ratio: 1/1;"><img src="pola1.jpg" style="aspect-ratio: 1/1; object-fit: cover;"></div></div>
+                <div class="slide"><div class="polaroid-frame" style="aspect-ratio: 1/1;"><img src="pola2.jpg" style="aspect-ratio: 1/1; object-fit: cover;"></div></div>
+                <div class="slide"><div class="polaroid-frame" style="aspect-ratio: 1/1;"><img src="pola3.jpg" style="aspect-ratio: 1/1; object-fit: cover;"></div></div>
                 <div class="slide"><div style="font-size: 60px;">📸</div><h2 style="font-family: 'Montserrat';">COLLECTION</h2><button class="red-pill-btn" onclick="showPage('menuPage')">กลับสู่เมนูหลัก</button></div>
             </div>
         </div>
@@ -245,14 +244,7 @@
         function pressKey(n) { if (currentPin.length < 6) { currentPin += n; updateDots(); } }
         function deleteKey() { currentPin = currentPin.slice(0, -1); updateDots(); }
         function updateDots() { const dots = document.querySelectorAll('.pin-dot'); dots.forEach((dot, i) => dot.classList.toggle('filled', i < currentPin.length)); }
-        function checkPin() { 
-            if (currentPin === correctPin) { 
-                showPage('menuPage'); 
-                const bgMusic = document.getElementById('bgMusic');
-                bgMusic.play().catch(() => {});
-                document.getElementById('musicControl').classList.add('visible'); 
-            } else { alert('รหัสผ่านไม่ถูกต้อง'); currentPin = ""; updateDots(); } 
-        }
+        function checkPin() { if (currentPin === correctPin) { showPage('menuPage'); const bgMusic = document.getElementById('bgMusic'); bgMusic.play().catch(() => {}); document.getElementById('musicControl').classList.add('visible'); } else { alert('รหัสผ่านไม่ถูกต้อง'); currentPin = ""; updateDots(); } }
 
         function setMusicVolume(vol) { document.getElementById('bgMusic').volume = vol; }
 
