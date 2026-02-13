@@ -40,21 +40,40 @@
         .start-btn { background: #ff4d6d; color: white; border: none; padding: 14px 70px; border-radius: 40px; font-weight: 800; font-size: 1.1rem; cursor: pointer; box-shadow: 0 10px 25px rgba(255, 77, 109, 0.3); transition: 0.4s; font-family: 'Montserrat'; margin-top: 35px; }
         .start-btn:hover { transform: scale(1.05); background: #ff2a51; }
 
+        /* --- 🔐 หน้า Login --- */
+        .pin-hint { font-size: 0.9rem; color: #ff8fa3; margin-bottom: 10px; font-weight: 600; }
+        .pin-display { display: flex; gap: 10px; margin-bottom: 25px; }
+        .pin-dot { width: 14px; height: 14px; border-radius: 50%; background: #eee; border: 2px solid #ddd; }
+        .pin-dot.filled { background: var(--primary); border-color: var(--primary); transform: scale(1.2); }
+        .keypad { display: grid !important; grid-template-columns: repeat(3, 1fr); gap: 12px; width: 100%; max-width: 250px; }
+        .keypad button { width: 65px; height: 65px; border-radius: 50%; border: none; background: #fff; font-size: 1.5rem; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center; }
+
         /* --- ⏳ หน้าเวลา (Sudkhet & Bamboo Edition) --- */
-        .couple-names { font-family: 'Dancing Script', cursive; font-size: 2.2rem; color: var(--primary); margin-bottom: 5px; text-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .couple-names { font-family: 'Dancing Script', cursive; font-size: 2.2rem; color: var(--primary); margin-bottom: 5px; }
         .photo-frame {
             width: 155px; height: 155px; border-radius: 50%; border: 6px solid #fff;
             overflow: hidden; margin: 10px auto; position: relative;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             animation: pulseGlow 3s infinite ease-in-out;
         }
-        @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 10px rgba(255, 77, 109, 0.2); transform: scale(1); } 50% { box-shadow: 0 0 35px rgba(255, 77, 109, 0.6); transform: scale(1.02); } }
-
+        @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 10px rgba(255, 77, 109, 0.2); } 50% { box-shadow: 0 0 35px rgba(255, 77, 109, 0.6); } }
         .timer-row-new { display: flex; align-items: baseline; justify-content: center; gap: 6px; margin: 25px 0; }
-        .time-block { display: flex; flex-direction: column; align-items: center; min-width: 48px; position: relative; }
+        .time-block { display: flex; flex-direction: column; align-items: center; min-width: 48px; }
         .time-number { font-family: 'Montserrat', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--primary); }
-        .time-unit-label { font-family: 'Montserrat', sans-serif !important; font-size: 0.65rem !important; font-weight: 700 !important; color: #999; text-transform: capitalize; margin-top: 4px; }
+        .time-unit-label { font-family: 'Montserrat', sans-serif !important; font-size: 0.65rem !important; font-weight: 700 !important; color: #999; text-transform: capitalize; }
         .separator { font-size: 1.3rem; font-weight: 700; color: var(--primary); margin-top: -15px; opacity: 0.5; }
+
+        /* --- 📱 หน้าเมนู (อัปเดตภาษาอังกฤษขนาดใหญ่ + ไทยขนาดเล็ก) --- */
+        .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; }
+        .menu-item { 
+            background: white; padding: 20px 10px; border-radius: 40px; 
+            border: 2px solid #fff0f3; cursor: pointer; transition: 0.3s;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .menu-item:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 10px 20px rgba(255, 77, 109, 0.1); }
+        .menu-icon { font-size: 40px; margin-bottom: 8px; }
+        .menu-en { font-family: 'Montserrat'; font-weight: 800; font-size: 1rem; color: var(--text); line-height: 1.2; }
+        .menu-th { font-family: 'Prompt'; font-weight: 400; font-size: 0.7rem; color: #999; margin-top: 3px; }
 
         /* --- 🖼️ ระบบสไลเดอร์ --- */
         .slider-container { position: relative; width: 100%; height: 68%; overflow: hidden; border-radius: 30px; background: #fff; display: flex; flex-direction: column; }
@@ -66,7 +85,7 @@
         .nav-btn-new:disabled { opacity: 0.3; }
         .slide-counter { font-family: 'Montserrat'; font-weight: 700; color: var(--primary); min-width: 60px; }
 
-        /* --- 💌 ระบบจดหมายรัก (จัดรูปแบบตามสั่ง) --- */
+        /* --- 💌 ระบบจดหมายรัก --- */
         #quizResultView, #letterView { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
         #envelopeWrapper { animation: envelopeShake 2s infinite ease-in-out; padding: 25px 20px; background: #fff0f3; border-radius: 35px; border: 2px dashed var(--primary); width: 95%; max-width: 300px; cursor: pointer; margin: 0 auto; }
         @keyframes envelopeShake { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(3deg); } 75% { transform: rotate(-3deg); } }
@@ -80,8 +99,7 @@
         /* --- 📝 แบบทดสอบ --- */
         .quiz-step { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
         .quiz-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; max-width: 380px; margin: 20px auto 0 auto; }
-        .quiz-card { background: #fff; padding: 25px 15px; border-radius: 35px; border: 3px solid #fff0f3; cursor: pointer; display: flex; flex-direction: column; align-items: center; transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 8px 20px rgba(255,77,109,0.05); }
-        .quiz-card:hover { transform: scale(1.08); border-color: var(--primary); }
+        .quiz-card { background: #fff; padding: 25px 15px; border-radius: 35px; border: 3px solid #fff0f3; cursor: pointer; display: flex; flex-direction: column; align-items: center; transition: 0.3s; box-shadow: 0 8px 20px rgba(255,77,109,0.05); }
         .quiz-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 20px; margin-bottom: 15px; }
         .quiz-icon-jumbo { font-size: 75px; margin-bottom: 15px; }
         .quiz-label { font-weight: 700; font-size: 1.05rem; color: var(--text); }
@@ -128,14 +146,30 @@
     </div>
 
     <div id="menuPage" class="page">
-        <h1 style="font-family: Montserrat; font-weight: 800; margin-bottom: 30px; font-size: 1.5rem;">MAIN MENU</h1>
+        <h1 style="font-family: Montserrat; font-weight: 800; margin-bottom: 25px; font-size: 1.5rem;">MAIN MENU</h1>
         <div class="menu-grid">
-            <div class="menu-item" onclick="showPage('timePage')"><div style="font-size:45px">⏳</div><p class="quiz-label">เวลาของเรา</p></div>
-            <div class="menu-item" onclick="showPage('memoriesPage')"><div style="font-size:45px">🖼️</div><p class="quiz-label">ความทรงจำ</p></div>
-            <div class="menu-item" onclick="showPage('polaroidPage')"><div style="font-size:45px">📸</div><p class="quiz-label">โพลารอยด์</p></div>
-            <div class="menu-item" onclick="startQuiz()"><div style="font-size:45px">📝</div><p class="quiz-label">แบบทดสอบ</p></div>
+            <div class="menu-item" onclick="showPage('timePage')">
+                <div class="menu-icon">⏳</div>
+                <p class="menu-en">Love Journey</p>
+                <p class="menu-th">เวลาของเรา</p>
+            </div>
+            <div class="menu-item" onclick="showPage('memoriesPage')">
+                <div class="menu-icon">🖼️</div>
+                <p class="menu-en">Memories</p>
+                <p class="menu-th">ความทรงจำ</p>
+            </div>
+            <div class="menu-item" onclick="showPage('polaroidPage')">
+                <div class="menu-icon">📸</div>
+                <p class="menu-en">Polaroids</p>
+                <p class="menu-th">โพลารอยด์</p>
+            </div>
+            <div class="menu-item" onclick="startQuiz()">
+                <div class="menu-icon">📝</div>
+                <p class="menu-en">Quiz Game</p>
+                <p class="menu-th">แบบทดสอบ</p>
+            </div>
         </div>
-        <button class="start-btn" onclick="showPage('introPage')" style="background:transparent; color:#bbb; border:1px solid #eee; margin-top:40px; font-size: 0.8rem; padding: 10px 30px; box-shadow: none;">LOGOUT</button>
+        <button class="start-btn" onclick="showPage('introPage')" style="background:transparent; color:#bbb; border:1px solid #eee; margin-top:35px; font-size: 0.8rem; padding: 10px 30px; box-shadow: none;">LOGOUT</button>
     </div>
 
     <div id="timePage" class="page">
