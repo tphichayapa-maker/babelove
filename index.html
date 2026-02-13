@@ -101,45 +101,57 @@
         .quiz-label { font-weight: 700; font-size: 1.05rem; color: var(--text); }
         .quiz-q-text { font-weight: 600; font-size: 1.2rem; margin-bottom: 10px; color: var(--text); }
 
-        /* --- 💌 ระบบจดหมายรัก --- */
+        /* --- 💌 ระบบจดหมายรัก (แก้ไขความตรงกลางโน้ตบุ๊ก) --- */
+        #quizResultView, #letterView {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
         #envelopeWrapper { 
             animation: envelopeShake 2s infinite ease-in-out;
-            padding: 20px;
+            padding: 25px 20px;
             background: #fff0f3;
-            border-radius: 30px;
+            border-radius: 35px;
             border: 2px dashed var(--primary);
-            width: 100%;
+            width: 95%; /* ขยายให้กว้างขึ้นเล็กน้อยเพื่อความสมดุล */
             max-width: 300px;
             cursor: pointer;
+            margin: 0 auto; /* ✅ บังคับอยู่ตรงกลางแนวนอน */
         }
         @keyframes envelopeShake { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(3deg); } 75% { transform: rotate(-3deg); } }
         
         #letterBody {
             background: #fffdf5;
             padding: 30px 25px;
-            border-radius: 20px;
+            border-radius: 25px;
             border: 1px solid #f0e68c;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             text-align: left;
             width: 100%;
+            max-width: 350px; /* คุมความกว้างจดหมาย */
             animation: fadeInUp 0.8s ease-out;
             max-height: 50vh;
             overflow-y: auto;
+            margin: 0 auto; /* ✅ บังคับอยู่ตรงกลางแนวนอน */
         }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
         .letter-text {
-            font-family: 'Prompt', sans-serif; /* ใช้ฟอนต์ไทยให้อ่านง่าย */
-            font-size: 1.1rem;
+            font-family: 'Prompt', sans-serif;
+            font-size: 1.05rem;
             color: var(--text);
-            line-height: 1.8;
+            line-height: 1.7;
         }
         .highlight-bold {
             font-weight: 800;
             color: var(--primary);
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             display: block;
             margin-top: 15px;
+            text-align: center; /* เน้นประโยคทองไว้ตรงกลาง */
         }
 
         /* --- ส่วนอื่นๆ --- */
@@ -191,7 +203,7 @@
             <div class="menu-item" onclick="showPage('polaroidPage')"><div style="font-size:45px">📸</div><p class="quiz-label">โพลารอยด์</p></div>
             <div class="menu-item" onclick="startQuiz()"><div style="font-size:45px">📝</div><p class="quiz-label">แบบทดสอบ</p></div>
         </div>
-        <button class="start-btn" onclick="showPage('introPage')" style="background:transparent; color:#bbb; border:1px solid #eee; margin-top:40px; font-size: 0.8rem; padding: 10px 30px; box-shadow: none;">LOGOUT</button>
+        <button class="start-btn" onclick="showPage('introPage')" style="background:transparent; color:#bbb; border:1px solid #eee; margin-top:40px; font-size: 0.8rem; padding: 10px 30px; opacity: 1; box-shadow: none;">LOGOUT</button>
     </div>
 
     <div id="timePage" class="page">
@@ -252,7 +264,7 @@
             <div id="step-6" class="quiz-step" style="display:none;"><p class="quiz-q-text">6. ใครทักหาใครก่อน?</p><div class="quiz-row"><div class="quiz-card" onclick="handleQuiz(true, 'ถูกต้อง! เธอเป็นฝ่ายเริ่มก่อนนะ ✨')"><div class="quiz-icon-jumbo">👦🏻</div><p class="quiz-label">เธอ</p></div><div class="quiz-card" onclick="handleQuiz(false, 'ไม่ใช่เค้าซะหน่อย! 😝')"><div class="quiz-icon-jumbo">👧🏻</div><p class="quiz-label">เค้า</p></div></div></div>
             <div id="step-7" class="quiz-step" style="display:none;"><p class="quiz-q-text">7. ของขวัญวาเลนไทน์ชิ้นแรกที่ให้คือ?</p><div class="quiz-row"><div class="quiz-card" onclick="handleQuiz(false, 'ผิดจ้า 😂')"><div class="quiz-icon-jumbo">🎁</div><p class="quiz-label">กล่องสุ่ม</p></div><div class="quiz-card" onclick="handleQuiz(true, 'เย้! เสื้อนั่นเอง ❤️')"><div class="quiz-icon-jumbo">👕</div><p class="quiz-label">เสื้อ</p></div></div></div>
             
-            <div id="step-final" class="quiz-step" style="display:none;">
+            <div id="step-final" class="quiz-step" style="display:none; width: 100%;">
                 <div id="quizResultView">
                     <div style="font-size:70px">🏆</div>
                     <h2 style="font-family: Montserrat; font-weight: 800; color: var(--primary);">CONGRATULATIONS!</h2>
@@ -273,7 +285,7 @@
                     </div>
                 </div>
 
-                <button class="start-btn" onclick="showPage('menuPage')" style="margin-top:30px; padding: 10px 40px;">กลับเมนูหลัก</button>
+                <button class="start-btn" onclick="showPage('menuPage')" style="margin-top:35px; padding: 10px 40px;">กลับเมนูหลัก</button>
             </div>
         </div>
     </div>
@@ -318,7 +330,7 @@
             if (id === 'memoriesPage') resetSlider('memoriesWrapper');
             if (id === 'polaroidPage') resetSlider('polaroidWrapper');
             if (id === 'quizPage') {
-                document.getElementById('quizResultView').style.display = 'block';
+                document.getElementById('quizResultView').style.display = 'flex';
                 document.getElementById('letterView').style.display = 'none';
             }
         }
@@ -342,10 +354,10 @@
         }
 
         function startQuiz() { currentStep = 1; document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none'); document.getElementById('step-1').style.display = 'block'; showPage('quizPage'); }
-        function handleQuiz(isCorrect, msg) { alert(msg); if (isCorrect) { document.getElementById(`step-${currentStep}`).style.display = 'none'; currentStep++; let next = currentStep > 7 ? 'step-final' : `step-${currentStep}`; document.getElementById(next).style.display = 'block'; } }
+        function handleQuiz(isCorrect, msg) { alert(msg); if (isCorrect) { document.getElementById(`step-${currentStep}`).style.display = 'none'; currentStep++; let next = currentStep > 7 ? 'step-final' : `step-${currentStep}`; document.getElementById(next).style.display = 'flex'; } }
         function openLetter() {
             document.getElementById('quizResultView').style.display = 'none';
-            document.getElementById('letterView').style.display = 'block';
+            document.getElementById('letterView').style.display = 'flex';
         }
         function toggleMusic() { const m = document.getElementById('bgMusic'); if (m.paused) m.play(); else m.pause(); }
     </script>
