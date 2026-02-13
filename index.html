@@ -27,7 +27,8 @@
             max-width: 450px; 
             height: 85vh; 
             background: var(--white); 
-            padding: 30px; 
+            /* ✅ ปรับ Padding ล่างเพิ่มขึ้น เพื่อดันเนื้อหาให้ดูอยู่กึ่งกลางสายตามากขึ้น */
+            padding: 30px 30px 50px 30px; 
             border-radius: 50px; 
             box-shadow: 0 25px 60px rgba(255, 77, 109, 0.12); 
             text-align: center; 
@@ -41,7 +42,7 @@
         .active { display: flex !important; }
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
 
-        /* --- ✨ หน้า Intro (ข้อความในหัวใจ) ✨ --- */
+        /* --- ✨ หน้า Intro (แก้ไขสีและตำแหน่ง) ✨ --- */
         .heart-text-wrapper {
             position: relative;
             width: 280px;
@@ -59,14 +60,30 @@
             width: 100%; text-align: center; z-index: 10;
         }
         .typing-container { min-height: 2.5em; display: flex; align-items: center; justify-content: center; }
+        
+        /* ✅ แก้ไขสีข้อความหัวข้อให้เข้มขึ้น */
         .typing-headline {
             font-family: 'Montserrat', sans-serif;
-            font-weight: 800; font-size: 1.3rem; color: white;
+            font-weight: 800; font-size: 1.3rem; 
+            color: var(--text); /* เปลี่ยนจาก white เป็นสีแดงเข้ม */
             text-transform: uppercase; letter-spacing: 1px;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            /* เพิ่มเงาสีขาวจางๆ เพื่อให้ตัวหนังสือเด้งออกมาจากพื้นหลังหัวใจ */
+            text-shadow: 0 2px 10px rgba(255,255,255,0.8); 
         }
-        .cursor { display: inline-block; width: 3px; height: 1.2em; background: white; margin-left: 5px; animation: blink 1s infinite; vertical-align: middle; }
+        /* ✅ แก้ไขสีเคอร์เซอร์ให้เข้ากับข้อความ */
+        .cursor { display: inline-block; width: 3px; height: 1.2em; background: var(--text); margin-left: 5px; animation: blink 1s infinite; vertical-align: middle; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        /* ✅ แก้ไขสีข้อความรอง */
+        .special-gift-style {
+            font-size: 0.9rem; 
+            color: var(--text); /* เปลี่ยนเป็นสีเข้ม */
+            font-weight: 600; 
+            font-style: italic; 
+            opacity: 0.8; 
+            margin-top: 5px; 
+            text-shadow: 0 1px 5px rgba(255,255,255,0.8);
+        }
 
         .start-btn {
             background: #ff4d6d; color: white; border: none;
@@ -74,7 +91,8 @@
             font-weight: 800; font-size: 1.1rem; cursor: pointer;
             box-shadow: 0 12px 25px rgba(255, 77, 109, 0.35);
             transition: 0.4s; font-family: 'Montserrat';
-            margin-top: 20px;
+            /* ✅ ลดระยะห่างด้านบนลง เพื่อให้ปุ่มขยับเข้าไปใกล้หัวใจมากขึ้น */
+            margin-top: 5px; 
         }
         .start-btn:hover { transform: scale(1.05); background: #ff2a51; }
 
@@ -125,7 +143,7 @@
             <div class="intro-image-container"><img src="intro.png" alt="Happy Valentine Cover"></div>
             <div class="heart-overlay-content">
                 <div class="typing-container"><h1 class="typing-headline"><span id="typedText"></span><span class="cursor"></span></h1></div>
-                <p style="color:white; font-size:0.9rem; opacity:0.9; font-style:italic;">Special gift for you</p>
+                <p class="special-gift-style">Special gift for you</p>
             </div>
         </div>
         <button class="start-btn" onclick="showPage('loginPage')">START!</button>
