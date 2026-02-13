@@ -24,10 +24,12 @@
         .page { 
             display: none; 
             width: 90%; 
-            max-width: 420px; /* กระชับการ์ดให้ดูดีขึ้นบนโน้ตบุ๊ก */
-            height: 85vh; 
+            max-width: 420px;
+            height: auto; /* เปลี่ยน height เป็น auto เพื่อให้ยืดหดตามเนื้อหา */
+            min-height: 85vh; /* แต่สูงอย่างน้อย 85% ของจอ */
             background: var(--white); 
-            padding: 30px; 
+            /* ✅ แก้ไข: เพิ่ม Padding ด้านล่าง (60px) เพื่อดันปุ่มขึ้นมาไม่ให้ตกขอบ */
+            padding: 40px 30px 60px 30px; 
             border-radius: 50px; 
             box-shadow: 0 30px 80px rgba(255, 77, 109, 0.15); 
             text-align: center; 
@@ -35,19 +37,17 @@
             overflow: hidden; 
             animation: fadeInPage 0.6s ease-out;
             flex-direction: column;
-            justify-content: center; /* จัดกึ่งกลางแนวตั้งเป๊ะ */
-            align-items: center;    /* จัดกึ่งกลางแนวนอนเป๊ะ */
+            justify-content: center;
+            align-items: center;
         }
         .active { display: flex !important; }
         @keyframes fadeInPage { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
 
-        /* --- ✨ หน้า Intro (แก้ไขความสมมาตรและฟอนต์) ✨ --- */
-        #introPage.page { gap: 0; } /* ใช้ gap 0 แล้วไปคุมระยะด้วย Margin ข้างในแทน */
-
+        /* --- ✨ หน้า Intro ✨ --- */
         .heart-text-wrapper {
             position: relative;
-            width: 320px; /* ขนาดหัวใจที่พอดีกับจอ */
-            margin-bottom: 20px; /* ระยะห่างจากปุ่ม */
+            width: 320px;
+            margin-bottom: 25px; /* เพิ่มระยะห่างจากปุ่ม */
             animation: gentleFloat 4s ease-in-out infinite;
         }
         .intro-image-container { width: 100%; filter: drop-shadow(0 15px 40px rgba(255, 77, 109, 0.35)); }
@@ -58,16 +58,17 @@
             position: absolute;
             top: 48%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 100%; text-align: center; z-index: 10;
+            width: 90%; /* บีบความกว้างข้อความลงเล็กน้อยไม่ให้ชิดขอบหัวใจเกินไป */
+            text-align: center; z-index: 10;
         }
         
-        /* ✅ ฟอนต์หน้าแรกแบบใหม่ Dancing Script */
+        /* ✅ แก้ไข: ลดขนาดฟอนต์ลงเพื่อไม่ให้ตัว S ตกขอบ */
         .headline-script {
             font-family: 'Dancing Script', cursive;
-            font-size: 2.8rem; 
+            font-size: 2.4rem; /* ลดจาก 2.8rem เหลือ 2.4rem */
             color: var(--text); 
             line-height: 1.1;
-            margin-bottom: 2px;
+            margin-bottom: 5px;
             text-shadow: 0 2px 8px rgba(255,255,255,0.9);
         }
 
@@ -83,7 +84,7 @@
             box-shadow: 0 12px 25px rgba(255, 77, 109, 0.3);
             transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             font-family: 'Montserrat';
-            margin-top: 10px; /* ปรับให้ขยับขึ้นมาไม่ตกจอ */
+            margin-top: 15px; 
         }
         .start-btn:hover { transform: scale(1.05) translateY(-3px); background: #ff2a51; }
 
@@ -95,12 +96,15 @@
         .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; width: 100%; max-width: 260px; }
         .keypad button { width: 60px; height: 60px; border-radius: 50%; border: none; background: #fff; font-size: 1.4rem; font-weight: 700; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
 
-        /* --- ⏳ หน้าเวลาของเรา --- */
+        /* --- ⏳ หน้าเวลาของเรา (แก้ไขปุ่มตกขอบ) --- */
         .timer-row-new { display: flex; align-items: baseline; justify-content: center; gap: 4px; margin-top: 25px; }
         .time-block { display: flex; flex-direction: column; align-items: center; min-width: 45px; }
         .time-number { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--primary); }
         .time-unit-label { font-family: 'Montserrat', sans-serif !important; font-size: 0.6rem !important; font-weight: 700 !important; color: #999; text-transform: capitalize; margin-top: 2px; }
         .separator { font-size: 1.2rem; font-weight: 700; color: var(--primary); margin-top: -15px; }
+        
+        /* ปุ่มหน้าเวลาก็ขยับขึ้น */
+        .back-menu-btn { margin-top: 40px !important; }
 
         /* --- 🖼️ ระบบสไลเดอร์ --- */
         .slider-container { position: relative; width: 100%; height: 70%; overflow: hidden; border-radius: 35px; background: #fff; display: flex; flex-direction: column; }
@@ -116,6 +120,10 @@
         .quiz-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 15px; margin-bottom: 10px; }
         .quiz-icon-large { font-size: 50px; margin-bottom: 10px; }
         .quiz-label { font-weight: 700; font-size: 0.9rem; color: var(--text); }
+
+        /* --- เมนูหลัก --- */
+        .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%; }
+        .menu-item { background: white; padding: 25px 15px; border-radius: 40px; border: 2px solid #fff0f3; cursor: pointer; transition: 0.3s; }
 
         #musicControl { position: fixed; top: 25px; right: 25px; z-index: 1000; background: white; border-radius: 50%; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.1); cursor: pointer; opacity: 0; pointer-events: none; }
         #musicControl.visible { opacity: 1; pointer-events: auto; }
@@ -174,7 +182,7 @@
             <div class="time-block"><span id="min-val" class="time-number">00</span><span class="time-unit-label">Mins</span></div><span class="separator">:</span>
             <div class="time-block"><span id="s-val" class="time-number">00</span><span class="time-unit-label">Secs</span></div>
         </div>
-        <button class="start-btn" onclick="showPage('menuPage')" style="margin-top:50px; padding: 12px 45px;">กลับเมนูหลัก</button>
+        <button class="start-btn back-menu-btn" onclick="showPage('menuPage')">กลับเมนูหลัก</button>
     </div>
 
     <div id="memoriesPage" class="page">
