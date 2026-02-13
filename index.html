@@ -206,7 +206,7 @@
         <div id="step-3" class="quiz-step" style="display:none; width:100%;">
             <p style="font-weight:600; font-size:1.1rem;">3. หนังเรื่องแรกที่ดูด้วยกันคือเรื่อง?</p>
             <div class="quiz-row" style="max-width: 400px; margin: 0 auto;">
-                <div class="quiz-card" onclick="handleQuiz(true, 'แม่นมาก! 🎬')"><img src="rakk.jpg" class="poster-img"><p>A. รักผ่านหน้าต่าง</p></div>
+                <div class="quiz-card" onclick="handleQuiz(true, 'แม่นมาก! 🎬')"><img src="wow.jpg" class="poster-img"><p>A. รักผ่านหน้าต่าง</p></div>
                 <div class="quiz-card" onclick="handleQuiz(false, 'ไม่ใช่จ้า! 😂')"><img src="bad.jpg" class="poster-img"><p>B. Bad boy</p></div>
             </div>
         </div>
@@ -244,7 +244,14 @@
         function pressKey(n) { if (currentPin.length < 6) { currentPin += n; updateDots(); } }
         function deleteKey() { currentPin = currentPin.slice(0, -1); updateDots(); }
         function updateDots() { const dots = document.querySelectorAll('.pin-dot'); dots.forEach((dot, i) => dot.classList.toggle('filled', i < currentPin.length)); }
-        function checkPin() { if (currentPin === correctPin) { showPage('menuPage'); const bgMusic = document.getElementById('bgMusic'); bgMusic.play().catch(() => {}); document.getElementById('musicControl').classList.add('visible'); } else { alert('รหัสผ่านไม่ถูกต้อง'); currentPin = ""; updateDots(); } }
+        function checkPin() { 
+            if (currentPin === correctPin) { 
+                showPage('menuPage'); 
+                const bgMusic = document.getElementById('bgMusic');
+                bgMusic.play().catch(() => {});
+                document.getElementById('musicControl').classList.add('visible'); 
+            } else { alert('รหัสผ่านไม่ถูกต้อง'); currentPin = ""; updateDots(); } 
+        }
 
         function setMusicVolume(vol) { document.getElementById('bgMusic').volume = vol; }
 
