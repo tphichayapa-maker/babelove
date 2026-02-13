@@ -35,26 +35,44 @@
             overflow: hidden; 
             animation: fadeIn 0.6s ease-out;
             flex-direction: column;
-            justify-content: center; /* จัดกึ่งกลางแนวตั้งเป๊ะ */
-            align-items: center;    /* จัดกึ่งกลางแนวนอนเป๊ะ */
+            justify-content: center;
+            align-items: center;
         }
         .active { display: flex !important; }
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
 
-        /* --- ✨ หน้า Intro (แก้ไขความสมมาตร) ✨ --- */
+        /* --- ✨ หน้า Intro (ข้อความในหัวใจ) ✨ --- */
         #introPage.page { 
             background: linear-gradient(180deg, #fff0f5 0%, #ffffff 100%); 
-            gap: 20px; /* ใช้ gap คุมระยะห่างให้เท่ากันทุกส่วน */
+            gap: 25px; /* ระยะห่างระหว่างหัวใจกับปุ่ม */
         }
         
+        /* Wrapper สำหรับรวมรูปและข้อความไว้ด้วยกัน */
+        .heart-text-wrapper {
+            position: relative;
+            width: max-content;
+            margin: 0 auto;
+            animation: gentleFloat 4s ease-in-out infinite; /* เอฟเฟกต์ลอยทั้งก้อน */
+        }
+
         .intro-image-container {
-            width: 70%; /* ปรับตามสัดส่วนจอ */
-            max-width: 240px;
-            animation: gentleFloat 4s ease-in-out infinite;
-            filter: drop-shadow(0 15px 35px rgba(255, 77, 109, 0.25));
+            width: 280px; /* ปรับขนาดรูปหัวใจ */
+            filter: drop-shadow(0 15px 35px rgba(255, 77, 109, 0.3));
         }
         .intro-image-container img { width: 100%; height: auto; display: block; }
         @keyframes gentleFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+        /* คอนเทนเนอร์ข้อความที่จะวางซ้อนบนหัวใจ */
+        .heart-overlay-content {
+            position: absolute;
+            top: 48%; /* ปรับตำแหน่งแนวตั้งให้ดูอยู่กลางหัวใจที่สุด */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+            z-index: 10;
+            padding: 0 15px; /* กันข้อความชิดขอบเกินไป */
+        }
 
         .typing-container {
             min-height: 2.5em;
@@ -66,16 +84,17 @@
         .typing-headline {
             font-family: 'Montserrat', sans-serif;
             font-weight: 800;
-            font-size: 1.5rem;
-            color: #ff4d6d;
+            font-size: 1.4rem; /* ปรับขนาดให้พอดีกับหัวใจ */
+            color: white; /* เปลี่ยนสีเป็นขาว */
             text-transform: uppercase;
             letter-spacing: 1px;
             display: inline-block;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3); /* เพิ่มเงาให้อ่านง่ายขึ้น */
         }
-        .cursor { display: inline-block; width: 3px; height: 1.2em; background: #ff4d6d; margin-left: 5px; animation: blink 1s infinite; vertical-align: middle; }
+        .cursor { display: inline-block; width: 3px; height: 1.2em; background: white; /* เคอร์เซอร์สีขาว */ margin-left: 5px; animation: blink 1s infinite; vertical-align: middle; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-        .special-gift { font-size: 0.95rem; color: #888; font-weight: 500; font-style: italic; opacity: 0.7; margin-bottom: 10px; }
+        .special-gift { font-size: 0.9rem; color: white; font-weight: 500; font-style: italic; opacity: 0.9; margin-top: 5px; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
 
         .start-btn {
             background: #ff4d6d; color: white; border: none;
@@ -87,28 +106,20 @@
         }
         .start-btn:hover { transform: scale(1.08) translateY(-3px); background: #ff2a51; }
 
-        /* --- 🔐 ระบบ PIN --- */
-        .pin-hint { font-size: 0.95rem; color: #ff8fa3; margin-bottom: 20px; font-weight: 600; display: block; }
-        .pin-display { display: flex; gap: 12px; margin-bottom: 30px; justify-content: center; }
+        /* --- 🔐 หน้า Login --- */
+        .pin-hint { font-size: 0.95rem; color: #ff8fa3; margin: 15px 0 20px 0; font-weight: 600; display: block; }
+        .pin-display { display: flex; gap: 12px; margin-bottom: 25px; justify-content: center; }
         .pin-dot { width: 16px; height: 16px; border-radius: 50%; background: #eee; border: 2px solid #ddd; transition: 0.2s; }
         .pin-dot.filled { background: var(--primary); border-color: var(--primary); transform: scale(1.2); }
         .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; width: 100%; max-width: 280px; }
         .keypad button { width: 65px; height: 65px; border-radius: 50%; border: none; background: #fff; font-size: 1.5rem; font-weight: 700; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.2s; }
         .keypad button:active { background: #fff0f3; transform: scale(0.9); }
 
-        /* --- ⏳ เวลาของเรา (Labels เป๊ะตาม image_0d1176.png) --- */
+        /* --- ⏳ หน้าเวลาของเรา --- */
         .timer-row-new { display: flex; align-items: baseline; justify-content: center; gap: 4px; margin-top: 20px; }
         .time-block { display: flex; flex-direction: column; align-items: center; min-width: 48px; }
         .time-number { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--primary); }
-        .time-unit-label { 
-            font-family: 'Montserrat', sans-serif !important; 
-            font-size: 0.65rem !important; 
-            font-weight: 700 !important; 
-            color: #888; 
-            text-transform: capitalize; 
-            margin-top: 2px; 
-            display: block; 
-        }
+        .time-unit-label { font-family: 'Montserrat', sans-serif !important; font-size: 0.65rem !important; font-weight: 700 !important; color: #888; text-transform: capitalize; margin-top: 2px; display: block; }
         .separator { font-size: 1.2rem; font-weight: 700; color: var(--primary); align-self: flex-start; margin-top: -15px; }
 
         /* --- 🖼️ ความทรงจำ --- */
@@ -140,13 +151,17 @@
     <div id="musicControl" onclick="toggleMusic()">🎵</div>
 
     <div id="introPage" class="page active">
-        <div class="intro-image-container">
-            <img src="intro.png" alt="Happy Valentine Cover">
+        <div class="heart-text-wrapper">
+            <div class="intro-image-container">
+                <img src="intro.png" alt="Happy Valentine Cover">
+            </div>
+            <div class="heart-overlay-content">
+                <div class="typing-container">
+                    <h1 class="typing-headline"><span id="typedText"></span><span class="cursor"></span></h1>
+                </div>
+                <p class="special-gift">Special gift for you</p>
+            </div>
         </div>
-        <div class="typing-container">
-            <h1 class="typing-headline"><span id="typedText"></span><span class="cursor"></span></h1>
-        </div>
-        <p class="special-gift">Special gift for you</p>
         <button class="start-btn" onclick="showPage('loginPage')">START!</button>
     </div>
 
