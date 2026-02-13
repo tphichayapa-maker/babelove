@@ -17,7 +17,7 @@
         .active { display: flex !important; flex-direction: column; align-items: center; justify-content: center; }
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
 
-        /* --- Intro & Floating Flowers --- */
+        /* --- Intro & Flowers --- */
         .flower-stage { position: relative; height: 150px; width: 100%; margin-bottom: 20px; overflow: hidden; }
         .flower-emoji { position: absolute; bottom: -50px; opacity: 0; animation: floatFlower 6s linear infinite; }
         @keyframes floatFlower { 0% { transform: translateY(0) rotate(0deg); opacity: 0; } 20% { opacity: 0.8; } 100% { transform: translateY(-250px) rotate(360deg); opacity: 0; } }
@@ -28,7 +28,7 @@
         .typing-text { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--primary); min-height: 1.5em; }
 
         /* --- PIN System (Code: 190767) --- */
-        .pin-hint { font-size: 0.95rem; color: #ff8fa3; margin: 15px 0 20px 0; font-weight: 600; display: block; }
+        .pin-hint { font-size: 0.95rem; color: #ff8fa3; margin: 12px 0 20px 0; font-weight: 600; display: block; }
         .pin-display { display: flex; gap: 12px; margin-bottom: 25px; justify-content: center; }
         .pin-dot { width: 16px; height: 16px; border-radius: 50%; background: #eee; border: 2px solid #ddd; transition: 0.2s; }
         .pin-dot.filled { background: var(--primary); border-color: var(--primary); transform: scale(1.2); }
@@ -38,33 +38,32 @@
 
         /* --- Our Love Journey (TikTok Style) --- */
         .journey-title { font-family: 'Montserrat'; font-weight: 700; color: var(--primary); font-size: 1.6rem; margin: 0; }
-        .journey-sub { font-size: 0.85rem; color: #888; margin-bottom: 10px; }
         .profile-img-container { width: 140px; height: 140px; border-radius: 50%; border: 4px solid #fff; overflow: hidden; margin: 15px auto; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
         .profile-img-container img { width: 100%; height: 100%; object-fit: cover; }
         
         .timer-row-new { display: flex; align-items: center; justify-content: center; gap: 4px; margin-top: 15px; }
         .time-block { display: flex; flex-direction: column; align-items: center; min-width: 45px; }
-        .time-number { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--primary); }
-        .time-unit-label { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 700; color: #888; text-transform: capitalize; margin-top: 2px; display: block; }
+        .time-number { font-family: 'Montserrat', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--primary); }
+        
+        /* แก้ไขตัวหนังสือ Year, Month ให้เท่ากับเพื่อนเป๊ะๆ */
+        .time-unit-label { 
+            font-family: 'Montserrat', sans-serif !important; 
+            font-size: 0.65rem !important; 
+            font-weight: 700 !important; 
+            color: #888; 
+            text-transform: capitalize; 
+            margin-top: 2px; 
+            display: block; 
+        }
         .separator { font-size: 1.2rem; font-weight: 700; color: var(--primary); margin-top: -15px; }
 
         /* --- Slider System --- */
         .slider-container { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 25px; background: white; flex-grow: 1; display: flex; flex-direction: column; }
         .slider-wrapper { display: flex; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); width: 100%; height: 100%; }
-        .slide { min-width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px 10px 60px 10px; }
-        .slide img, .slide video { max-width: 100%; max-height: 60vh; object-fit: contain; border-radius: 12px; }
-        .slide-caption { margin-top: 15px; font-weight: 600; font-size: 1rem; }
+        .slide { min-width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px 10px 50px 10px; }
+        .slide img, .slide video { max-width: 100%; max-height: 75vh; object-fit: contain; border-radius: 12px; }
         .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 45px; height: 45px; cursor: pointer; z-index: 100; box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
         .nav-btn:disabled { opacity: 0; pointer-events: none; }
-
-        /* --- Polaroid Style --- */
-        .polaroid-frame { background: white; padding: 12px 12px 35px 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-radius: 4px; }
-        .polaroid-caption { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.2rem; color: #333; margin-top: 15px; letter-spacing: 2px; }
-
-        /* --- Quiz Fix --- */
-        .quiz-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; margin: 15px auto; }
-        .quiz-card img { width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: 18px; box-shadow: 0 6px 15px rgba(0,0,0,0.08); border: 2px solid transparent; }
-        .poster-img { aspect-ratio: 2 / 3 !important; }
 
         .red-pill-btn { background: linear-gradient(45deg, var(--primary), #ff8fa3); color: white; border: none; padding: 12px 35px; border-radius: 50px; font-weight: 600; cursor: pointer; margin-top: 15px; box-shadow: 0 8px 18px rgba(255, 77, 109, 0.3); }
         .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; }
@@ -76,6 +75,10 @@
         
         .heart-pop { position: fixed; font-size: 20px; pointer-events: none; z-index: 10000; animation: heartPopAnim 0.8s ease-out forwards; }
         @keyframes heartPopAnim { 0% { transform: scale(0); opacity: 1; } 100% { transform: translateY(-50px) scale(1.5); opacity: 0; } }
+        
+        .quiz-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; margin: 15px auto; }
+        .quiz-card img { width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: 18px; box-shadow: 0 6px 15px rgba(0,0,0,0.08); border: 2px solid transparent; }
+        .poster-img { aspect-ratio: 2 / 3 !important; }
     </style>
 </head>
 <body>
@@ -121,7 +124,7 @@
 
     <div id="timePage" class="page">
         <h2 class="journey-title">Our Love Journey</h2>
-        <p class="journey-sub">เราคบกันมานานแค่ไหนแล้วน้าาาา ?</p>
+        <p style="font-size: 0.85rem; color: #888; margin-bottom: 10px;">เราคบกันมานานแค่ไหนแล้วน้าาาา ?</p>
         <div style="font-size: 25px; margin: 5px 0;">❤️</div>
         <div class="profile-img-container"><img src="sea.jpg" alt="Sea"></div>
         <div class="timer-row-new">
@@ -129,13 +132,13 @@
             <span class="separator">:</span>
             <div class="time-block"><span id="mo-val" class="time-number">00</span><span class="time-unit-label">Month</span></div>
             <span class="separator">:</span>
-            <div class="time-block"><span id="d-val" class="time-number">00</span><span class="time-label">Days</span></div>
+            <div class="time-block"><span id="d-val" class="time-number">00</span><span class="time-unit-label">Days</span></div>
             <span class="separator">:</span>
-            <div class="time-block"><span id="h-val" class="time-number">00</span><span class="time-label">Hours</span></div>
+            <div class="time-block"><span id="h-val" class="time-number">00</span><span class="time-unit-label">Hours</span></div>
             <span class="separator">:</span>
             <div class="time-block"><span id="min-val" class="time-number">00</span><span class="time-unit-label">Mins</span></div>
             <span class="separator">:</span>
-            <div class="time-block"><span id="s-val" class="time-number">00</span><span class="time-label">Secs</span></div>
+            <div class="time-block"><span id="s-val" class="time-number">00</span><span class="time-unit-label">Secs</span></div>
         </div>
         <p style="margin-top: 20px; font-style: italic; color: var(--primary); font-weight: 600;">We're been in love for...</p>
         <p style="font-size: 0.85rem; margin-top: -5px;">❤️ love u 3000 na ❤️</p>
@@ -147,12 +150,27 @@
             <button id="memoriesPrev" onclick="moveSlide('memoriesWrapper', -1)" class="nav-btn" style="left:10px;">❮</button>
             <button id="memoriesNext" onclick="moveSlide('memoriesWrapper', 1)" class="nav-btn" style="right:10px;">❯</button>
             <div class="slider-wrapper" id="memoriesWrapper">
-                <div class="slide"><video loop playsinline><source src="one.mp4" type="video/mp4"></video><div class="slide-caption">ครั้งแรกที่เราเจอกัน❤️</div></div>
-                <div class="slide"><img src="date.jpg"><div class="slide-caption">เดทด้วยกันครั้งแรก</div></div>
-                <div class="slide"><img src="movie.jpg"><div class="slide-caption">ดูหนังด้วยกันครั้งแรก</div></div>
-                <div class="slide"><video loop playsinline><source src="love.mp4" type="video/mp4"></video><div class="slide-caption">วันแรกที่เราคบกัน❤️</div></div>
-                <div class="slide"><img src="flower.jpg"><div class="slide-caption">ดอกไม้ที่แฟนซื้อให้ ช่อที่ n</div></div>
-                <div class="slide"><div style="font-size: 60px;">✨</div><h2 style="font-family: 'Montserrat';">THE END</h2><p>รักเธอที่สุดเลยนะ</p><button class="red-pill-btn" onclick="showPage('menuPage')">กลับสู่เมนูหลัก</button></div>
+                <div class="slide"><img src="ball.jpg"></div>
+                <div class="slide"><img src="car.jpg"></div>
+                <div class="slide"><img src="dog.jpg"></div>
+                <div class="slide"><img src="dok1.jpg"></div>
+                <div class="slide"><img src="dok2.jpg"></div>
+                <div class="slide"><img src="dok3.jpg"></div>
+                <div class="slide"><img src="dok4.jpg"></div>
+                <div class="slide"><img src="dok11.jpg"></div>
+                <div class="slide"><img src="eat.jpg"></div>
+                <div class="slide"><img src="fan.jpg"></div>
+                <div class="slide"><img src="fish.jpg"></div>
+                <div class="slide"><img src="flower.jpg"></div>
+                <div class="slide"><img src="hot.jpg"></div>
+                <div class="slide"><img src="jub.jpg"></div>
+                <div class="slide"><img src="mirror.jpg"></div>
+                <div class="slide"><img src="prompt.jpg"></div>
+                <div class="slide"><img src="rakk.jpg"></div>
+                <div class="slide"><img src="real.jpg"></div>
+                <div class="slide"><img src="red.jpg"></div>
+                <div class="slide"><img src="sea1.jpg"></div>
+                <div class="slide"><div style="font-size: 60px;">✨</div><h2 style="font-family: 'Montserrat';">THE END</h2><button class="red-pill-btn" onclick="showPage('menuPage')">กลับสู่เมนูหลัก</button></div>
             </div>
         </div>
     </div>
@@ -162,10 +180,10 @@
             <button id="polaroidPrev" onclick="moveSlide('polaroidWrapper', -1)" class="nav-btn" style="left:10px;">❮</button>
             <button id="polaroidNext" onclick="moveSlide('polaroidWrapper', 1)" class="nav-btn" style="right:10px;">❯</button>
             <div class="slider-wrapper" id="polaroidWrapper">
-                <div class="slide"><div class="polaroid-frame"><img src="pola1.jpg"><div class="polaroid-caption">FIRST DATE</div></div></div>
-                <div class="slide"><div class="polaroid-frame"><img src="pola2.jpg"><div class="polaroid-caption">XMAS 2025</div></div></div>
-                <div class="slide"><div class="polaroid-frame"><img src="pola3.jpg"><div class="polaroid-caption">NEW YEAR</div></div></div>
-                <div class="slide"><div style="font-size: 60px;">📸</div><h2 style="font-family: 'Montserrat';">COLLECTION</h2><p>รอเพิ่มรูปใหม่ๆ ด้วยกันนะ</p><button class="red-pill-btn" onclick="showPage('menuPage')">กลับสู่เมนูหลัก</button></div>
+                <div class="slide"><div class="polaroid-frame"><img src="pola1.jpg"></div></div>
+                <div class="slide"><div class="polaroid-frame"><img src="pola2.jpg"></div></div>
+                <div class="slide"><div class="polaroid-frame"><img src="pola3.jpg"></div></div>
+                <div class="slide"><div style="font-size: 60px;">📸</div><h2 style="font-family: 'Montserrat';">COLLECTION</h2><button class="red-pill-btn" onclick="showPage('menuPage')">กลับสู่เมนูหลัก</button></div>
             </div>
         </div>
     </div>
@@ -189,7 +207,7 @@
         <div id="step-3" class="quiz-step" style="display:none; width:100%;">
             <p style="font-weight:600; font-size:1.1rem;">3. หนังเรื่องแรกที่ดูด้วยกันคือเรื่อง?</p>
             <div class="quiz-row" style="max-width: 400px; margin: 0 auto;">
-                <div class="quiz-card" onclick="handleQuiz(true, 'แม่นมาก! 🎬')"><img src="rak.jpg" class="poster-img"><p>A. รักผ่านหน้าต่าง</p></div>
+                <div class="quiz-card" onclick="handleQuiz(true, 'แม่นมาก! 🎬')"><img src="rakk.jpg" class="poster-img"><p>A. รักผ่านหน้าต่าง</p></div>
                 <div class="quiz-card" onclick="handleQuiz(false, 'ไม่ใช่จ้า! 😂')"><img src="bad.jpg" class="poster-img"><p>B. Bad boy</p></div>
             </div>
         </div>
@@ -227,40 +245,36 @@
         function pressKey(n) { if (currentPin.length < 6) { currentPin += n; updateDots(); } }
         function deleteKey() { currentPin = currentPin.slice(0, -1); updateDots(); }
         function updateDots() { const dots = document.querySelectorAll('.pin-dot'); dots.forEach((dot, i) => dot.classList.toggle('filled', i < currentPin.length)); }
-        function checkPin() { if (currentPin === correctPin) { showPage('menuPage'); document.getElementById('bgMusic').play(); document.getElementById('musicControl').classList.add('visible'); } else { alert('รหัสผ่านไม่ถูกต้อง'); currentPin = ""; updateDots(); } }
+        function checkPin() { 
+            if (currentPin === correctPin) { 
+                showPage('menuPage'); 
+                const bgMusic = document.getElementById('bgMusic');
+                bgMusic.play().catch(() => {});
+                document.getElementById('musicControl').classList.add('visible'); 
+            } else { alert('รหัสผ่านไม่ถูกต้อง'); currentPin = ""; updateDots(); } 
+        }
 
-        // --- แก้ไขระบบเปลี่ยนหน้า (จัดการเสียงเพลงเบื้องหลัง) ---
+        function setMusicVolume(vol) { document.getElementById('bgMusic').volume = vol; }
+
         function showPage(id) { 
-            const bgMusic = document.getElementById('bgMusic');
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active')); 
             document.getElementById(id).classList.add('active'); 
-            
-            // หยุดวิดีโอทั้งหมด
             document.querySelectorAll('video').forEach(v => { v.pause(); v.currentTime = 0; });
-            
-            // คืนระดับเสียงเพลงแบล็คกาวน์ทุกครั้งที่เปลี่ยนหน้า (กันค้าง)
-            bgMusic.volume = 1.0;
-
-            if (id === 'memoriesPage') { 
-                resetSlider('memoriesWrapper'); 
-                playVideoInActiveSlide('memoriesWrapper'); 
-            } 
+            setMusicVolume(1.0);
+            if (id === 'memoriesPage') { resetSlider('memoriesWrapper'); handleSlideMedia('memoriesWrapper'); } 
             if (id === 'polaroidPage') resetSlider('polaroidWrapper'); 
         }
 
         function resetSlider(id) { sliderStates[id] = 0; updateSliderUI(id); }
-        
         function moveSlide(id, n) {
             const wrapper = document.getElementById(id); const slides = wrapper.querySelectorAll('.slide');
             const newIndex = sliderStates[id] + n;
             if (newIndex >= 0 && newIndex < slides.length) { 
                 document.querySelectorAll('video').forEach(v => v.pause()); 
-                sliderStates[id] = newIndex; 
-                updateSliderUI(id); 
-                setTimeout(() => { playVideoInActiveSlide(id); }, 400);
+                sliderStates[id] = newIndex; updateSliderUI(id); 
+                setTimeout(() => { handleSlideMedia(id); }, 400);
             }
         }
-
         function updateSliderUI(id) {
             const wrapper = document.getElementById(id); const prefix = id.replace('Wrapper', '');
             wrapper.style.transform = `translateX(-${sliderStates[id] * 100}%)`;
@@ -268,30 +282,16 @@
             document.getElementById(prefix + 'Next').disabled = (sliderStates[id] === wrapper.querySelectorAll('.slide').length - 1);
         }
 
-        // --- แก้ไขฟังก์ชันเล่นวิดีโอ (จัดการระดับเสียงเพลงแบล็คกาวน์) ---
-        function playVideoInActiveSlide(wrapperId) {
+        function handleSlideMedia(wrapperId) {
             const wrapper = document.getElementById(wrapperId);
             const currentSlide = wrapper.querySelectorAll('.slide')[sliderStates[wrapperId]];
             const video = currentSlide.querySelector('video');
-            const bgMusic = document.getElementById('bgMusic');
-
-            if (video) { 
-                // ถ้ามีวิดีโอ: ลดเสียงเพลงแบล็คกาวน์เหลือ 20% แล้วเล่นวิดีโอ
-                bgMusic.volume = 0.2;
-                video.play().catch(e => console.log("Auto-play blocked", e)); 
-            } else {
-                // ถ้าเป็นรูปภาพ: ให้เพลงแบล็คกาวน์ดัง 100% เหมือนเดิม
-                bgMusic.volume = 1.0;
-            }
+            if (video) { setMusicVolume(0.15); video.play().catch(e => console.log("Auto-play blocked", e)); } else { setMusicVolume(1.0); }
         }
 
         function startQuiz() { currentStep = 1; document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none'); document.getElementById('step-1').style.display = 'block'; showPage('quizPage'); }
         function handleQuiz(isCorrect, msg) { alert(msg); if (isCorrect) { document.getElementById(`step-${currentStep}`).style.display = 'none'; currentStep++; let next = currentStep > 3 ? 'step-final' : `step-${currentStep}`; document.getElementById(next).style.display = 'block'; } }
-        
-        function toggleMusic() { 
-            const m = document.getElementById('bgMusic'); 
-            if (m.paused) m.play(); else m.pause(); 
-        }
+        function toggleMusic() { const m = document.getElementById('bgMusic'); if (m.paused) m.play(); else m.pause(); }
 
         document.addEventListener('mousedown', function(e) {
             const heart = document.createElement('div');
