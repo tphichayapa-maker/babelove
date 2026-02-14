@@ -83,7 +83,7 @@
         .letter-text { font-family: 'Prompt', sans-serif; font-size: 1.1rem; color: var(--text); line-height: 1.9; }
         .highlight-bold { font-weight: 800; color: var(--primary); font-size: 1.25rem; display: block; margin-top: 20px; border-top: 2px solid #fff0f3; padding-top: 15px; }
 
-        .btn-group { display: flex; gap: 20px; justify-content: center; align-items: center; min-height: 120px; position: relative; width: 100%; }
+        .btn-group { display: flex; gap: 20px; justify-content: center; align-items: center; min-height: 150px; position: relative; width: 100%; }
         .yes-btn { background: var(--primary); color: white; border: none; padding: 15px 40px; border-radius: 35px; font-weight: 800; font-family: 'Montserrat'; cursor: pointer; z-index: 10; box-shadow: 0 8px 20px rgba(255, 77, 109, 0.3); }
         .no-btn { background: #fff; color: #999; border: 2px solid #eee; padding: 10px 25px; border-radius: 30px; font-weight: 700; font-family: 'Montserrat'; cursor: pointer; position: absolute; transition: 0.1s; z-index: 5; }
 
@@ -213,12 +213,12 @@
                 </div>
                 <div id="finalQuestionView" style="display:none; flex-direction: column; align-items: center;">
                     <h2 class="final-question">Will you be my Valentine?</h2>
-                    <p style="font-size:0.9rem; color:#999; margin-bottom:5px;">(อีกปีนะ ❤️)</p>
-                    <div class="btn-group" id="btnContainer">
+                    <p style="font-size:0.9rem; color:#999; margin-bottom:20px;">(อีกปีนะ ❤️)</p>
+                    <div class="btn-group" id="btnContainer" style="min-height: 150px;">
                         <button class="yes-btn" onclick="handleFinalYes()">Yes, always! ❤️</button>
                         <button class="no-btn" id="noBtn" onmouseover="moveNoButton()" ontouchstart="moveNoButton()">No</button>
                     </div>
-                    <button class="start-btn" onclick="showPage('menuPage')" style="opacity:0.5;">HOME</button>
+                    <button class="start-btn" onclick="showPage('menuPage')" style="opacity:0.5; margin-top: 20px;">HOME</button>
                 </div>
             </div>
         </div>
@@ -297,8 +297,11 @@
         function moveNoButton() {
             const btn = document.getElementById('noBtn');
             const container = document.getElementById('btnContainer');
-            btn.style.left = Math.floor(Math.random() * (container.clientWidth - btn.clientWidth)) + 'px';
-            btn.style.top = (Math.floor(Math.random() * 60) - 30) + 'px';
+            // คำนวณขอบเขตการเคลื่อนที่ให้เล็กลงและอยู่ใน container
+            const maxX = container.clientWidth - btn.clientWidth;
+            const maxY = container.clientHeight - btn.clientHeight;
+            btn.style.left = Math.floor(Math.random() * maxX) + 'px';
+            btn.style.top = Math.floor(Math.random() * maxY) + 'px';
         }
         
         function handleFinalYes() {
