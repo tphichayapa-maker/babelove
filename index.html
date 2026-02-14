@@ -20,9 +20,9 @@
         }
         @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
-        /* --- Page Container --- */
+        /* --- Container --- */
         .page { 
-            display: none; width: 90%; max-width: 420px; height: 85vh;
+            display: none; width: 90%; max-width: 420px; height: 86vh;
             background: rgba(255, 255, 255, 0.95); padding: 25px 20px; border-radius: 55px; 
             box-shadow: 0 20px 60px rgba(255, 77, 109, 0.15); 
             text-align: center; position: relative;
@@ -30,79 +30,69 @@
         }
         .active { display: flex !important; }
 
-        /* ✨ ปุ่มมาตรฐาน */
+        /* --- Buttons --- */
         .start-btn { 
             background: #ff4d6d; color: white; border: none; 
             padding: 12px 60px; border-radius: 40px; 
             font-weight: 800; font-size: 1rem; cursor: pointer; 
             box-shadow: 0 10px 25px rgba(255, 77, 109, 0.3); 
-            transition: 0.4s; font-family: 'Montserrat'; 
-            margin-top: 20px; flex-shrink: 0;
+            transition: 0.4s; font-family: 'Montserrat'; margin-top: 20px; flex-shrink: 0;
         }
         .start-btn:hover { transform: scale(1.05); background: #ff2a51; }
 
-        /* --- ✨ หน้า Intro ✨ --- */
-        .intro-content { width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .heart-text-wrapper { position: relative; width: 310px; animation: gentleFloat 4s ease-in-out infinite; margin-bottom: 10px; }
+        /* --- Intro --- */
+        .heart-text-wrapper { position: relative; width: 300px; animation: gentleFloat 4s ease-in-out infinite; margin-bottom: 10px; }
         .intro-image-container img { width: 100%; height: auto; display: block; filter: drop-shadow(0 15px 35px rgba(255, 77, 109, 0.25)); }
         @keyframes gentleFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
         .heart-overlay-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; text-align: center; }
-        .headline-script { font-family: 'Dancing Script', cursive; font-size: 2.1rem; color: var(--text); line-height: 1.1; text-shadow: 0 2px 10px rgba(255,255,255,0.9); }
+        .headline-script { font-family: 'Dancing Script', cursive; font-size: 2.1rem; color: var(--text); line-height: 1.1; }
 
-        /* --- 🔐 หน้า Login --- */
+        /* --- Login --- */
         .pin-hint { font-size: 0.9rem; color: #ff8fa3; margin-bottom: 10px; font-weight: 600; }
         .pin-display { display: flex; gap: 10px; margin-bottom: 20px; }
         .pin-dot { width: 14px; height: 14px; border-radius: 50%; background: #eee; border: 2px solid #ddd; }
         .pin-dot.filled { background: var(--primary); border-color: var(--primary); transform: scale(1.2); }
         .keypad { display: grid !important; grid-template-columns: repeat(3, 1fr); gap: 12px; width: 100%; max-width: 250px; }
-        .keypad button { width: 60px; height: 60px; border-radius: 50%; border: none; background: #fff; font-size: 1.5rem; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center; }
+        .keypad button { width: 60px; height: 60px; border-radius: 50%; border: none; background: #fff; font-size: 1.4rem; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center; }
 
-        /* --- ⏳ Time & Menu --- */
+        /* --- Time & Menu --- */
         .couple-names { font-family: 'Dancing Script', cursive; font-size: 2.2rem; color: var(--primary); margin-bottom: 5px; }
         .photo-frame { width: 155px; height: 155px; border-radius: 50%; border: 6px solid #fff; overflow: hidden; margin: 10px auto; animation: pulseGlow 3s infinite ease-in-out; }
         @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 10px rgba(255, 77, 109, 0.2); } 50% { box-shadow: 0 0 35px rgba(255, 77, 109, 0.6); } }
         .timer-row-new { display: flex; align-items: baseline; justify-content: center; gap: 6px; margin: 20px 0; }
         .time-block { display: flex; flex-direction: column; align-items: center; min-width: 48px; }
-        .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; margin: auto; }
-        .menu-item { background: white; padding: 20px 10px; border-radius: 40px; border: 2px solid #fff0f3; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: 0.3s; }
+        .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; }
+        .menu-item { background: white; padding: 15px 5px; border-radius: 35px; border: 2px solid #fff0f3; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; }
 
-        /* --- 🖼️ Slider แนวนอน --- */
+        /* --- Slider แนวนอน --- */
         .slider-container { position: relative; width: 100%; height: 60%; overflow: hidden; border-radius: 30px; background: #fff; }
         .slider-wrapper { display: flex; width: 100%; height: 100%; transition: transform 0.5s ease-in-out; }
         .slide { min-width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
         .slide img { width: 100%; height: 100%; max-width: 320px; object-fit: cover; border-radius: 25px; }
-        
         .slider-controls { display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 20px; margin-top: 15px; width: 100%; }
         .nav-btn-new { width: 45px; height: 45px; border-radius: 50%; border: none; background: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; display: flex; align-items: center; justify-content: center; }
 
-        /* --- 📝 Quiz แนวนอน --- */
+        /* --- Quiz (แก้ไขโครงสร้างให้เรียบร้อย) --- */
         .quiz-step { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; }
-        .quiz-q-text { font-weight: 600; font-size: 1.2rem; text-align: center; margin-bottom: 20px; width: 100%; }
-        .quiz-row { display: flex; flex-direction: row; justify-content: center; gap: 15px; width: 100%; max-width: 380px; }
-        .quiz-card { background: #fff; padding: 15px; border-radius: 30px; border: 2px solid #fff0f3; cursor: pointer; flex: 1; display: flex; flex-direction: column; align-items: center; transition: 0.3s; box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
+        .quiz-row { display: flex; flex-direction: row; justify-content: center; gap: 15px; width: 100%; max-width: 380px; margin-top: 10px; }
+        .quiz-card { background: #fff; padding: 15px; border-radius: 30px; border: 2px solid #fff0f3; cursor: pointer; flex: 1; display: flex; flex-direction: column; align-items: center; }
         .quiz-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 20px; margin-bottom: 10px; }
-        .quiz-icon-jumbo { font-size: 60px; margin-bottom: 10px; }
 
-        /* --- 💌 จดหมายรัก --- */
-        #letterBody { background: #fffdf5; padding: 30px 25px; border-radius: 25px; border: 1px solid #f0e68c; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; width: 100%; max-width: 360px; animation: fadeInUp 0.8s ease-out; margin-bottom: 10px; }
+        /* --- Final Message --- */
+        #letterBody { background: #fffdf5; padding: 25px; border-radius: 25px; border: 1px solid #f0e68c; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; width: 100%; max-width: 360px; }
         .letter-text { font-family: 'Prompt', sans-serif; font-size: 1.1rem; color: var(--text); line-height: 1.9; }
-        .highlight-bold { font-weight: 800; color: var(--primary); font-size: 1.25rem; display: block; margin-top: 25px; border-top: 2px solid #fff0f3; padding-top: 20px; }
+        .highlight-bold { font-weight: 800; color: var(--primary); font-size: 1.25rem; display: block; margin-top: 20px; border-top: 2px solid #fff0f3; padding-top: 15px; }
 
-        /* --- 💘 เซอร์ไพรส์สุดท้าย (แก้ไขให้เรียบร้อย) --- */
-        .final-question { font-family: 'Dancing Script'; font-size: 2.5rem; color: var(--primary); font-weight: 700; margin-bottom: 5px; }
-        /* เพิ่ม min-height เพื่อให้มีพื้นที่พอสำหรับปุ่มวิ่ง */
-        .btn-group { display: flex; gap: 20px; justify-content: center; align-items: center; min-height: 150px; position: relative; width: 100%; }
-        .yes-btn { background: var(--primary); color: white; border: none; padding: 15px 45px; border-radius: 35px; font-weight: 800; font-family: 'Montserrat'; cursor: pointer; z-index: 10; }
-        .no-btn { background: #fff; color: #999; border: 2px solid #eee; padding: 10px 25px; border-radius: 30px; font-weight: 700; font-family: 'Montserrat'; cursor: pointer; position: absolute; transition: 0.15s; z-index: 5; }
+        .btn-group { display: flex; gap: 20px; justify-content: center; align-items: center; min-height: 120px; position: relative; width: 100%; }
+        .yes-btn { background: var(--primary); color: white; border: none; padding: 15px 40px; border-radius: 35px; font-weight: 800; font-family: 'Montserrat'; cursor: pointer; z-index: 10; box-shadow: 0 8px 20px rgba(255, 77, 109, 0.3); }
+        .no-btn { background: #fff; color: #999; border: 2px solid #eee; padding: 10px 25px; border-radius: 30px; font-weight: 700; font-family: 'Montserrat'; cursor: pointer; position: absolute; transition: 0.1s; z-index: 5; }
 
         #musicControl { position: fixed; top: 20px; right: 20px; z-index: 1000; background: white; border-radius: 50%; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.1); cursor: pointer; }
         .heart-particle { position: fixed; top: -10%; font-size: 22px; z-index: 1; pointer-events: none; animation: fall linear infinite; }
         @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
-        
+
         #customAlert { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 10000; align-items: center; justify-content: center; }
         .alert-box { background: white; padding: 40px; border-radius: 40px; text-align: center; min-width: 300px; animation: popUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        #alertText { font-size: 1.5rem; font-weight: 800; margin-bottom: 25px; display: block; line-height: 1.4; }
-        .alert-btn { background: var(--primary); color: white; border: none; padding: 12px 45px; border-radius: 30px; font-weight: 700; cursor: pointer; }
         @keyframes popUp { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
     </style>
 </head>
@@ -110,24 +100,22 @@
 
     <audio id="bgMusic" src="boo.mp3" loop></audio>
     <div id="musicControl" onclick="toggleMusic()">🎵</div>
-    <div id="customAlert"><div class="alert-box"><span id="alertText"></span><button class="alert-btn" onclick="closeCustomAlert()">ตกลง</button></div></div>
+    <div id="customAlert"><div class="alert-box"><span id="alertText" style="font-size:1.6rem; font-weight:800; display:block; margin-bottom:20px;"></span><button class="start-btn" onclick="closeCustomAlert()" style="padding:10px 40px;">ตกลง</button></div></div>
 
     <div id="introPage" class="page active">
-        <div class="intro-content">
-            <div class="heart-text-wrapper">
-                <div class="intro-image-container"><img src="intro.png" alt="Valentine Cover"></div>
-                <div class="heart-overlay-content">
-                    <h1 class="headline-script">Happy Valentine's Day</h1>
-                    <p style="font-family: Montserrat; font-weight: 600; font-size: 0.85rem; opacity: 0.7; margin-top: 5px;">Special gift for you</p>
-                </div>
+        <div class="heart-text-wrapper">
+            <div class="intro-image-container"><img src="intro.png" alt="Valentine Cover"></div>
+            <div class="heart-overlay-content">
+                <h1 class="headline-script">Happy Valentine's Day</h1>
+                <p style="font-family: Montserrat; font-weight: 600; font-size: 0.85rem; opacity: 0.7; margin-top: 5px;">Special gift for you</p>
             </div>
-            <button class="start-btn" onclick="handleStart()">START!</button>
         </div>
+        <button class="start-btn" onclick="handleStart()">START!</button>
     </div>
 
     <div id="loginPage" class="page">
         <div style="font-size: 55px; margin-bottom: 10px;">🔒</div>
-        <h1 style="font-family: Montserrat; font-weight: 800; font-size: 1.3rem; margin-bottom: 5px;">PRIVATE ACCESS</h1>
+        <h1 style="font-family: Montserrat; font-weight: 800; font-size: 1.2rem; margin-bottom: 5px;">PRIVATE ACCESS</h1>
         <span class="pin-hint">คำใบ้ : วันครบรอบ</span>
         <div class="pin-display"><div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div></div>
         <div class="keypad">
@@ -141,27 +129,27 @@
     </div>
 
     <div id="menuPage" class="page">
-        <h1 style="font-family: Montserrat; font-weight: 800; margin-bottom: 25px; font-size: 1.5rem;">MAIN MENU</h1>
+        <h1 style="font-family: Montserrat; font-weight: 800; margin-bottom: 25px; font-size: 1.4rem;">MAIN MENU</h1>
         <div class="menu-grid">
-            <div class="menu-item" onclick="showPage('timePage')"><div style="font-size:40px">⏳</div><p style="font-weight:800; font-size:1rem;">Love Journey</p><p style="font-size:0.7rem; color:#999;">เวลาของเรา</p></div>
-            <div class="menu-item" onclick="showPage('memoriesPage')"><div style="font-size:40px">🖼️</div><p style="font-weight:800; font-size:1rem;">Memories</p><p style="font-size:0.7rem; color:#999;">ความทรงจำ</p></div>
-            <div class="menu-item" onclick="showPage('polaroidPage')"><div style="font-size:40px">📸</div><p style="font-weight:800; font-size:1rem;">Polaroids</p><p style="font-size:0.7rem; color:#999;">โพลารอยด์</p></div>
-            <div class="menu-item" onclick="startQuiz()"><div style="font-size:40px">📝</div><p style="font-weight:800; font-size:1rem;">Quiz Game</p><p style="font-size:0.7rem; color:#999;">แบบทดสอบ</p></div>
+            <div class="menu-item" onclick="showPage('timePage')"><div style="font-size:40px">⏳</div><p style="font-weight:800; font-size:0.9rem;">Love Journey</p><p style="font-size:0.6rem; color:#999;">เวลาของเรา</p></div>
+            <div class="menu-item" onclick="showPage('memoriesPage')"><div style="font-size:40px">🖼️</div><p style="font-weight:800; font-size:0.9rem;">Memories</p><p style="font-size:0.6rem; color:#999;">ความทรงจำ</p></div>
+            <div class="menu-item" onclick="showPage('polaroidPage')"><div style="font-size:40px">📸</div><p style="font-weight:800; font-size:0.9rem;">Polaroids</p><p style="font-size:0.6rem; color:#999;">โพลารอยด์</p></div>
+            <div class="menu-item" onclick="startQuiz()"><div style="font-size:40px">📝</div><p style="font-weight:800; font-size:0.9rem;">Quiz Game</p><p style="font-size:0.6rem; color:#999;">แบบทดสอบ</p></div>
         </div>
-        <button class="start-btn" onclick="showPage('introPage')" style="background:transparent; color:#bbb; border:1px solid #eee; box-shadow: none;">LOGOUT</button>
+        <button class="start-btn" onclick="showPage('introPage')" style="background:transparent; color:#bbb; border:1px solid #eee; box-shadow: none; padding: 10px 40px;">LOGOUT</button>
     </div>
 
     <div id="timePage" class="page">
-        <h2 style="font-family: Montserrat; font-size: 1.7rem; color: var(--primary);">Our Love Journey</h2>
+        <h2 style="font-family: Montserrat; font-size: 1.5rem; color: var(--primary);">Our Love Journey</h2>
         <p class="couple-names">Sudkhet & Bamboo</p>
         <div class="photo-frame"><img src="sea.jpg" style="width:100%; height:100%; object-fit:cover;"></div>
         <div class="timer-row-new">
-            <div class="time-block"><span id="y-val" class="time-number">00</span><span style="font-size:0.6rem; color:#999;">Year</span></div><span>:</span>
-            <div class="time-block"><span id="mo-val" class="time-number">00</span><span style="font-size:0.6rem; color:#999;">Month</span></div><span>:</span>
-            <div class="time-block"><span id="d-val" class="time-number">00</span><span style="font-size:0.6rem; color:#999;">Days</span></div><span>:</span>
-            <div class="time-block"><span id="h-val" class="time-number">00</span><span style="font-size:0.6rem; color:#999;">Hours</span></div><span>:</span>
-            <div class="time-block"><span id="min-val" class="time-number">00</span><span style="font-size:0.6rem; color:#999;">Mins</span></div><span>:</span>
-            <div class="time-block"><span id="s-val" class="time-number">00</span><span style="font-size:0.6rem; color:#999;">Secs</span></div>
+            <div class="time-block"><span id="y-val" class="time-number">00</span><span style="font-size:0.5rem; color:#999;">Year</span></div><span>:</span>
+            <div class="time-block"><span id="mo-val" class="time-number">00</span><span style="font-size:0.5rem; color:#999;">Month</span></div><span>:</span>
+            <div class="time-block"><span id="d-val" class="time-number">00</span><span style="font-size:0.5rem; color:#999;">Days</span></div><span>:</span>
+            <div class="time-block"><span id="h-val" class="time-number">00</span><span style="font-size:0.5rem; color:#999;">Hours</span></div><span>:</span>
+            <div class="time-block"><span id="min-val" class="time-number">00</span><span style="font-size:0.5rem; color:#999;">Mins</span></div><span>:</span>
+            <div class="time-block"><span id="s-val" class="time-number">00</span><span style="font-size:0.5rem; color:#999;">Secs</span></div>
         </div>
         <button class="start-btn" onclick="showPage('menuPage')">HOME</button>
     </div>
@@ -198,20 +186,20 @@
 
     <div id="quizPage" class="page">
         <h1 id="quizTitle" style="font-family: Montserrat; font-weight: 800; font-size: 1.5rem; margin-top: 10px; color: var(--primary);">QUIZ</h1>
-        <div id="quizContent" style="width:100%; height: 100%;">
+        <div id="quizContent" style="width:100%;">
             <div id="step-1" class="quiz-step" style="display:flex;">
-                <p class="quiz-q-text">1. เราเจอกันครั้งแรกที่ไหนเอ่ย?</p>
-                <div class="quiz-row"><div class="quiz-card" onclick="handleQuiz(true)"><img src="con.png"><p style="font-weight:bold; font-size:0.8rem;">Rinma Festival</p></div><div class="quiz-card" onclick="handleQuiz(false)"><img src="central.png"><p style="font-weight:bold; font-size:0.8rem;">Central Pinklao</p></div></div>
+                <p style="font-weight:600; margin-bottom:15px;">1. เราเจอกันครั้งแรกที่ไหนเอ่ย?</p>
+                <div class="quiz-row"><div class="quiz-card" onclick="handleQuiz(true)"><img src="con.png"><p style="font-weight:bold; font-size:0.75rem;">Rinma Festival</p></div><div class="quiz-card" onclick="handleQuiz(false)"><img src="central.png"><p style="font-weight:bold; font-size:0.75rem;">Central Pinklao</p></div></div>
             </div>
-            <div id="step-2" class="quiz-step" style="display:none;"><p class="quiz-q-text">2. เมนูแรกที่เราไปเดทด้วยกันคือ?</p><div class="quiz-row"><div class="quiz-card" onclick="handleQuiz(false)"><img src="som.jpg"><p style="font-weight:bold;">ส้มตำ</p></div><div class="quiz-card" onclick="handleQuiz(true)"><img src="ra.jpg"><p style="font-weight:bold;">ราเมน</p></div></div></div>
-            <div id="step-3" class="quiz-step" style="display:none;"><p class="quiz-q-text">3. หนังเรื่องแรกที่ดูด้วยกันคือเรื่อง?</p><div class="quiz-row"><div class="quiz-card" onclick="handleQuiz(true)"><img src="wow.jpg" style="aspect-ratio: 2/3;"><p style="font-weight:bold;">รักผ่านหน้าต่าง</p></div><div class="quiz-card" onclick="handleQuiz(false)"><img src="bad.jpg" style="aspect-ratio: 2/3;"><p style="font-weight:bold;">Bad boy</p></div></div></div>
-            <div id="step-4" class="quiz-step" style="display:none;"><p class="quiz-q-text">4. เราเจอกันครั้งแรกวันที่เท่าไหร่?</p><div class="quiz-row"><div class="quiz-card" onclick="handleQuiz(false)"><div class="quiz-icon-jumbo">📅</div><p style="font-weight:bold;">15/04/67</p></div><div class="quiz-card" onclick="handleQuiz(true)"><div class="quiz-icon-jumbo">🗓️</div><p style="font-weight:bold;">16/04/67</p></div></div></div>
-            <div id="step-5" class="quiz-step" style="display:none;"><p class="quiz-q-text">5. ไซส์รองเท้าของเค้าคือ?</p><div class="quiz-row"><div class="quiz-card" onclick="handleQuiz(false)"><div class="quiz-icon-jumbo">👟</div><p style="font-weight:bold;">เบอร์ 38</p></div><div class="quiz-card" onclick="handleQuiz(true)"><div class="quiz-icon-jumbo">👞</div><p style="font-weight:bold;">เบอร์ 39</p></div></div></div>
-            <div id="step-6" class="quiz-step" style="display:none;"><p class="quiz-q-text">6. ใครทักหาใครก่อน?</p><div class="quiz-row"><div class="quiz-card" onclick="handleQuiz(true)"><div class="quiz-icon-jumbo">👦🏻</div><p style="font-weight:bold;">เธอ</p></div><div class="quiz-card" onclick="handleQuiz(false)"><div class="quiz-icon-jumbo">👧🏻</div><p style="font-weight:bold;">เค้า</p></div></div></div>
-            <div id="step-7" class="quiz-step" style="display:none;"><p class="quiz-q-text">7. ของขวัญวาเลนไทน์ชิ้นแรกที่ให้คือ?</p><div class="quiz-row"><div class="quiz-card" onclick="handleQuiz(false)"><div class="quiz-icon-jumbo">🎁</div><p style="font-weight:bold;">กล่องสุ่ม</p></div><div class="quiz-card" onclick="handleQuiz(true)"><div class="quiz-icon-jumbo">👕</div><p style="font-weight:bold;">เสื้อ</p></div></div></div>
+            <div id="step-2" class="quiz-step" style="display:none;"><p style="font-weight:600; margin-bottom:15px;">2. เมนูแรกที่เราไปเดทด้วยกันคือ?</p><div class="quiz-row"><div class="quiz-card" onclick="handleQuiz(false)"><img src="som.jpg"><p style="font-weight:bold;">ส้มตำ</p></div><div class="quiz-card" onclick="handleQuiz(true)"><img src="ra.jpg"><p style="font-weight:bold;">ราเมน</p></div></div></div>
+            <div id="step-3" class="quiz-step" style="display:none;"><p style="font-weight:600; margin-bottom:15px;">3. หนังเรื่องแรกที่ดูด้วยกันคือเรื่อง?</p><div class="quiz-row"><div class="quiz-card" onclick="handleQuiz(true)"><img src="wow.jpg" style="aspect-ratio: 2/3;"><p style="font-weight:bold;">รักผ่านหน้าต่าง</p></div><div class="quiz-card" onclick="handleQuiz(false)"><img src="bad.jpg" style="aspect-ratio: 2/3;"><p style="font-weight:bold;">Bad boy</p></div></div></div>
+            <div id="step-4" class="quiz-step" style="display:none;"><p style="font-weight:600; margin-bottom:15px;">4. เราเจอกันครั้งแรกวันที่เท่าไหร่?</p><div class="quiz-row"><div class="quiz-card" onclick="handleQuiz(false)"><div style="font-size:50px">📅</div><p style="font-weight:bold;">15/04/67</p></div><div class="quiz-card" onclick="handleQuiz(true)"><div style="font-size:50px">🗓️</div><p style="font-weight:bold;">16/04/67</p></div></div></div>
+            <div id="step-5" class="quiz-step" style="display:none;"><p style="font-weight:600; margin-bottom:15px;">5. ไซส์รองเท้าของเค้าคือ?</p><div class="quiz-row"><div class="quiz-card" onclick="handleQuiz(false)"><div style="font-size:50px">👟</div><p style="font-weight:bold;">เบอร์ 38</p></div><div class="quiz-card" onclick="handleQuiz(true)"><div style="font-size:50px">👞</div><p style="font-weight:bold;">เบอร์ 39</p></div></div></div>
+            <div id="step-6" class="quiz-step" style="display:none;"><p style="font-weight:600; margin-bottom:15px;">6. ใครทักหาใครก่อน?</p><div class="quiz-row"><div class="quiz-card" onclick="handleQuiz(true)"><div style="font-size:50px">👦🏻</div><p style="font-weight:bold;">เธอ</p></div><div class="quiz-card" onclick="handleQuiz(false)"><div style="font-size:50px">👧🏻</div><p style="font-weight:bold;">เค้า</p></div></div></div>
+            <div id="step-7" class="quiz-step" style="display:none;"><p style="font-weight:600; margin-bottom:15px;">7. ของขวัญวาเลนไทน์ชิ้นแรกที่ให้คือ?</p><div class="quiz-row"><div class="quiz-card" onclick="handleQuiz(false)"><div style="font-size:50px">🎁</div><p style="font-weight:bold;">กล่องสุ่ม</p></div><div class="quiz-card" onclick="handleQuiz(true)"><div style="font-size:50px">👕</div><p style="font-weight:bold;">เสื้อ</p></div></div></div>
 
             <div id="step-final" class="quiz-step" style="display:none;">
-                <div id="quizResultView" class="intro-content">
+                <div id="quizResultView">
                     <div style="font-size:70px">🏆</div>
                     <h2 style="font-family: 'Montserrat'; font-weight: 800; color: var(--primary);">CONGRATULATIONS!</h2>
                     <p style="margin-bottom: 20px;">เธอเก่งที่สุด จำเรื่องของเราได้ทุกอย่างเลย ❤️</p>
@@ -223,15 +211,14 @@
                     </div>
                     <button class="start-btn" onclick="goToFinalQuestion()">NEXT ➔</button>
                 </div>
-                
                 <div id="finalQuestionView" style="display:none; flex-direction: column; align-items: center;">
                     <h2 class="final-question">Will you be my Valentine?</h2>
-                    <p style="font-size: 0.9rem; color: #999; margin-bottom: 20px;">(อีกปีนะ ❤️)</p>
-                    <div class="btn-group" id="btnContainer" style="min-height: 150px;">
+                    <p style="font-size:0.9rem; color:#999; margin-bottom:5px;">(อีกปีนะ ❤️)</p>
+                    <div class="btn-group" id="btnContainer">
                         <button class="yes-btn" onclick="handleFinalYes()">Yes, always! ❤️</button>
                         <button class="no-btn" id="noBtn" onmouseover="moveNoButton()" ontouchstart="moveNoButton()">No</button>
                     </div>
-                    <button class="start-btn" onclick="showPage('menuPage')" style="opacity:0.5; margin-top: 20px;">HOME</button>
+                    <button class="start-btn" onclick="showPage('menuPage')" style="opacity:0.5;">HOME</button>
                 </div>
             </div>
         </div>
@@ -306,15 +293,14 @@
 
         function openLetter() { document.getElementById('quizResultView').style.display = 'none'; document.getElementById('letterView').style.display = 'flex'; }
         function goToFinalQuestion() { document.getElementById('letterView').style.display = 'none'; document.getElementById('finalQuestionView').style.display = 'flex'; }
+        
         function moveNoButton() {
             const btn = document.getElementById('noBtn');
             const container = document.getElementById('btnContainer');
-            // คำนวณขอบเขตการเคลื่อนที่ให้เล็กลงและอยู่ใน container
-            const maxX = container.clientWidth - btn.clientWidth;
-            const maxY = container.clientHeight - btn.clientHeight;
-            btn.style.left = Math.floor(Math.random() * maxX) + 'px';
-            btn.style.top = Math.floor(Math.random() * maxY) + 'px';
+            btn.style.left = Math.floor(Math.random() * (container.clientWidth - btn.clientWidth)) + 'px';
+            btn.style.top = (Math.floor(Math.random() * 60) - 30) + 'px';
         }
+        
         function handleFinalYes() {
             const modal = document.getElementById('customAlert');
             document.getElementById('alertText').innerHTML = "เย้! รักกันนาน ๆ นะคะ<br>Sudkhet & Bamboo ❤️";
