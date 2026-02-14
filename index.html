@@ -29,13 +29,15 @@
         }
         .active { display: flex !important; }
 
-        /* --- ✨ Intro & Buttons ✨ --- */
-        .heart-text-wrapper { position: relative; width: 310px; animation: gentleFloat 4s ease-in-out infinite; margin-bottom: 20px; }
-        .intro-image-container img { width: 100%; height: auto; display: block; filter: drop-shadow(0 15px 35px rgba(255, 77, 109, 0.25)); }
-        @keyframes gentleFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
-        .heart-overlay-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; text-align: center; z-index: 10; }
-        .headline-script { font-family: 'Dancing Script', cursive; font-size: 2.1rem; color: var(--text); line-height: 1.1; }
-        .start-btn { background: #ff4d6d; color: white; border: none; padding: 14px 70px; border-radius: 40px; font-weight: 800; font-size: 1.1rem; cursor: pointer; box-shadow: 0 10px 25px rgba(255, 77, 109, 0.3); transition: 0.4s; font-family: 'Montserrat'; margin-top: 25px; }
+        /* --- ✨ ปุ่มกดมาตรฐาน (ใช้ร่วมกันทุกที่เพื่อให้ขนาดเท่ากัน) ✨ --- */
+        .start-btn { 
+            background: #ff4d6d; color: white; border: none; 
+            padding: 12px 60px; border-radius: 40px; 
+            font-weight: 800; font-size: 1rem; cursor: pointer; 
+            box-shadow: 0 10px 25px rgba(255, 77, 109, 0.3); 
+            transition: 0.4s; font-family: 'Montserrat'; 
+            margin-top: 20px;
+        }
         .start-btn:hover { transform: scale(1.05); background: #ff2a51; }
 
         /* --- 🔐 Login --- */
@@ -50,12 +52,11 @@
         .couple-names { font-family: 'Dancing Script', cursive; font-size: 2.2rem; color: var(--primary); margin-bottom: 5px; }
         .photo-frame { width: 155px; height: 155px; border-radius: 50%; border: 6px solid #fff; overflow: hidden; margin: 10px auto; animation: pulseGlow 3s infinite ease-in-out; }
         @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 10px rgba(255, 77, 109, 0.2); } 50% { box-shadow: 0 0 35px rgba(255, 77, 109, 0.6); } }
-        .timer-row-new { display: flex; align-items: baseline; justify-content: center; gap: 6px; margin: 25px 0; }
+        .timer-row-new { display: flex; align-items: baseline; justify-content: center; gap: 6px; margin: 20px 0; }
         .time-block { display: flex; flex-direction: column; align-items: center; min-width: 48px; }
         .time-number { font-family: 'Montserrat', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--primary); }
         .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; }
         .menu-item { background: white; padding: 20px 10px; border-radius: 40px; border: 2px solid #fff0f3; cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .menu-en { font-family: 'Montserrat'; font-weight: 800; font-size: 1rem; }
 
         /* --- 🖼️ Sliders --- */
         .slider-container { position: relative; width: 100%; height: 62%; overflow: hidden; border-radius: 30px; background: #fff; }
@@ -63,17 +64,16 @@
         .slide { min-width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; padding: 5px; }
         .slide img { width: 100%; height: 100%; max-width: 320px; object-fit: cover; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         .slider-controls { display: flex; align-items: center; justify-content: center; gap: 25px; margin-top: 15px; width: 100%; }
-        .nav-btn-new { background: #fff; border: 2px solid #fff0f3; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
+        .nav-btn-new { background: #fff; border: 2px solid #fff0f3; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
 
-        /* --- 📝 Quiz & Jumbo Choices --- */
+        /* --- 📝 Quiz --- */
         .quiz-step { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
         .quiz-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; max-width: 380px; margin-top: 20px; }
         .quiz-card { background: #fff; padding: 25px 15px; border-radius: 35px; border: 3px solid #fff0f3; cursor: pointer; display: flex; flex-direction: column; align-items: center; transition: 0.3s; }
         .quiz-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 20px; margin-bottom: 15px; }
         .quiz-icon-jumbo { font-size: 75px; margin-bottom: 15px; }
-        .quiz-q-text { font-weight: 600; font-size: 1.2rem; text-align: center; }
 
-        /* --- 💌 ระบบจดหมายรัก + เซอร์ไพรส์สุดท้าย --- */
+        /* --- 💌 ระบบจดหมายรัก + เซอร์ไพรส์สุดท้าย (ขนาดปุ่มแก้แล้ว) --- */
         #letterBody { background: #fffdf5; padding: 30px 25px; border-radius: 25px; border: 1px solid #f0e68c; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; width: 100%; max-width: 360px; animation: fadeInUp 0.8s ease-out; }
         .letter-text { font-family: 'Prompt', sans-serif; font-size: 1.1rem; color: var(--text); line-height: 1.9; }
         .highlight-bold { font-weight: 800; color: var(--primary); font-size: 1.25rem; display: block; margin-top: 25px; border-top: 2px solid #fff0f3; padding-top: 20px; }
@@ -81,7 +81,7 @@
         .final-question { font-family: 'Dancing Script'; font-size: 2.5rem; color: var(--primary); font-weight: 700; margin-bottom: 15px; }
         .btn-group { display: flex; gap: 20px; justify-content: center; align-items: center; min-height: 150px; position: relative; width: 100%; margin-top: 20px; }
         .yes-btn { background: var(--primary); color: white; border: none; padding: 15px 45px; border-radius: 35px; font-weight: 800; font-family: 'Montserrat'; cursor: pointer; z-index: 10; box-shadow: 0 8px 20px rgba(255, 77, 109, 0.3); }
-        .no-btn { background: #fff; color: #999; border: 2px solid #eee; padding: 10px 25px; border-radius: 30px; font-weight: 700; font-family: 'Montserrat'; cursor: pointer; position: absolute; transition: 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 5; }
+        .no-btn { background: #fff; color: #999; border: 2px solid #eee; padding: 10px 25px; border-radius: 30px; font-weight: 700; font-family: 'Montserrat'; cursor: pointer; position: absolute; transition: 0.15s; z-index: 5; }
 
         .heart-particle { position: fixed; top: -10%; font-size: 22px; z-index: 1; pointer-events: none; animation: fall linear infinite; }
         @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
@@ -107,7 +107,7 @@
             <div class="intro-image-container"><img src="intro.png" alt="Valentine Cover"></div>
             <div class="heart-overlay-content">
                 <h1 class="headline-script">Happy Valentine's Day</h1>
-                <p class="special-gift-style" style="font-family: Montserrat; font-weight: 600; font-size: 0.85rem; opacity: 0.7; margin-top: 5px;">Special gift for you</p>
+                <p style="font-family: Montserrat; font-weight: 600; font-size: 0.85rem; opacity: 0.7; margin-top: 5px;">Special gift for you</p>
             </div>
         </div>
         <button class="start-btn" onclick="handleStart()">START!</button>
@@ -150,7 +150,7 @@
             <div class="time-block"><span id="s-val" class="time-number">00</span><span style="font-size:0.6rem; color:#999;">Secs</span></div>
         </div>
         <p style="font-size: 0.85rem; font-style: italic; opacity: 0.6;">เราเดินมาไกลแค่ไหนแล้วนะ... ❤️</p>
-        <button class="start-btn" onclick="showPage('menuPage')" style="padding: 10px 40px;">HOME</button>
+        <button class="start-btn" onclick="showPage('menuPage')">HOME</button>
     </div>
 
     <div id="memoriesPage" class="page">
@@ -160,11 +160,11 @@
             </div>
         </div>
         <div class="slider-controls">
-            <button onclick="moveSlide('memoriesWrapper', -1)" class="nav-btn-new" id="memoriesPrev">❮</button>
+            <button onclick="moveSlide('memoriesWrapper', -1)" class="nav-btn-new" id="memoriesPrev" style="width:50px; height:50px; border-radius:50%;">❮</button>
             <div style="font-family:'Montserrat'; font-weight:700; color:var(--primary);"><span id="memoriesCounter">1</span> / 20</div>
-            <button onclick="moveSlide('memoriesWrapper', 1)" class="nav-btn-new" id="memoriesNext">❯</button>
+            <button onclick="moveSlide('memoriesWrapper', 1)" class="nav-btn-new" id="memoriesNext" style="width:50px; height:50px; border-radius:50%;">❯</button>
         </div>
-        <button class="start-btn" onclick="showPage('menuPage')" style="padding:10px 25px; font-size:0.8rem;">HOME</button>
+        <button class="start-btn" onclick="showPage('menuPage')">HOME</button>
     </div>
 
     <div id="polaroidPage" class="page">
@@ -176,11 +176,11 @@
             </div>
         </div>
         <div class="slider-controls">
-            <button onclick="moveSlide('polaroidWrapper', -1)" class="nav-btn-new" id="polaroidPrev">❮</button>
+            <button onclick="moveSlide('polaroidWrapper', -1)" class="nav-btn-new" id="polaroidPrev" style="width:50px; height:50px; border-radius:50%;">❮</button>
             <div style="font-family:'Montserrat'; font-weight:700; color:var(--primary);"><span id="polaroidCounter">1</span> / 3</div>
-            <button onclick="moveSlide('polaroidWrapper', 1)" class="nav-btn-new" id="polaroidNext">❯</button>
+            <button onclick="moveSlide('polaroidWrapper', 1)" class="nav-btn-new" id="polaroidNext" style="width:50px; height:50px; border-radius:50%;">❯</button>
         </div>
-        <button class="start-btn" onclick="showPage('menuPage')" style="padding:10px 25px; font-size:0.8rem;">HOME</button>
+        <button class="start-btn" onclick="showPage('menuPage')">HOME</button>
     </div>
 
     <div id="quizPage" class="page">
@@ -195,15 +195,14 @@
             <div id="step-7" class="quiz-step" style="display:none;"><p class="quiz-q-text">7. ของขวัญวาเลนไทน์ชิ้นแรกที่ให้คือ?</p><div class="quiz-row"><div class="quiz-card" onclick="handleQuiz(false)"><div class="quiz-icon-jumbo">🎁</div><p class="quiz-label">กล่องสุ่ม</p></div><div class="quiz-card" onclick="handleQuiz(true)"><div class="quiz-icon-jumbo">👕</div><p class="quiz-label">เสื้อ</p></div></div></div>
             
             <div id="step-final" class="quiz-step" style="display:none; width: 100%;">
-                
                 <div id="quizResultView">
                     <div style="font-size:70px">🏆</div>
-                    <h2 style="font-family: 'Montserrat'; font-weight: 800; color: var(--primary);">CONGRATULATIONS!</h2>
+                    <h2 style="font-family: 'Dancing Script'; font-size: 2.5rem; color: var(--primary);">CONGRATULATIONS!</h2>
                     <p style="margin-bottom: 20px;">เธอเก่งที่สุด จำเรื่องของเราได้ทุกอย่างเลย ❤️</p>
                     <div id="envelopeWrapper" onclick="openLetter()"><div style="font-size: 60px;">💌</div><p style="font-size: 0.85rem; color: #ff8fa3; font-weight: 600;">คลิกเพื่อเปิดจดหมายรัก</p></div>
                 </div>
                 
-                <div id="letterView" style="display:none; width: 100%;">
+                <div id="letterView" style="display:none; width: 100%; flex-direction: column; align-items: center;">
                     <div id="letterBody">
                         <p class="letter-text">
                             Happy valentine's day นะคะแฟน<br>
@@ -212,19 +211,19 @@
                             <span class="highlight-bold">ของขวัญวาเลนไทน์ที่ดีที่สุด<br>คือ การมีเธออยู่ข้างๆ</span>
                         </p>
                     </div>
-                    <button class="start-btn" onclick="goToFinalQuestion()" style="padding: 10px 40px; margin-top: 20px;">NEXT ➔</button>
+                    <button class="start-btn" onclick="goToFinalQuestion()">NEXT ➔</button>
                 </div>
 
                 <div id="finalQuestionView" style="display:none; width: 100%; margin-top: 20px;">
                     <h2 class="final-question">Will you be my Valentine?</h2>
-                    <p style="font-size: 0.9rem; color: #999; margin-bottom: 10px;">(อีกปีนะ ❤️)</p>
+                    <p style="font-size: 0.9rem; color: #999;">(อีกปีนะ ❤️)</p>
                     <div class="btn-group" id="btnContainer">
                         <button class="yes-btn" onclick="handleFinalYes()">Yes, always! ❤️</button>
                         <button class="no-btn" id="noBtn" onmouseover="moveNoButton()" ontouchstart="moveNoButton()">No</button>
                     </div>
                 </div>
 
-                <button id="backToMenuBtn" class="start-btn" onclick="showPage('menuPage')" style="padding: 10px 40px; margin-top: 20px; opacity: 0.5; font-size: 0.8rem; display:none;">HOME</button>
+                <button id="backToMenuBtn" class="start-btn" onclick="showPage('menuPage')" style="display:none;">HOME</button>
             </div>
         </div>
     </div>
@@ -272,8 +271,7 @@
                     document.getElementById('letterView').style.display = 'none';
                     document.getElementById('finalQuestionView').style.display = 'none';
                     document.getElementById('quizTitle').style.display = 'none';
-                    // ซ่อนปุ่ม HOME ตอนเริ่มหน้าจบ
-                    document.getElementById('backToMenuBtn').style.display = 'none';
+                    document.getElementById('backToMenuBtn').style.display = 'none'; // ✅ ลบ HOME
                     startHearts();
                 } else { document.getElementById('quizTitle').style.display = 'block'; }
             }
@@ -296,8 +294,7 @@
                 document.getElementById(next).style.display = 'flex';
                 if (currentStep > 7) { 
                     document.getElementById('quizTitle').style.display = 'none';
-                    // ซ่อนปุ่ม HOME ตอนเริ่มหน้าจบ
-                    document.getElementById('backToMenuBtn').style.display = 'none';
+                    document.getElementById('backToMenuBtn').style.display = 'none'; // ✅ ลบ HOME
                     startHearts(); 
                 }
             }
@@ -307,15 +304,13 @@
             document.getElementById('quizResultView').style.display = 'none';
             document.getElementById('letterView').style.display = 'flex';
             document.getElementById('finalQuestionView').style.display = 'none';
-            // ซ่อนปุ่ม HOME ตอนอ่านจดหมาย
-            document.getElementById('backToMenuBtn').style.display = 'none';
+            document.getElementById('backToMenuBtn').style.display = 'none'; // ✅ ลบ HOME
         }
 
         function goToFinalQuestion() {
             document.getElementById('letterView').style.display = 'none';
             document.getElementById('finalQuestionView').style.display = 'flex';
-            // แสดงปุ่ม HOME ตอนถึงหน้าคำถามสุดท้าย
-            document.getElementById('backToMenuBtn').style.display = 'block';
+            document.getElementById('backToMenuBtn').style.display = 'block'; // ✅ แสดง HOME เฉพาะหน้านี้
         }
 
         function moveNoButton() {
@@ -323,7 +318,7 @@
             const container = document.getElementById('btnContainer');
             const maxX = container.clientWidth - btn.clientWidth - 10;
             const randomX = Math.floor(Math.random() * maxX);
-            const randomY = Math.floor(Math.random() * 100) - 50; 
+            const randomY = Math.floor(Math.random() * 80) - 40; 
             btn.style.left = randomX + 'px';
             btn.style.top = randomY + 'px';
         }
